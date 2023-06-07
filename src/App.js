@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">Text besar</h1>
+      <h1 className="text-3xl font-bold underline">Text nya kurang</h1>
     </div>
   );
 }
