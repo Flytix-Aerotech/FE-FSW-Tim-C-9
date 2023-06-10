@@ -1,9 +1,10 @@
 import "./App.css";
+import NavbarPage from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">Text besar</h1>
+      <NavbarPage />
     </div>
   );
 }
