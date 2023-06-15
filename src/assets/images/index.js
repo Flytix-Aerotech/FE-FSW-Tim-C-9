@@ -1,4 +1,5 @@
-import logo from "./logonav.png";
-import logonav from "./logo.png";
+import logonav from "./logonav.png";
+import crown from "./crown.png";
+import logobro from "./logobro.png";
 
-export { logo, logonav };
+export { logonav, crown, logobro };
