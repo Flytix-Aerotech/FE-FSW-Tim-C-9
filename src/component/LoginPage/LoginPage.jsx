@@ -3,7 +3,8 @@ import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 
 const LoginPage = props => {
     const [showPassword, setShowPassword] = useState(false);
-    const [Password, SetPassword] = useState("")
+    const [setUsername, setEnteredUsername] = useState("");
+    const [Password, SetPassword] = useState("");
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
@@ -13,7 +14,7 @@ const LoginPage = props => {
         <>
             <div className='flex justify-center items-center h-full'>
                 <form className='w-1/2 p-6'>
-                    <h2 className='text-2xl mb-10'>Daftar</h2>
+                    <h2 className='text-2xl mb-10'>Login</h2>
                     <div className='mb-4'>
                         <label htmlFor='email' className='mb-2 block text-xs'>Email/No.Telepon</label>
                         <input
