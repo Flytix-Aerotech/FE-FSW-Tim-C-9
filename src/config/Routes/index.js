@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "../../component/LoginPage/LoginPage";
 import RegisterPage from "../../component/RegisterPage/RegisterPage";
 import ResetPage from "../../component/ResetPassword/ResetPassword";
+import OTP from "../../component/OTP/OTP";
 
 const index = () => {
   return (
@@ -10,7 +11,8 @@ const index = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="reset-password" element={<ResetPage/>}/>
+        <Route path="/reset-password" element={<ResetPage/>}/>
+        <Route path="/OTP" element={<OTP/>}/>
       </Routes>
     </BrowserRouter>
   );

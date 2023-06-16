@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { binar } from "../../assets";
 
 const RegisterPage = props => {
     const [showPassword, setShowPassword] = useState(false);
@@ -13,15 +14,15 @@ const RegisterPage = props => {
         <>
             <div className="flex flex-col w-full h-screen ">
                 <div className="h-full grid grid-cols-4">
-                    <div className="bg-blue-600 text-center">
-                        INI GAMBAR GIMANA NASIBNYA ???
+                    <div className="col-span-2 h-screen">
+                        <img src={binar} className="h-screen" />
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-2 mr-10">
                         <div className="flex justify-center items-center h-screen">
-                            <form className="w-1/2">
-                                <h2 className="text-2xl mb-8">Daftar</h2>
+                            <form className="w-3/4">
+                                <h2 className="text-2xl mb-8 font-bold">Daftar</h2>
                                 <div className="mb-4">
-                                    <label className="text-xs block mb-2">Nama</label>
+                                    <label className="text-s block mb-2">Nama</label>
                                     <div className="relative">
                                         <input
                                             type="text"
@@ -32,7 +33,7 @@ const RegisterPage = props => {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <label className="text-xs block mb-2">Email</label>
+                                    <label className="text-s block mb-2">Email</label>
                                     <div className="relative">
                                         <input
                                             type="text"
@@ -46,7 +47,7 @@ const RegisterPage = props => {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <label className="text-xs block mb-2">No.Telepon</label>
+                                    <label className="text-s block mb-2">No.Telepon</label>
                                     <div className="relative">
                                         <input
                                             type="text"
@@ -57,7 +58,7 @@ const RegisterPage = props => {
                                     </div>
                                 </div>
                                 <div className="mb-4">
-                                    <label className="text-xs block mb-2">Buat Password</label>
+                                    <label className="text-s block mb-2">Buat Password</label>
                                     <div className="relative">
                                         <input
                                             type="text"

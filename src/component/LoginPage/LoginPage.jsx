@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 import { Link } from "react-router-dom";
+import { binar } from "../../assets";
 
 const LoginPage = props => {
     const [showPassword, setShowPassword] = useState(false);
@@ -14,32 +15,32 @@ const LoginPage = props => {
     return (
         <>
             <div className="flex flex-col w-full h-screen">
-                <div className="h-full grid grid-cols-4">
-                    <div className="bg-blue-600 text-center">
-                        Ini harusnya gambar
+                <div className="h-full grid grid-cols-10">
+                    <div className="col-span-5 h-screen">
+                        <img src={binar} className="h-screen"/>
                     </div>
-                    <div className="col-span-3">
+                    <div className="col-span-5">
                         <div className='flex justify-center items-center h-full'>
-                            <form className='w-1/2 p-6'>
-                                <h2 className='text-2xl mb-10'>Login</h2>
+                            <form className='w-3/4 mr-20'>
+                                <h2 className='text-2xl font-bold mb-6'>Masuk</h2>
                                 <div className='mb-4'>
-                                    <label htmlFor='email' className='mb-2 block text-xs'>Email/No.Telepon</label>
+                                    <label htmlFor='email' className='mb-2 block text-s'>Email/No.Telepon</label>
                                     <input
                                         type="email"
                                         placeholder='Silahkan Masukkan Email anda'
-                                        className='w-full border rounded-lg p-2'>
+                                        className='w-full border-2 rounded-lg p-2'>
                                     </input>
                                 </div>
                                 <div className='mb-4'>
-                                    <div className='mb-2 block text-xs flex justify-between'>
+                                    <div className='mb-2 block text-s flex justify-between'>
                                         <label>Password</label>
-                                        <a href='#'>Lupa Password ?</a>
+                                        <Link to="/reset-password">Lupa Password ?</Link>
                                     </div>
                                     <div className="relative">
                                         <input
                                             type={showPassword ? "text" : "password"}
                                             placeholder='Silahkan Masukkan password anda'
-                                            className='w-full border rounded-lg p-2' />
+                                            className='w-full border-2 rounded-lg p-2' />
                                         <button
                                             type="button"
                                             className="absolute top-1/2 right-2 transform -translate-y-1/2"
