@@ -1,10 +1,11 @@
 import "./App.css";
-import LoginPage from "./component/LoginPage/LoginPage";
+import  Routes  from "./config/Routes";
+
 
 function App() {
   return (
     <>
-      <LoginPage />
+      <Routes />
     </>
   );
 }
