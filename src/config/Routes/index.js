@@ -4,6 +4,7 @@ import LoginPage from "../../component/LoginPage/LoginPage";
 import RegisterPage from "../../component/RegisterPage/RegisterPage";
 import ResetPage from "../../component/ResetPassword/ResetPassword";
 import OTP from "../../component/OTP/OTP";
+import Tytyd from "../../component/Coba/tytyd";
 
 const index = () => {
   return (
@@ -13,6 +14,7 @@ const index = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/reset-password" element={<ResetPage/>}/>
         <Route path="/OTP" element={<OTP/>}/>
+        <Route path="/tytyd" element={<Tytyd/>}/>
       </Routes>
     </BrowserRouter>
   );

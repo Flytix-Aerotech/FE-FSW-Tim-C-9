@@ -14,6 +14,8 @@ const ResetPage = props => {
         setShowPasswordnew(!showPasswordnew);
     }
 
+    
+
     return (
         <>
             <div className="flex flex-col w-full h-screen">
