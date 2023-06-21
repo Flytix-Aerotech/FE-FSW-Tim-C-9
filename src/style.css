@@ -1,0 +1,81 @@
+#font {
+    font-size: 30px;
+    font-style: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    translate: 30px;
+}
+
+#filterr {
+    translate: 900px;
+    transform: translateY(-33px);
+}
+
+#formss {
+    margin-top: 100px;
+    margin-left: 20px;
+}
+
+#filter {
+    font-size: 17px;
+    font-style: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    translate: 100px;
+    width: 120px;
+    background-color: white;
+    outline-color: black;
+    outline: 2px;
+}
+
+#brnda {
+    background-color: purple;
+    color: white;
+    width: 800px;
+    translate: 80px;
+}
+
+.container {
+    margin: auto;
+    width: 1440px;
+    height: 260px;
+}
+
+/* #sidebar {
+    transform: translateY(110px);
+} */
+
+/* #iddd{
+    margin-top: 100px;
+} */
+
+#p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+}
+
+#p1 {
+    font: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+
+#data {
+    transform: translateX(20px);
+}
+
+#datanya {
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: purple;
+}
+
+.green-issue{
+    width: 72px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.gray-cancel{
+    width: 90px;
+    text-align: center;
+    border-radius: 10px;
+}
