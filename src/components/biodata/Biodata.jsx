@@ -6,10 +6,6 @@ const Biodata = () => {
   const [passengerOne, setPassengerOne] = React.useState(false);
   const [passengerTwo, setPassengerTwo] = React.useState(false);
   const [showPassenger, setShowPassenger] = React.useState(false);
-  const handleInputUser = () => setUser(!user);
-  const handleInputPassengerOne = () => setPassengerOne(!passengerOne);
-  const handleInputPassengerTwo = () => setPassengerTwo(!passengerTwo);
-  const handleInputShowPassenger = () => setShowPassenger(!showPassenger);
 
   return (
     <form action="" className="max-w-[500px] w-full">
@@ -23,7 +19,7 @@ const Biodata = () => {
         <CardBody className="flex flex-col gap-4">
           <Input label="Nama Lengkap" size="lg" />
           <span className="flex justify-between">
-            <p className="text-sm">Punya Nama Keluarga?</p> <Switch id="user" onClick={handleInputUser} />
+            <p className="text-sm">Punya Nama Keluarga?</p> <Switch id="user" onClick={() => setUser(!user)} />
           </span>
           {user ? <Input label="Nama Keluarga" size="lg" /> : null}
           <Input label="Nomor Telepon" size="lg" />
@@ -45,7 +41,7 @@ const Biodata = () => {
             </Select>
             <Input label="Nama Lengkap" size="lg" />
             <span className="flex justify-between">
-              <p className="text-sm">Punya Nama Keluarga?</p> <Switch id="passengerone" onClick={handleInputPassengerOne} />
+              <p className="text-sm">Punya Nama Keluarga?</p> <Switch id="passengerone" onClick={() => setPassengerOne(!passengerOne)} />
             </span>
             {passengerOne ? <Input label="Nama Keluarga" size="lg" /> : null}
             <Input type="date" label="Tanggal Lahir" size="lg" />
@@ -54,7 +50,7 @@ const Biodata = () => {
           </CardBody>
         </div>
         <span className="flex justify-between mx-6 mt-2 mb-5">
-          <p className="text-sm">Tambah Penumpang?</p> <Switch id="showpassenger" onClick={handleInputShowPassenger} />
+          <p className="text-sm">Tambah Penumpang?</p> <Switch id="showpassenger" onClick={() => setShowPassenger(!showPassenger)} />
         </span>
         {showPassenger ? (
           <div className="data-number-two">
@@ -68,7 +64,7 @@ const Biodata = () => {
               </Select>
               <Input label="Nama Lengkap" size="lg" />
               <span className="flex justify-between">
-                <p className="text-sm">Punya Nama Keluarga?</p> <Switch id="passengertwo" onClick={handleInputPassengerTwo} />
+                <p className="text-sm">Punya Nama Keluarga?</p> <Switch id="passengertwo" onClick={() => setPassengerTwo(!passengerTwo)} />
               </span>
               {passengerTwo ? <Input label="Nama Keluarga" size="lg" /> : null}
               <Input type="date" label="Tanggal Lahir" size="lg" />

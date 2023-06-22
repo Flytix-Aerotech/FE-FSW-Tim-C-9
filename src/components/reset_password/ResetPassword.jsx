@@ -11,7 +11,7 @@ const ResetPassword = () => {
   const history = useNavigate();
   const params = useParams();
   const [showPassword, setShowPassword] = React.useState(false);
-  const toggleShowPassword = () => setShowPassword(!showPassword);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const {
     register,
     handleSubmit,
@@ -49,7 +49,11 @@ const ResetPassword = () => {
                   },
                 })}
               />
-              <button type="button" className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2" onClick={toggleShowPassword}>
+              <button
+                type="button"
+                className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2"
+                onClick={() => setShowPassword(!showPassword)}
+              >
                 {showPassword ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
               </button>
             </div>
@@ -58,7 +62,7 @@ const ResetPassword = () => {
           <div>
             <div className="relative">
               <Input
-                type={showPassword ? "text" : "password"}
+                type={showConfirmPassword ? "text" : "password"}
                 size="lg"
                 label="Ulangi Password Baru"
                 color="purple"
@@ -79,8 +83,12 @@ const ResetPassword = () => {
                   },
                 })}
               />
-              <button type="button" className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2" onClick={toggleShowPassword}>
-                {showPassword ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
+              <button
+                type="button"
+                className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
               </button>
             </div>
             {errors.confirmPassword && <small className="text-red-600">{errors.confirmPassword?.message}</small>}

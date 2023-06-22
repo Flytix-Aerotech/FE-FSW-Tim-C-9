@@ -29,7 +29,7 @@ const Login = () => {
         history(`/reset-password/${res.data.user.username}`);
       })
       .catch((error) => {
-        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
         SweatAlert(message, "warning");
       });
   };

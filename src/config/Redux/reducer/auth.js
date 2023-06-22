@@ -1,15 +1,16 @@
-import { LOGIN, REGISTER } from "../action/actionTypes";
+import { LOGIN, REGISTER, GET_PROFILE, UPDATE_PROFILE } from "../action/actionTypes";
 
-const user = JSON.parse(localStorage.getItem("token"));
-
-const initialState = user ? { isLoggedIn: true, user } : { isLoggedIn: false, user: null };
+const initialState = {
+  user: [],
+  isLoggedIn: !!localStorage.getItem("token"),
+};
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
       return {
         ...state,
-        isLoggedIn: false,
+        isLoggedIn: true,
         user: action.payload.user,
       };
     case REGISTER:
@@ -19,18 +20,19 @@ const auth = (state = initialState, action) => {
         user: action.payload.user,
       };
 
-    // case GET_PROFILE:
-    //   return {
-    //     ...state,
-    //     user: action.payload.data.profile,
-    //     isLoggedIn: true,
-    //   };
-    // case UPDATE_PROFILE:
-    //   return {
-    //     ...state,
-    //     user: action.payload.data,
-    //     isLoggedIn: true,
-    //   };
+    case GET_PROFILE:
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: action.payload.user,
+      };
+
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: action.payload.user,
+      };
     default:
       return state;
   }

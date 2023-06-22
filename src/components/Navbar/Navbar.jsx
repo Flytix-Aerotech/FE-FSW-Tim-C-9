@@ -4,36 +4,33 @@ import {
   UserCircleIcon,
   ChevronDownIcon,
   Cog6ToothIcon,
-  InboxArrowDownIcon,
   PowerIcon,
   MagnifyingGlassIcon,
   Bars4Icon,
   XMarkIcon,
   HomeIcon,
   ExclamationCircleIcon,
+  ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import NavbarNotif from "./NavbarNotif";
-import { logo } from "../../assets/images";
+import { icon_user, logo } from "../../assets/images";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { getProfileAction } from "../../config/Redux/action/authAction";
 
-const ProfileMenu = () => {
+const ProfileMenu = ({ handleLogout, user }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
+
   const profileMenuItems = [
     {
       label: "My Profile",
       icon: UserCircleIcon,
+      href: "/user/profile",
     },
     {
       label: "Edit Profile",
       icon: Cog6ToothIcon,
-    },
-    {
-      label: "Inbox",
-      icon: InboxArrowDownIcon,
-    },
-    {
-      label: "Sign Out",
-      icon: PowerIcon,
+      href: "/edit/profile",
     },
   ];
 
@@ -45,59 +42,88 @@ const ProfileMenu = () => {
             variant="circular"
             size="sm"
             alt="candice wu"
-            className="border border-blue-500 p-0.5"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+            className="border border-purple-500 p-0.5"
+            src={user.photo === null ? icon_user : user.photo}
           />
           <ChevronDownIcon strokeWidth={2.5} className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""}`} />
         </Button>
       </MenuHandler>
       <MenuList className="p-1">
-        {profileMenuItems.map(({ label, icon }, key) => {
-          const isLastItem = key === profileMenuItems.length - 1;
+        {profileMenuItems.map(({ label, icon, href }) => {
           return (
-            <MenuItem
-              key={label}
-              onClick={closeMenu}
-              className={`flex items-center gap-2 rounded ${isLastItem ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10" : ""}`}
-            >
-              {React.createElement(icon, {
-                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                strokeWidth: 2,
-              })}
-              <Typography as="span" variant="small" className="font-normal" color={isLastItem ? "red" : "inherit"}>
-                {label}
-              </Typography>
-            </MenuItem>
+            <Link key={label} to={href} className="border-none outline-none">
+              <MenuItem onClick={closeMenu} className={`flex items-center gap-2 rounded `}>
+                {React.createElement(icon, {
+                  className: `h-4 w-4`,
+                  strokeWidth: 2,
+                })}
+                <Typography as="span" variant="small" className="font-normal" color="inherit">
+                  {label}
+                </Typography>
+              </MenuItem>
+            </Link>
           );
         })}
+        <MenuItem onClick={handleLogout} className="hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10 flex gap-2 items-center">
+          <PowerIcon className="h-4 w-4 text-red-500" />
+          <Typography as="span" variant="small" className="font-normal" color="red">
+            Sign Out
+          </Typography>
+        </MenuItem>
       </MenuList>
     </Menu>
   );
 };
 
 const NavbarComplex = () => {
+  const history = useNavigate();
+  const dispatch = useDispatch();
   const [openNav, setOpenNav] = React.useState(false);
   const [test, setTest] = React.useState();
+  const [users, setUsers] = React.useState([]);
+
+  const { isLoggedIn } = useSelector((state) => state.authReducer);
+  const { user } = useSelector((state) => state.authReducer);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("totalPassenger");
+    setTimeout(() => {
+      history("/login");
+    }, 3000);
+  };
+
   const trigger = () => {
     console.log(test);
   };
+
+  React.useEffect(() => {
+    dispatch(getProfileAction());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    if (user) {
+      setUsers(user);
+    }
+  }, [user]);
+
   React.useEffect(() => {
     window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
 
   const navList = (
     <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      <Typography as="a" href="#" variant="small" color="blue-gray" className="font-normal">
-        <MenuItem className="flex items-center gap-2 lg:rounded-full">
+      <Typography as="a" href="/" variant="small" color="blue-gray" className="font-normal">
+        <MenuItem className="flex items-center gap-2 lg:rounded-full px-0 lg:px-3">
           <HomeIcon className="w-6 h-6" /> Home
         </MenuItem>
       </Typography>
-      <Typography as="a" href="#" variant="small" color="blue-gray" className="font-normal">
-        <MenuItem className="flex items-center gap-2 lg:rounded-full">
+      <Typography as="a" href="/about" variant="small" color="blue-gray" className="font-normal">
+        <MenuItem className="flex items-center gap-2 lg:rounded-full px-0 lg:px-3">
           <ExclamationCircleIcon className="w-6 h-6" /> About
         </MenuItem>
       </Typography>
-      <div className="relative block w-full gap-2 md:w-max lg:hidden">
+      <div className="relative block w-full gap-2 sm:w-max lg:hidden">
         <Input onKeyDown={trigger} type="search" label="Type here..." className="pr-10" onChange={(e) => setTest(e.target.value)} />
         <button onClick={trigger} className="!absolute right-2 top-2 rounded">
           <MagnifyingGlassIcon className="w-6 h-6" />
@@ -113,7 +139,7 @@ const NavbarComplex = () => {
           <div className="flex items-center gap-4">
             <Typography as="a" href="#" className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
               <img src={logo} alt="" width={"40"} className="rounded-full" />{" "}
-              <span className="text-2xl font-bold tracking-wider text-blue-400 uppercase">Flytix</span>
+              <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
             </Typography>
             <div className="relative hidden w-full gap-2 md:w-max lg:block">
               <Input onKeyDown={trigger} type="search" label="Type here..." className="pr-10" onChange={(e) => setTest(e.target.value)} />
@@ -122,9 +148,18 @@ const NavbarComplex = () => {
               </button>
             </div>
           </div>
+
           <div className="flex items-center gap-4">
             <div className="hidden mr-4 lg:block">{navList}</div>
-            <ProfileMenu />
+            {isLoggedIn ? (
+              <ProfileMenu handleLogout={handleLogout} user={users} />
+            ) : (
+              <Link to="/login">
+                <Button color="purple" className="flex items-center gap-2">
+                  <ArrowRightOnRectangleIcon className="w-6 h-6" /> Masuk
+                </Button>
+              </Link>
+            )}
             <IconButton
               variant="text"
               className="w-6 h-6 ml-auto text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -137,16 +172,6 @@ const NavbarComplex = () => {
         </div>
         <Collapse open={openNav}>{navList}</Collapse>
       </Navbar>
-      <NavbarNotif />
-      {/* <div className="max-w-screen-md py-12 mx-auto">
-        <Card className="mb-12 overflow-hidden">
-          <img
-            alt="nature"
-            className="h-[32rem] w-full object-cover object-center"
-            src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2717&q=80"
-          />
-        </Card>
-      </div> */}
     </>
   );
 };

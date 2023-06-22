@@ -2,11 +2,22 @@ import React from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { logo } from "../../assets/images";
 import OtpInput from "react-otp-input";
+// import { useNavigate } from "react-router-dom";
+// import { useForm } from "react-hook-form";
 
 const OTP = () => {
+  // const history = useNavigate();
+
   const [otp, setOtp] = React.useState("");
 
   // const handleChange = (code) => otp(otp);
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
+
+  // const onSubmit = (data) => {};
 
   return (
     <>

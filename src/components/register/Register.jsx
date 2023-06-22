@@ -48,6 +48,8 @@ const Register = () => {
               color="purple"
               {...register("username", {
                 required: "Please enter your username",
+                minLength: { value: 5, message: "Username Too Short" },
+                maxLength: { value: 30, message: "Username Too Long" },
                 pattern: { value: /^[a-zA-Z.!@#$%^&*-=_+ ]+$/i, message: "Please input true username." },
               })}
             />
