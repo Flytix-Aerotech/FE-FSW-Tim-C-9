@@ -141,7 +141,6 @@ const ResultSearch = () => {
 
   const data = {
     departure_date: searchParams.get("dd"),
-    arrival_date: searchParams.get("ad"),
     departure_location: searchParams.get("dl"),
     arrival_location: searchParams.get("al"),
     type_of_class: searchParams.get("toc"),

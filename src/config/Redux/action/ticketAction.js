@@ -7,9 +7,7 @@ export const filterTicketAction = (data, history) => {
     await API.post(`/tickets/filter`, data)
       .then((response) => {
         dispatch({ type: FILTER_TICKET, payload: response.data });
-        history(
-          `/home?dd=${data.departure_date}&ad=${data.arrival_date}&dl=${data.departure_location}&al=${data.arrival_location}&toc=${data.type_of_class}`
-        );
+        history(`/home?dd=${data.departure_date}&dl=${data.departure_location}&al=${data.arrival_location}&toc=${data.type_of_class}`);
       })
       .catch((error) => {
         SweatAlert("Please input a relevant data", "warning");
@@ -19,9 +17,7 @@ export const filterTicketAction = (data, history) => {
 
 export const getTicketAction = (data) => {
   return async (dispatch) => {
-    await API.get(
-      `/tickets/search?dd=${data.departure_date}&ad=${data.arrival_date}&dl=${data.departure_location}&al=${data.arrival_location}&toc=${data.type_of_class}`
-    )
+    await API.get(`/tickets/search?dd=${data.departure_date}&dl=${data.departure_location}&al=${data.arrival_location}&toc=${data.type_of_class}`)
       .then((response) => {
         dispatch({ type: GET_TICKET_BY_QUERY, payload: response.data });
       })

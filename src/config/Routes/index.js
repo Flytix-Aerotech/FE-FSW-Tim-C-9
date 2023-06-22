@@ -11,6 +11,8 @@ import ResultPage from "../../pages/result_home/ResultPage";
 import ShowProfilePage from "../../pages/profile_account/ShowProfilePage";
 import UpdateProfilePage from "../../pages/profile_account/UpdateProfilePage";
 import ErrorPage from "../../pages/page_not_found/NotFoundPage";
+import ProtectedRouteUser from "../../pages/protected_user/ProtectedRouteUser";
+import ProtectedUser from "../../pages/protected_user/ProtectedUser";
 
 const index = () => {
   return (
@@ -22,10 +24,13 @@ const index = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/reset-password/:username" element={<ResetPasswordPage />} />
         <Route path="/OTP" element={<OTP />} />
-        <Route path="/wishlist/:id" element={<CheckoutBiodataPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/user/profile" element={<ShowProfilePage />} />
-        <Route path="/edit/profile" element={<UpdateProfilePage />} />
+        <Route element={<ProtectedRouteUser />}>
+          <Route path="/wishlist/:id" element={<CheckoutBiodataPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/user/profile" element={<ShowProfilePage />} />
+          <Route path="/edit/profile" element={<UpdateProfilePage />} />
+        </Route>
+        <Route path="/no-access-user" element={<ProtectedUser />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

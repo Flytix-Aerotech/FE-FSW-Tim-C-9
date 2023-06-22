@@ -10,7 +10,23 @@ import "swiper/css/pagination";
 
 import { Link, useSearchParams } from "react-router-dom";
 
-const DateButton = () => {
+const date = [
+  { date: "2023-06-20", day: "Selasa" },
+  { date: "2023-06-21", day: "Rabu" },
+  { date: "2023-06-22", day: "Kamis" },
+  { date: "2023-06-23", day: "Jumat" },
+  { date: "2023-06-24", day: "Sabtu" },
+  { date: "2023-06-25", day: "Minggu" },
+  { date: "2023-06-26", day: "Senin" },
+  { date: "2023-06-27", day: "Selasa" },
+  { date: "2023-06-28", day: "Rabu" },
+  { date: "2023-06-29", day: "Kamis" },
+  { date: "2023-06-30", day: "Jumat" },
+];
+
+const DateButton = ({ searchParams }) => {
+  const path = searchParams.get("dd");
+
   return (
     <Swiper
       slidesPerView={7}
@@ -40,72 +56,20 @@ const DateButton = () => {
       }}
       className="mySwiper w-full"
     >
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Selasa</p>
-          <small className="m-auto">20/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Rabu</p>
-          <small className="m-auto">21/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Kamis</p>
-          <small className="m-auto">22/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Jumat</p>
-          <small className="m-auto">23/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Sabtu</p>
-          <small className="m-auto">24/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Minggu</p>
-          <small className="m-auto">25/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Senin</p>
-          <small className="m-auto">26/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Selasa</p>
-          <small className="m-auto">27/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Rabu</p>
-          <small className="m-auto">28/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Kamis</p>
-          <small className="m-auto">29/06/2023</small>
-        </Button>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Button variant="outlined" color="purple" className="py-2 flex flex-col gap-1 shadow-none hover:text-white hover:bg-purple-600">
-          <p className="m-auto">Jumat</p>
-          <small className="m-auto">30/06/2023</small>
-        </Button>
-      </SwiperSlide>
+      {date.map((item, i) => (
+        <SwiperSlide key={i}>
+          <Button
+            variant="outlined"
+            color="purple"
+            className={`${
+              item.date === path ? "bg-purple-600 text-white hover:!opacity-100" : "hover:text-white hover:bg-purple-600"
+            } py-2 flex flex-col gap-1 shadow-none `}
+          >
+            <p className="m-auto">{item.day}</p>
+            <small className="m-auto whitespace-nowrap">{item.date}</small>
+          </Button>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };
@@ -117,6 +81,7 @@ const HeaderHome = () => {
   const type_of_class = searchParams.get("toc");
   const Departure = searchParams.get("dl");
   const Arrival = searchParams.get("al");
+
   return (
     <div className="max-w-4xl w-full m-auto mt-8">
       <Typography variant="h4">Pilih Penerbangan</Typography>
@@ -126,7 +91,7 @@ const HeaderHome = () => {
             <ChevronLeftIcon className="w-6 h-6 font-bold" />
           </Link>
           <p className="flex items-center text-xs sm:text-base">
-            {Departure} <ChevronRightIcon className="w-4 h-4" /> {Arrival} - {passengers} Penumpang - {type_of_class}
+            {Departure} <ChevronRightIcon className="w-4 h-4 mx-2" /> {Arrival} - {passengers} Penumpang - {type_of_class}
           </p>
         </div>
         <Link to="/">
@@ -136,7 +101,7 @@ const HeaderHome = () => {
         </Link>
       </div>
       <div className="flex mx-8 mt-4 gap-2 border-b border-gray-600 pb-4">
-        <DateButton />
+        <DateButton searchParams={searchParams} />
       </div>
     </div>
   );
