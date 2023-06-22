@@ -1,7 +1,7 @@
 import React from "react";
 import Biodata from "../../components/biodata/Biodata";
 import FlightDetail from "../../components/flight_detail/FlightDetail";
-import NavbarComplex from "../../components/navbar/Navbar";
+import NavbarComplex from "../../components/Navbar/Navbar"
 
 const CheckoutBiodata = () => {
   return (

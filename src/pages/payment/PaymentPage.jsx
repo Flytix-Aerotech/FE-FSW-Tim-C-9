@@ -1,7 +1,7 @@
 import React from "react";
 import FlightDetail from "../../components/flight_detail/FlightDetail";
 import PaymentMethod from "../../components/payment_method/PaymentMethod";
-import NavbarComplex from "../../components/navbar/Navbar";
+import NavbarComplex from "../../components/Navbar/Navbar";
 
 const Payment = () => {
   return (

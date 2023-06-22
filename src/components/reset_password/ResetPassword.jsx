@@ -10,8 +10,10 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const params = useParams();
-  const [showPassword, setShowPassword] = React.useState(false);
-  const toggleShowPassword = () => setShowPassword(!showPassword);
+  const [showPasswordold, setShowPasswordold] = React.useState(false);
+  const [showPasswordnew, setShowPasswordnew] = React.useState(false);
+  const toggleShowPasswordold = () => setShowPasswordold(!showPasswordold);
+  const toggleShowPasswordnew= () => setShowPasswordnew(!showPasswordnew);
   const {
     register,
     handleSubmit,
@@ -33,7 +35,7 @@ const ResetPassword = () => {
           <div>
             <div className="relative">
               <Input
-                type={showPassword ? "text" : "password"}
+                type={showPasswordold ? "text" : "password"}
                 size="lg"
                 label="Masukkan Password Baru"
                 color="purple"
@@ -49,8 +51,8 @@ const ResetPassword = () => {
                   },
                 })}
               />
-              <button type="button" className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2" onClick={toggleShowPassword}>
-                {showPassword ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
+              <button type="button" className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2" onClick={toggleShowPasswordold}>
+                {showPasswordold ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
               </button>
             </div>
             {errors.password && <small className="text-red-600">{errors.password?.message}</small>}
@@ -58,7 +60,7 @@ const ResetPassword = () => {
           <div>
             <div className="relative">
               <Input
-                type={showPassword ? "text" : "password"}
+                type={showPasswordnew ? "text" : "password"}
                 size="lg"
                 label="Ulangi Password Baru"
                 color="purple"
@@ -79,8 +81,8 @@ const ResetPassword = () => {
                   },
                 })}
               />
-              <button type="button" className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2" onClick={toggleShowPassword}>
-                {showPassword ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
+              <button type="button" className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2" onClick={toggleShowPasswordnew}>
+                {showPasswordnew ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
               </button>
             </div>
             {errors.confirmPassword && <small className="text-red-600">{errors.confirmPassword?.message}</small>}
