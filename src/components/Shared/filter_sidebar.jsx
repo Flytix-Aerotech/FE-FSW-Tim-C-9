@@ -17,8 +17,8 @@ import {
 export default function FilterSidebar() {
   return (
     <div className="w-12/3 flex flex-col ">
-      <Card className="h-auto w-auto max-w-full p-4 shadow-xl shadow-gray-900/2 border-gray-950">
-        <div className="mb-2 p-4">
+      <Card className="h-auto w-auto max-w-full p-4 border-2 border-gray-950/3">
+        <div className="p-2">
           <Typography variant="h6" color="blue-gray">
             Filter
           </Typography>
