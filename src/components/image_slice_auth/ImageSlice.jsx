@@ -1,10 +1,10 @@
 import React from "react";
-import { flytix_slice } from "../../assets/images";
+import { background_img } from "../../assets/images";
 
 const ImageSlice = () => {
   return (
-    <div className="relative hidden bg-gradient-to-b from-60% from-[#FFF280] w-full md:grid place-items-center">
-      <img src={flytix_slice} alt="" className="h-screen object-scale-down" />
+    <div className="relative hidden w-full h-screen md:grid place-items-start">
+      <img src={background_img} alt="" className="object-cover h-screen" />
     </div>
   );
 };

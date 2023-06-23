@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Typography } from "@material-tailwind/react";
-import { logo } from "../../assets/images";
+import { logo_flytix } from "../../assets/images";
 import OtpInput from "react-otp-input";
 // import { useNavigate } from "react-router-dom";
 // import { useForm } from "react-hook-form";
@@ -21,14 +21,14 @@ const OTP = () => {
 
   return (
     <>
-      <nav className="border-b-2 py-4 px-10 fixed top-0 w-screen">
+      <nav className="fixed top-0 w-screen px-10 py-4 border-b-2">
         <Typography as="a" href="#" className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
-          <img src={logo} alt="" width={"40"} className="rounded-full" />{" "}
+          <img src={logo_flytix} alt="" width={"40"} className="rounded-full" />{" "}
           <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
         </Typography>
       </nav>
       <div className="flex items-center justify-center h-screen">
-        <form className="max-w-xl w-full flex flex-col gap-10">
+        <form className="flex flex-col w-full max-w-xl gap-10">
           <Typography variant="h4" className="font-bold">
             Masukkan OTP
           </Typography>
@@ -56,7 +56,7 @@ const OTP = () => {
               renderSeparator={<span>-</span>}
               renderInput={(props) => <input {...props} />}
             />
-            <p className="text-center mt-3">Kirim Ulang OTP dalam 60 detik</p>
+            <p className="mt-3 text-center">Kirim Ulang OTP dalam 60 detik</p>
           </div>
           <Button type="submit" className="w-full" color="purple">
             Simpan
