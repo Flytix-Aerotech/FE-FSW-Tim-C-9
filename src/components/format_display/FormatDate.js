@@ -1,6 +1,6 @@
 const formatDate = (value) => {
   const date = new Date(value);
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
   const format = `${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
   return format;
 };

@@ -117,7 +117,7 @@ const NavbarComplex = () => {
       <Navbar className="sticky inset-0 z-10 max-w-full px-4 py-4 rounded-none h-max lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900">
           <div className="flex items-center gap-4">
-            <Typography as="a" href="#" className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
+            <Typography as="a" href="/" className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
               <img src={logo_flytix} alt="" width={"40"} className="rounded-full" />{" "}
               <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
             </Typography>

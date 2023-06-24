@@ -27,8 +27,8 @@ const OTP = () => {
           <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
         </Typography>
       </nav>
-      <div className="flex items-center justify-center h-screen">
-        <form className="flex flex-col w-full max-w-xl gap-10">
+      <div className="grid h-screen place-items-center">
+        <form className="flex flex-col w-full max-w-xl gap-10 px-5">
           <Typography variant="h4" className="font-bold">
             Masukkan OTP
           </Typography>
@@ -37,24 +37,22 @@ const OTP = () => {
             <OtpInput
               inputStyle={{
                 border: "1px solid #CFD3DB",
-                borderRadius: "20px",
-                width: "50px",
-                height: "50px",
+                borderRadius: "10px",
+                padding: "10px",
+                maxWidth: "50px",
+                width: "100%",
+                height: "100%",
                 fontSize: "20px",
                 color: "#303030",
-                fontWeight: "500",
+                fontWeight: "600",
                 caretColor: "purple",
                 margin: "5px",
               }}
-              focusStyle={{
-                border: "2px solid #CFD3DB",
-              }}
-              inputType="number"
               value={otp}
               onChange={setOtp}
               numInputs={6}
-              renderSeparator={<span>-</span>}
               renderInput={(props) => <input {...props} />}
+              placeholder="-"
             />
             <p className="mt-3 text-center">Kirim Ulang OTP dalam 60 detik</p>
           </div>

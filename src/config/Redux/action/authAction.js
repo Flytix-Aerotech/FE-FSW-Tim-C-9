@@ -1,6 +1,6 @@
 import API from "../../Api/baseApi";
 import SweatAlert from "../../SweetAlert";
-import { LOGIN, REGISTER, RESET_PASSWORD, GET_PROFILE, UPDATE_PROFILE } from "./actionTypes";
+import { LOGIN, REGISTER, RESET_PASSWORD, GET_PROFILE, UPDATE_PROFILE, SEARCH_EMAIL } from "./actionTypes";
 
 export const loginAction = (data, history) => {
   return async (dispatch) => {
@@ -25,6 +25,21 @@ export const registerAction = (data, history) => {
         dispatch({ type: REGISTER, payload: response.data });
         SweatAlert(response.data.msg, "success");
         history("/login");
+      })
+      .catch((error) => {
+        const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
+        SweatAlert(message, "warning");
+      });
+  };
+};
+
+export const getEmailAction = (data, history) => {
+  return async (dispatch) => {
+    await API.post(`/send/email-otp`, data)
+      .then((response) => {
+        dispatch({ type: SEARCH_EMAIL, payload: response.data });
+        SweatAlert(response.data.msg, "success");
+        history(`/reset-password/${response.data.user.email}`);
       })
       .catch((error) => {
         const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();

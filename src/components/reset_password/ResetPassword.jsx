@@ -20,16 +20,16 @@ const ResetPassword = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(resetPasswordAction(data, history, params.username));
+    dispatch(resetPasswordAction(data, history, params.email));
   };
 
   return (
-    <Card color="transparent" shadow={false} className="w-full flex flex-col justify-center items-center">
+    <Card color="transparent" shadow={false} className="flex flex-col items-center justify-center w-full">
       <Typography variant="h4" color="blue-gray">
         Reset Password
       </Typography>
-      <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-4 flex flex-col gap-6">
+      <form className="max-w-screen-lg mt-8 mb-2 w-80 sm:w-96" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-6 mb-4">
           <div>
             <div className="relative">
               <Input
@@ -51,10 +51,10 @@ const ResetPassword = () => {
               />
               <button
                 type="button"
-                className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2"
+                className="absolute p-2 transform -translate-y-1/2 bg-white top-1/2 right-2"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
+                {showPassword ? <EyeIcon className="w-5 h-5" /> : <EyeSlashIcon className="w-5 h-5" />}
               </button>
             </div>
             {errors.password && <small className="text-red-600">{errors.password?.message}</small>}
@@ -85,10 +85,10 @@ const ResetPassword = () => {
               />
               <button
                 type="button"
-                className="bg-white p-2 absolute top-1/2 right-2 transform -translate-y-1/2"
+                className="absolute p-2 transform -translate-y-1/2 bg-white top-1/2 right-2"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
-                {showConfirmPassword ? <EyeIcon className="h-5 w-5" /> : <EyeSlashIcon className="h-5 w-5" />}
+                {showConfirmPassword ? <EyeIcon className="w-5 h-5" /> : <EyeSlashIcon className="w-5 h-5" />}
               </button>
             </div>
             {errors.confirmPassword && <small className="text-red-600">{errors.confirmPassword?.message}</small>}

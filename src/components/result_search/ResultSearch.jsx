@@ -34,40 +34,40 @@ const AccordionSection = ({ tickets }) => {
     <>
       {tickets.length === 0 ? (
         <div>
-          <img src={not_found} className="max-w-xs w-full" alt="" />
+          <img src={not_found} className="w-full max-w-xs" alt="" />
         </div>
       ) : (
         <>
           {tickets.map((item, i) => (
             <Accordion
               key={i}
-              className="border-2 border-gray-400 rounded-md px-2 py-4 mt-6"
+              className="px-2 py-4 mt-6 border-2 border-gray-400 rounded-md"
               open={open === item.id}
               icon={<Icon id={item.id} open={open} />}
             >
-              <AccordionHeader className="border-none p-0" onClick={() => handleOpen(item.id)}>
+              <AccordionHeader className="p-0 border-none" onClick={() => handleOpen(item.id)}>
                 <Typography variant="h6" color="blue-gray" className="flex items-center gap-4">
                   <img src={crown} alt="" className="w-5 h-5" /> {item.flight.airline} - {item.type_of_class}
                 </Typography>
               </AccordionHeader>
-              <div className="flex ml-0 sm:ml-8 mt-2 gap-10 sm:gap-20">
+              <div className="flex gap-10 mt-2 ml-0 sm:ml-8 sm:gap-20">
                 <div className="flex gap-4">
-                  <span className="flex flex-col justify-center items-center">
+                  <span className="flex flex-col items-center justify-center">
                     <p className="font-bold">{formatTime(item.flight.departure_time)}</p>
                     <small className="font-semibold">{item.flight.from_id}</small>
                   </span>
-                  <span className="flex flex-col justify-center items-center">
+                  <span className="flex flex-col items-center justify-center">
                     <small className="text-gray-500">1h</small>
                     <small className="bg-gray-500 w-14 sm:w-44 h-0.5 relative">
                       <small className="absolute w-1.5 h-1.5 bg-gray-500 right-0 top-1/2 -translate-y-1/2 rounded-r-3xl"></small>
                     </small>
                     <small className="text-gray-500">Direct</small>
                   </span>
-                  <span className="flex flex-col justify-center items-center">
+                  <span className="flex flex-col items-center justify-center">
                     <p className="font-bold">{formatTime(item.flight.arrival_time)}</p>
                     <small className="font-semibold">{item.flight.to_id}</small>
                   </span>
-                  <span className="flex flex-col justify-center items-center">
+                  <span className="flex flex-col items-center justify-center">
                     <img src={backpack} alt="" className="w-5 h-5" />
                   </span>
                 </div>
@@ -76,15 +76,15 @@ const AccordionSection = ({ tickets }) => {
                     IDR {formatRupiah(item.price)}
                   </Typography>
                   <Link to={`/wishlist/${item.id}`} className="w-full">
-                    <Button color="purple" className="rounded-2xl py-2 w-full">
+                    <Button color="purple" className="w-full py-2 rounded-2xl">
                       Pilih
                     </Button>
                   </Link>
                 </div>
               </div>
-              <AccordionBody className="border-t border-gray-800 mt-4">
+              <AccordionBody className="mt-4 border-t border-gray-800">
                 <div className="mx-4">
-                  <Card className="w-full overflow-hidden rounded-none shadow-none px-2">
+                  <Card className="w-full px-2 overflow-hidden rounded-none shadow-none">
                     <Typography variant="h6" color="purple" className="font-bold">
                       Detail Penerbangan
                     </Typography>
@@ -139,6 +139,25 @@ const ResultSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [tickets, setTickets] = React.useState([]);
 
+  const [sortedProducts, setSortedProducts] = React.useState([]);
+  const [sortOrder, setSortOrder] = React.useState("Harga - Termahal");
+
+  const handleClickFilter = (data) => {
+    setSortOrder(data);
+    const sorted = tickets;
+    sorted.sort((a, b) => {
+      const priceA = parseFloat(a.price);
+      const priceB = parseFloat(b.price);
+      if (sortOrder === "Harga - Termahal") {
+        return priceA - priceB;
+      } else {
+        return priceB - priceA;
+      }
+    });
+    setSortedProducts(sorted);
+    setSortOrder(sortOrder === "Harga - Termahal" ? "Harga - Termurah" : "Harga - Termahal");
+  };
+
   const data = {
     departure_date: searchParams.get("dd"),
     departure_location: searchParams.get("dl"),
@@ -160,13 +179,13 @@ const ResultSearch = () => {
   }, [ticket]);
 
   return (
-    <div className="max-w-4xl w-full m-auto my-8">
+    <div className="w-full max-w-4xl m-auto my-8">
       <div className="max-w-[220px] w-full ml-auto mx-10">
-        <FilterInput />
+        <FilterInput handleClickFilter={handleClickFilter} />
       </div>
-      <div className="mt-8 w-max m-auto">
+      <div className="m-auto mt-8 w-max">
         {isLoading ? (
-          <div className="flex items-center flex-col w-full h-full">
+          <div className="flex flex-col items-center w-full h-full">
             <span>Mencari penerbangan terbaik...</span>
             <ProgressBar
               height="100"
@@ -179,7 +198,7 @@ const ResultSearch = () => {
             />
           </div>
         ) : (
-          <AccordionSection tickets={tickets} />
+          <AccordionSection tickets={sortOrder === "Harga - Termahal" ? tickets : sortedProducts} />
         )}
       </div>
     </div>
