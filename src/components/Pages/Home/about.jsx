@@ -104,7 +104,7 @@ const AboutCompany = () => {
                             <div className="p-4 bg-white rounded-lg shadow-lg">
                                 <div className="flex flex-col items-center mb-2">
                                     <img
-                                        src="dev-1.jpg"
+                                        src="dev-3.jpg"
                                         alt="Developer 3"
                                         className="w-24 h-24 rounded-full"
                                     />
