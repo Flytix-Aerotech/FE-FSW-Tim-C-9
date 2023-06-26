@@ -17,6 +17,7 @@ const PassengerInput = () => {
   return (
     <>
       <Input
+        color="purple"
         variant="static"
         containerProps={{ className: "min-w-[50px]" }}
         onClick={handleOpen}

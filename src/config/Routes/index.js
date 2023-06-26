@@ -28,7 +28,7 @@ const index = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/email-otp" element={<InsertEmailPage />} />
-        <Route path="/reset-password/:email" element={<ResetPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/otp" element={<OTP />} />
         <Route element={<ProtectedRouteUser />}>
           <Route path="/wishlist/:id" element={<CheckoutBiodataPage />} />

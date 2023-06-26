@@ -1,6 +1,6 @@
 import API from "../../Api/baseApi";
 import SweatAlert from "../../SweetAlert";
-import { LOGIN, REGISTER, RESET_PASSWORD, GET_PROFILE, UPDATE_PROFILE, SEARCH_EMAIL } from "./actionTypes";
+import { LOGIN, REGISTER, RESET_PASSWORD, GET_PROFILE, UPDATE_PROFILE, SEARCH_EMAIL, VERIFY_EMAIL } from "./actionTypes";
 
 export const loginAction = (data, history) => {
   return async (dispatch) => {
@@ -33,13 +33,14 @@ export const registerAction = (data, history) => {
   };
 };
 
-export const getEmailAction = (data, history) => {
+export const sendOtpAction = (data, history) => {
   return async (dispatch) => {
-    await API.post(`/send/email-otp`, data)
+    await API.post(`/auth/send/email-otp`, data)
       .then((response) => {
         dispatch({ type: SEARCH_EMAIL, payload: response.data });
         SweatAlert(response.data.msg, "success");
-        history(`/reset-password/${response.data.user.email}`);
+        localStorage.setItem("email", response.data.user.email);
+        history(`/otp`);
       })
       .catch((error) => {
         const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
@@ -48,12 +49,29 @@ export const getEmailAction = (data, history) => {
   };
 };
 
-export const resetPasswordAction = (data, history, username) => {
+export const verifyOtpAction = (data, history, email) => {
   return async (dispatch) => {
-    await API.put(`/auth/reset-password/${username}`, data)
+    await API.post(`/auth/verify-otp/${email}`, data)
+      .then((response) => {
+        dispatch({ type: VERIFY_EMAIL, payload: response.data });
+        SweatAlert(response.data.msg, "success");
+        localStorage.removeItem("timer");
+        history(`/reset-password`);
+      })
+      .catch((error) => {
+        const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
+        SweatAlert(message, "warning");
+      });
+  };
+};
+
+export const resetPasswordAction = (data, history, email) => {
+  return async (dispatch) => {
+    await API.put(`/auth/reset-password/${email}`, data)
       .then((response) => {
         dispatch({ type: RESET_PASSWORD, payload: response.data });
         SweatAlert(response.data.msg, "success");
+        localStorage.removeItem("email");
         history("/login");
       })
       .catch((error) => {

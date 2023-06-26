@@ -25,37 +25,38 @@ const SearchTicket = () => {
   };
 
   return (
-    <div className="grid place-items-center mx-4">
-      <Card className="mt-2 max-w-4xl w-full">
+    <div className="grid mx-4 place-items-center">
+      <Card className="w-full max-w-4xl mt-2">
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardBody>
             <Typography variant="h5" color="blue-gray" className="mb-2">
-              Pilih Jadwal Penerbangan spesial di <span className="text-purple-600 font-bold">Tiketku!</span>
+              Pilih Jadwal Penerbangan spesial di <span className="font-bold text-purple-600">Tiketku!</span>
             </Typography>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-12 mt-4 p-4 md:p-0 rounded-lg border border-gray-500 md:border-none">
-              <div className="flex gap-10 items-center w-full">
+            <div className="flex flex-col gap-2 p-4 mt-4 border border-gray-500 rounded-lg md:flex-row md:gap-12 md:p-0 md:border-none">
+              <div className="flex items-center w-full gap-10">
                 <div className="flex items-center gap-3 mt-2 sm:flex">
                   <img src={flight_takeoff} alt="" className="w-6 h-6" />
-                  <small className="text-gray-500 mt-1">From</small>
+                  <small className="mt-1 text-gray-500">From</small>
                 </div>
                 <DepartureInput form={form} />
               </div>
-              <div className="flex gap-8 items-center w-full">
+              <div className="flex items-center w-full gap-8">
                 <div className="flex items-center gap-3 mt-2 sm:flex">
                   <img src={flight_takeoff} alt="" className="w-6 h-6" />
-                  <small className="text-gray-500 mt-1">To</small>
+                  <small className="mt-1 text-gray-500">To</small>
                 </div>
                 <ArrivalInput form={form} />
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row gap-14 md:gap-8 mt-10">
-              <div className="flex gap-10 items-center w-full">
-                <div className="sm:flex gap-3 hidden">
+            <div className="flex flex-col mt-10 lg:flex-row gap-14 md:gap-8">
+              <div className="flex items-center w-full gap-10">
+                <div className="hidden gap-3 sm:flex">
                   <CalendarIcon className="w-6 h-6" />
-                  <small className="text-gray-500 mt-1">Date</small>
+                  <small className="mt-1 text-gray-500">Date</small>
                 </div>
-                <div className="w-full flex flex-col sm:flex-row gap-5">
+                <div className="flex flex-col w-full gap-5 sm:flex-row">
                   <Input
+                    color="purple"
                     type="date"
                     variant="static"
                     label="Departure"
@@ -64,6 +65,7 @@ const SearchTicket = () => {
                     containerProps={{ className: "min-w-[20px]" }}
                   />
                   <Input
+                    color="purple"
                     type="date"
                     variant="static"
                     label="Return"
@@ -78,18 +80,18 @@ const SearchTicket = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-10 items-center w-full">
-                <div className="sm:flex items-center gap-3 mt-2 hidden">
+              <div className="flex items-center w-full gap-10">
+                <div className="items-center hidden gap-3 mt-2 sm:flex">
                   <img src={airline_seat} alt="" className="w-6 h-6" />
-                  <small className="text-gray-500 mt-1">To</small>
+                  <small className="mt-1 text-gray-500">To</small>
                 </div>
                 <PassengerInput />
                 <SeatInput form={form} />
               </div>
             </div>
           </CardBody>
-          <CardFooter className="p-0 w-full">
-            <Button type="submit" color="purple" className="rounded-b-lg rounded-t-none w-full">
+          <CardFooter className="w-full p-0">
+            <Button type="submit" color="purple" className="w-full rounded-t-none rounded-b-lg">
               Cari Penerbangan
             </Button>
           </CardFooter>

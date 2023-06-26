@@ -3,9 +3,9 @@ import { destinasi1, destinasi2 } from "../../assets/images";
 
 const ShowDestinasiFavorit = () => {
   return (
-    <div className="w-full max-w-4xl m-auto mb-16">
-      <div className="flex flex-wrap justify-center gap-6">
-        <Card className="w-[200px] mt-6">
+    <div className="w-full max-w-4xl px-4 m-auto mb-16">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <Card className="w-full mt-6">
           <img src={destinasi1} alt="" className="object-cover h-32 rounded-t-xl" />
           <CardBody className="p-2">
             <Typography variant="small" color="blue-gray" className="mb-2 font-semibold whitespace-nowrap">
@@ -22,7 +22,7 @@ const ShowDestinasiFavorit = () => {
             </Typography>
           </CardBody>
         </Card>
-        <Card className="w-[200px] mt-6">
+        <Card className="w-full mt-6">
           <img src={destinasi2} alt="" className="object-cover h-32 rounded-t-xl" />
           <CardBody className="p-2">
             <Typography variant="small" color="blue-gray" className="mb-2 font-semibold whitespace-nowrap">
@@ -39,7 +39,7 @@ const ShowDestinasiFavorit = () => {
             </Typography>
           </CardBody>
         </Card>
-        <Card className="w-[200px] mt-6">
+        <Card className="w-full mt-6">
           <img src={destinasi1} alt="" className="object-cover h-32 rounded-t-xl" />
           <CardBody className="p-2">
             <Typography variant="small" color="blue-gray" className="mb-2 font-semibold whitespace-nowrap">
@@ -56,7 +56,7 @@ const ShowDestinasiFavorit = () => {
             </Typography>
           </CardBody>
         </Card>
-        <Card className="w-[200px] mt-6">
+        <Card className="w-full mt-6">
           <img src={destinasi2} alt="" className="object-cover h-32 rounded-t-xl" />
           <CardBody className="p-2">
             <Typography variant="small" color="blue-gray" className="mb-2 font-semibold whitespace-nowrap">

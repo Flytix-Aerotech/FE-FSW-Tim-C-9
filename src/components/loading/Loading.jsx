@@ -3,7 +3,7 @@ import { CirclesWithBar } from "react-loader-spinner";
 
 const Loading = () => {
   return (
-    <div className="h-screen w-full bg-black/30 flex justify-center items-center">
+    <div className="flex items-center justify-center w-full h-screen bg-black/30">
       <CirclesWithBar height="100" width="100" color="#7f5feb" visible={true} ariaLabel="circles-with-bar-loading" />
     </div>
   );

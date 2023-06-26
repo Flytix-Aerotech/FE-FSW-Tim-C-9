@@ -13,6 +13,7 @@ const SeatInput = ({ form }) => {
   return (
     <>
       <Input
+        color="purple"
         variant="static"
         {...register("type_of_class")}
         containerProps={{ className: "min-w-[50px]" }}

@@ -54,7 +54,7 @@ const DateButton = ({ searchParams }) => {
           spaceBetween: 50,
         },
       }}
-      className="mySwiper w-full"
+      className="w-full mySwiper"
     >
       {date.map((item, i) => (
         <SwiperSlide key={i}>
@@ -83,10 +83,10 @@ const HeaderHome = () => {
   const Arrival = searchParams.get("al");
 
   return (
-    <div className="max-w-4xl w-full m-auto mt-8">
+    <div className="w-full max-w-4xl m-auto mt-8">
       <Typography variant="h4">Pilih Penerbangan</Typography>
-      <div className="flex flex-col md:flex-row mx-8 mt-4 gap-2">
-        <div className="flex gap-3 py-2 px-4 bg-purple-500 text-white w-full rounded-md">
+      <div className="flex flex-col gap-2 mx-8 mt-4 md:flex-row">
+        <div className="flex w-full gap-3 px-4 py-2 text-white bg-purple-500 rounded-md">
           <Link to="/">
             <ChevronLeftIcon className="w-6 h-6 font-bold" />
           </Link>
@@ -100,7 +100,7 @@ const HeaderHome = () => {
           </Button>
         </Link>
       </div>
-      <div className="flex mx-8 mt-4 gap-2 border-b border-gray-600 pb-4">
+      <div className="flex gap-2 pb-4 mx-8 mt-4 border-b border-gray-600">
         <DateButton searchParams={searchParams} />
       </div>
     </div>

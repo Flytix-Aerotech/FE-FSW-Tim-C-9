@@ -2,23 +2,27 @@ import React from "react";
 import { Breadcrumbs, Alert } from "@material-tailwind/react";
 
 const NavbarNotif = () => {
-  const [totalSeconds, setTotalSeconds] = React.useState(15 * 60);
+  const timeoutId = React.useRef(null);
+  const initialTimer = localStorage.getItem("timer") ?? 900;
+  const [timer, setTimer] = React.useState(initialTimer);
+
+  const countTimer = React.useCallback(() => {
+    if (timer <= 0) {
+      localStorage.removeItem("timer");
+    } else {
+      setTimer(timer - 1);
+      localStorage.setItem("timer", timer);
+    }
+  }, [timer]);
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (totalSeconds <= 0) {
-        clearInterval(interval);
-      } else {
-        setTotalSeconds((prevSeconds) => prevSeconds - 1);
-      }
-    }, 1000);
+    timeoutId.current = window.setTimeout(countTimer, 1000);
+    // cleanup function
+    return () => window.clearTimeout(timeoutId.current);
+  }, [timer, countTimer]);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [totalSeconds]);
-  const minutesLeft = Math.floor(totalSeconds / 60);
-  const secondsLeft = totalSeconds % 60;
+  const minutesLeft = Math.floor(timer / 60);
+  const secondsLeft = timer % 60 < 10 ? `0${timer % 60}` : timer % 60;
 
   return (
     <div className="inset-0 z-10 max-w-full px-4 py-2 border-b-2 rounded-none shadow-sm h-max lg:px-8 lg:pt-8">

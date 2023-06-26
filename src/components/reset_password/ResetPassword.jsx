@@ -4,12 +4,12 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import { useForm } from "react-hook-form";
 import { resetPasswordAction } from "../../config/Redux/action/authAction";
 import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
-  const params = useParams();
+  const email = localStorage.getItem("email");
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const {
@@ -20,7 +20,7 @@ const ResetPassword = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(resetPasswordAction(data, history, params.email));
+    dispatch(resetPasswordAction(data, history, email));
   };
 
   return (

@@ -1,6 +1,7 @@
 export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
 export const SEARCH_EMAIL = "SEARCH_EMAIL";
+export const VERIFY_EMAIL = "VERIFY_EMAIL";
 export const RESET_PASSWORD = "RESET_PASSWORD";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const GET_PROFILE = "GET_PROFILE";

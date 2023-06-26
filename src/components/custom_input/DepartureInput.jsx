@@ -13,6 +13,7 @@ const DepartureInput = ({ form }) => {
   return (
     <>
       <Input
+        color="purple"
         variant="static"
         {...register("departure_location")}
         containerProps={{ className: "min-w-[50px]" }}

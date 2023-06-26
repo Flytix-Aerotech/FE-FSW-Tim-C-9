@@ -31,11 +31,12 @@ const FlightDetail = () => {
       </Typography>
       <div className="flex flex-col mt-2">
         <span className="flex justify-between ">
-          <p className="font-bold text-black">{formatTime(tickets.flight.departure_time)}</p> <small className="text-blue-600">Keberangkatan</small>
+          <p className="hidden">{ticket?.flight?.departure_date}</p>
+          <p className="font-bold text-black">{formatTime(tickets?.flight?.departure_time)}</p> <small className="text-blue-600">Keberangkatan</small>
         </span>
-        <small className="mt-1">{formatDate(tickets.flight.departure_date)}</small>
+        <small className="mt-1">{formatDate(tickets?.flight?.departure_date)}</small>
         <small className="mt-1 text-black">
-          {tickets.airport.departure_name} - {tickets.airport.departure_terminal}
+          {tickets?.airport?.departure_name} - {tickets?.airport?.departure_terminal}
         </small>
       </div>
       <CardBody className="px-4 py-2 mx-1 my-4 border-t-2 border-b-2 border-gray-400">
@@ -43,9 +44,9 @@ const FlightDetail = () => {
           <img src={crown} alt="" className="w-6 h-6" />
           <div className="flex-col gap-2 flex-">
             <p className="font-bold text-black">
-              {tickets.flight.airline} - {tickets.type_of_class}
+              {tickets?.flight?.airline} - {tickets?.type_of_class}
             </p>
-            <p className="font-bold text-black">{tickets.flight.flight_number}</p>
+            <p className="font-bold text-black">{tickets?.flight?.flight_number}</p>
             <div className="flex flex-col mt-3">
               <p className="font-bold text-black">Informasi:</p>
               <small>Baggage {Math.floor(Math.random() * (30 - 20 + 1) + 20)} kg</small>
@@ -56,11 +57,11 @@ const FlightDetail = () => {
       </CardBody>
       <div className="flex flex-col mt-2">
         <span className="flex justify-between ">
-          <p className="font-bold text-black">{formatTime(tickets.flight.arrival_time)}</p> <small className="text-blue-600">Kedatangan</small>
+          <p className="font-bold text-black">{formatTime(tickets?.flight?.arrival_time)}</p> <small className="text-blue-600">Kedatangan</small>
         </span>
-        <small className="mt-1">{formatDate(tickets.flight.arrival_date)}</small>
+        <small className="mt-1">{formatDate(tickets?.flight?.arrival_date)}</small>
         <small className="mt-1 text-black">
-          {tickets.airport.arrival_name} - {tickets.airport.arrival_terminal}
+          {tickets?.airport?.arrival_name} - {tickets?.airport?.arrival_terminal}
         </small>
       </div>
       <CardFooter className="flex flex-col gap-3 p-0">
@@ -70,19 +71,19 @@ const FlightDetail = () => {
           </Typography>
           <div className="flex flex-col gap-2">
             <span className="flex justify-between">
-              <small>2 Adults</small> <small>IDR {formatRupiah(tickets.price)}</small>
+              <small>2 Adults</small> <small>IDR {formatRupiah(tickets?.price)}</small>
             </span>
             <span className="flex justify-between">
               <small>1 Baby</small> <small>IDR 0</small>
             </span>
             <span className="flex justify-between">
-              <small>Tax</small> <small>IDR {formatRupiah((tickets.price * 10) / 100)}</small>
+              <small>Tax</small> <small>IDR {formatRupiah((tickets?.price * 10) / 100)}</small>
             </span>
           </div>
         </div>
         <span className="flex justify-between mx-4">
           <p className="font-bold text-black">Total</p>
-          <p className="font-bold text-blue-600">IDR {formatRupiah(tickets.price + (tickets.price * 10) / 100)}</p>
+          <p className="font-bold text-blue-600">IDR {formatRupiah(tickets?.price + (tickets?.price * 10) / 100)}</p>
         </span>
       </CardFooter>
     </Card>
