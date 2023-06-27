@@ -3,10 +3,10 @@ import { Button, Typography } from "@material-tailwind/react";
 import OtpInput from "react-otp-input";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { verifyOtpAction } from "../../config/Redux/action/authAction";
+import { sendOtpAction, verifyAccountAction } from "../../config/Redux/action/authAction";
 import { formatCensorEmail } from "../format_display";
 
-const OTP = () => {
+const Verify = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
   const email = localStorage.getItem("email");
@@ -14,24 +14,29 @@ const OTP = () => {
   const [otp, setOtp] = React.useState("");
 
   const timeoutId = React.useRef(null);
-  const initialTimer = localStorage.getItem("timer") ?? 60;
+  const initialTimer = localStorage.getItem("timer") ?? 90;
   const [timer, setTimer] = React.useState(initialTimer);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { otp };
-    dispatch(verifyOtpAction(data, history, email));
+    dispatch(verifyAccountAction(data, history, email));
+  };
+
+  const SendEmailOtp = (e) => {
+    e.preventDefault();
+    const { data } = email;
+    dispatch(sendOtpAction(data, history));
   };
 
   const countTimer = React.useCallback(() => {
     if (timer <= 0) {
-      history("/email-otp");
       localStorage.removeItem("timer");
     } else {
       setTimer(timer - 1);
       localStorage.setItem("timer", timer);
     }
-  }, [timer, history]);
+  }, [timer]);
 
   React.useEffect(() => {
     timeoutId.current = window.setTimeout(countTimer, 1000);
@@ -44,7 +49,7 @@ const OTP = () => {
       <div className="grid h-screen place-items-center">
         <form onSubmit={handleSubmit} className="flex flex-col w-full max-w-xl gap-10 px-5">
           <Typography variant="h4" className="font-bold">
-            Masukkan OTP
+            Masukkan OTP untuk Verifikasi Akun
           </Typography>
           <p className="text-center">Ketik 6 digit kode yang dikirimkan ke {formatCensorEmail(email)}</p>
           <div className="grid place-items-center">
@@ -68,7 +73,17 @@ const OTP = () => {
               renderInput={(props) => <input {...props} />}
             />
             <div className="mt-4">
-              <p className="mt-3 text-center">Kirim Ulang OTP dalam {timer} detik</p>
+              {timer <= 0 ? (
+                <p>
+                  Silahakan{" "}
+                  <button onClick={() => SendEmailOtp} className="text-purple-500 underline">
+                    click disini
+                  </button>{" "}
+                  untuk mengirimkan kembali OTP
+                </p>
+              ) : (
+                <p className="mt-3 text-center">Kirim Ulang OTP dalam {timer} detik</p>
+              )}
             </div>
           </div>
           <Button type="submit" className="w-full" color="purple">
@@ -80,4 +95,4 @@ const OTP = () => {
   );
 };
 
-export default OTP;
+export default Verify;

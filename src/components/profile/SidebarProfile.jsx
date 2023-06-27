@@ -1,10 +1,17 @@
 import { Card, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
 import { UserCircleIcon, PencilSquareIcon, PowerIcon } from "@heroicons/react/24/solid";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../config/Redux/action/authAction";
 
 const SidebarProfile = () => {
+  const history = useNavigate();
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
   const active = "bg-blue-gray-50 bg-opacity-80 text-blue-gray-900";
+  const handleLogout = () => {
+    dispatch(logoutAction(history));
+  };
 
   return (
     <Card className="top-4 left-4 w-full max-w-[20rem] p-4 shadow-none hidden lg:block h-max">
@@ -25,7 +32,7 @@ const SidebarProfile = () => {
             Edit Profile
           </ListItem>
         </Link>
-        <ListItem className="text-red-500 hover:bg-red-50 hover:text-red-500">
+        <ListItem onClick={() => handleLogout} className="text-red-500 hover:bg-red-50 hover:text-red-500">
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>

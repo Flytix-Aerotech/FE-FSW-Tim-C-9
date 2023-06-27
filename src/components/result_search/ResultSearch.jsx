@@ -4,7 +4,7 @@ import { backpack, crown, not_found } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
 import { getTicketAction } from "../../config/Redux/action/ticketAction";
 import { Link, useSearchParams } from "react-router-dom";
-import { formatDate, formatRupiah, formatTime } from "../format_display";
+import { formatDate, formatDifferenceTime, formatRupiah, formatTime } from "../format_display";
 import { ProgressBar } from "react-loader-spinner";
 import FilterInput from "../custom_input/filterInput";
 
@@ -46,33 +46,35 @@ const AccordionSection = ({ tickets }) => {
               icon={<Icon id={item.id} open={open} />}
             >
               <AccordionHeader className="p-0 border-none" onClick={() => handleOpen(item.id)}>
-                <Typography variant="h6" color="blue-gray" className="flex items-center gap-4">
+                <Typography variant="h6" color="blue-gray" className="flex items-center gap-4 text-sm sm:text-base md:text-lg">
                   <img src={crown} alt="" className="w-5 h-5" /> {item.flight.airline} - {item.type_of_class}
                 </Typography>
               </AccordionHeader>
-              <div className="flex gap-10 mt-2 ml-0 sm:ml-8 sm:gap-20">
+              <div className="flex mt-2 ml-0 sm:ml-8 justify-between gap-2 sm:gap-20">
                 <div className="flex gap-4">
                   <span className="flex flex-col items-center justify-center">
-                    <p className="font-bold">{formatTime(item.flight.departure_time)}</p>
-                    <small className="font-semibold">{item.flight.from_id}</small>
+                    <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item.flight.departure_time)}</p>
+                    <small className="font-semibold text-xs sm:text-base">{item.flight.from_id}</small>
                   </span>
                   <span className="flex flex-col items-center justify-center">
-                    <small className="text-gray-500">1h</small>
-                    <small className="bg-gray-500 w-14 sm:w-44 h-0.5 relative">
-                      <small className="absolute w-1.5 h-1.5 bg-gray-500 right-0 top-1/2 -translate-y-1/2 rounded-r-3xl"></small>
+                    <small className="text-gray-500 text-xs sm:text-base">
+                      {formatDifferenceTime(item.flight.departure_time, item.flight.arrival_time)}
                     </small>
-                    <small className="text-gray-500">Direct</small>
+                    <small className="bg-gray-500 w-20 sm:w-28 md:w-44 h-0.5 relative">
+                      <i className="absolute w-1.5 h-1.5 border-gray-500 right-0 top-1/2 -translate-y-1/2 inline-block border-r-2 border-b-2 -rotate-45"></i>
+                    </small>
+                    <small className="text-gray-500 text-xs sm:text-base">Direct</small>
                   </span>
                   <span className="flex flex-col items-center justify-center">
-                    <p className="font-bold">{formatTime(item.flight.arrival_time)}</p>
-                    <small className="font-semibold">{item.flight.to_id}</small>
+                    <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item.flight.arrival_time)}</p>
+                    <small className="font-semibold text-xs sm:text-base">{item.flight.to_id}</small>
                   </span>
                   <span className="flex flex-col items-center justify-center">
                     <img src={backpack} alt="" className="w-5 h-5" />
                   </span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <Typography variant="h6" color="purple" className="font-bold">
+                  <Typography variant="h6" color="purple" className="font-bold text-sm sm:text-lg">
                     IDR {formatRupiah(item.price)}
                   </Typography>
                   <Link to={`/wishlist/${item.id}`} className="w-full">

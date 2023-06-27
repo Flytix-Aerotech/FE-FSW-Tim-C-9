@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Dialog, ListItem } from "@material-tailwind/react";
+import { Button, Dialog, Input, ListItem } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
 const FilterInput = ({ handleClickFilter }) => {
@@ -15,16 +15,22 @@ const FilterInput = ({ handleClickFilter }) => {
   };
   return (
     <>
-      <input
-        type="text"
-        id="default-input"
+      <Input
         onClick={handleOpen}
         value={filter}
-        className="bg-gray-50 border-2 border-purple-400 text-gray-900 text-sm rounded-lg focus:border-purple-800 block w-full p-2.5"
-      ></input>
+        readOnly
+        color="purple"
+        className="!border-t-blue-gray-200 focus:!border-t-purple-500 border-2"
+        labelProps={{
+          className: "before:content-none after:content-none",
+        }}
+        containerProps={{
+          className: "min-w-0",
+        }}
+      />
       <Dialog
         open={open}
-        size="xl"
+        className="w-3/4 min-w-[75%] max-w-[70%] lg:!w-1/4 lg:!min-w-[25%] lg:!max-w-[25%]"
         handler={handleOpen}
         animate={{
           mount: { scale: 1, y: 0 },

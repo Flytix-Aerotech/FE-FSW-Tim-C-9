@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import OTP from "../../components/OTP/OTP";
 import {
   AboutCompanyPage,
-  CheckoutBiodataPage,
+  BiodataPage,
   ErrorPage,
   HomePage,
   InsertEmailPage,
   LoginPage,
+  OtpResetPasswordPage,
+  OtpVerifyPage,
   PaymentPage,
   ProtectedRouteUser,
   ProtectedUserPage,
@@ -29,9 +30,10 @@ const index = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/email-otp" element={<InsertEmailPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
-        <Route path="/otp" element={<OTP />} />
+        <Route path="/otp" element={<OtpResetPasswordPage />} />
+        <Route path="/verify" element={<OtpVerifyPage />} />
         <Route element={<ProtectedRouteUser />}>
-          <Route path="/wishlist/:id" element={<CheckoutBiodataPage />} />
+          <Route path="/wishlist/:id" element={<BiodataPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/user/profile" element={<ShowProfilePage />} />
           <Route path="/edit/profile" element={<UpdateProfilePage />} />

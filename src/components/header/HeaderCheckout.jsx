@@ -1,7 +1,7 @@
 import React from "react";
 import { Breadcrumbs, Alert } from "@material-tailwind/react";
 
-const NavbarNotif = () => {
+const HeaderCheckout = () => {
   const timeoutId = React.useRef(null);
   const initialTimer = localStorage.getItem("timer") ?? 900;
   const [timer, setTimer] = React.useState(initialTimer);
@@ -48,4 +48,4 @@ const NavbarNotif = () => {
   );
 };
 
-export default NavbarNotif;
+export default HeaderCheckout;

@@ -1,14 +1,14 @@
 import React from "react";
+import HeaderCheckout from "../../components/header/HeaderCheckout";
+import NavbarComplex from "../../components/navbar/Navbar";
 import Biodata from "../../components/biodata/Biodata";
 import FlightDetail from "../../components/flight_detail/FlightDetail";
-import NavbarComplex from "../../components/navbar/Navbar";
-import NavbarNotif from "../../components/header/NavbarNotif";
 
-const CheckoutBiodata = () => {
+const CheckoutPage = () => {
   return (
     <>
       <NavbarComplex />
-      <NavbarNotif />
+      <HeaderCheckout />
       <div className="mb-16">
         <div className="flex flex-wrap-reverse justify-center w-full max-w-screen-lg gap-6 px-4 py-2 m-auto lg:px-8 lg:pt-4">
           <Biodata />
@@ -19,4 +19,4 @@ const CheckoutBiodata = () => {
   );
 };
 
-export default CheckoutBiodata;
+export default CheckoutPage;

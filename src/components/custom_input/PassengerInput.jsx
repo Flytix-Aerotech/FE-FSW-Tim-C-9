@@ -24,6 +24,7 @@ const PassengerInput = () => {
         label="Passengers"
         placeholder="Passengers"
         value={`${valuePassenger} Penumpang`}
+        readOnly
       />
       <Dialog
         open={open}

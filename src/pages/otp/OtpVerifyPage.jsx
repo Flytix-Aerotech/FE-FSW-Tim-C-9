@@ -1,23 +1,24 @@
 import React from "react";
-import ImageSlice from "../../components/image_slice_auth/ImageSlice";
-import Logins from "../../components/login/Login";
+import NavbarOtp from "../../components/navbar/NavbarOtp";
+import Verify from "../../components/OTP/Verify";
 import { useSelector } from "react-redux";
 import Loading from "../../components/loading/Loading";
 
-const Login = () => {
+const OtpVerifyPage = () => {
   const { isLoading } = useSelector((state) => state.authReducer);
+
   return (
     <>
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="flex w-full h-screen gap-5">
-          <ImageSlice />
-          <Logins />
-        </div>
+        <>
+          <NavbarOtp />
+          <Verify />
+        </>
       )}
     </>
   );
 };
 
-export default Login;
+export default OtpVerifyPage;

@@ -1,23 +1,23 @@
 import React from "react";
-import ImageSlice from "../../components/image_slice_auth/ImageSlice";
-import Logins from "../../components/login/Login";
+import NavbarOtp from "../../components/navbar/NavbarOtp";
+import OTP from "../../components/OTP/OTP";
 import { useSelector } from "react-redux";
 import Loading from "../../components/loading/Loading";
 
-const Login = () => {
+const OtpResetPasswordPage = () => {
   const { isLoading } = useSelector((state) => state.authReducer);
   return (
     <>
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="flex w-full h-screen gap-5">
-          <ImageSlice />
-          <Logins />
-        </div>
+        <>
+          <NavbarOtp />
+          <OTP />
+        </>
       )}
     </>
   );
 };
 
-export default Login;
+export default OtpResetPasswordPage;

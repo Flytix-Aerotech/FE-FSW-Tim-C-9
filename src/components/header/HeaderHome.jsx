@@ -37,21 +37,25 @@ const DateButton = ({ searchParams }) => {
           slidesPerView: 1,
           spaceBetween: 10,
         },
-        440: {
+        380: {
           slidesPerView: 2,
           spaceBetween: 20,
         },
-        640: {
+        400: {
           slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        600: {
+          slidesPerView: 4,
           spaceBetween: 30,
         },
-        768: {
+        668: {
           slidesPerView: 5,
           spaceBetween: 40,
         },
-        1024: {
-          slidesPerView: 7,
-          spaceBetween: 50,
+        768: {
+          slidesPerView: 6,
+          spaceBetween: 40,
         },
       }}
       className="w-full mySwiper"
@@ -77,21 +81,22 @@ const DateButton = ({ searchParams }) => {
 const HeaderHome = () => {
   const passengers = localStorage.getItem("totalPassenger");
   const [searchParams, setSearchParams] = useSearchParams();
-
   const type_of_class = searchParams.get("toc");
   const Departure = searchParams.get("dl");
   const Arrival = searchParams.get("al");
 
   return (
     <div className="w-full max-w-4xl m-auto mt-8">
-      <Typography variant="h4">Pilih Penerbangan</Typography>
-      <div className="flex flex-col gap-2 mx-8 mt-4 md:flex-row">
-        <div className="flex w-full gap-3 px-4 py-2 text-white bg-purple-500 rounded-md">
+      <Typography className="text-center sm:text-left" variant="h4">
+        Pilih Penerbangan
+      </Typography>
+      <div className="flex flex-col items-center gap-3 mx-2 sm:mx-8 mt-4 md:flex-row">
+        <div className="flex items-center gap-2 w-full px-4 py-2 text-white bg-purple-500 rounded-md">
           <Link to="/">
             <ChevronLeftIcon className="w-6 h-6 font-bold" />
           </Link>
-          <p className="flex items-center text-xs sm:text-base">
-            {Departure} <ChevronRightIcon className="w-4 h-4 mx-2" /> {Arrival} - {passengers} Penumpang - {type_of_class}
+          <p className="flex items-center text-[11px] sm:text-base mt-0">
+            {Departure} <ChevronRightIcon className="w-4 h-4" /> {Arrival} - {passengers} Penumpang - {type_of_class}
           </p>
         </div>
         <Link to="/">
@@ -100,7 +105,7 @@ const HeaderHome = () => {
           </Button>
         </Link>
       </div>
-      <div className="flex gap-2 pb-4 mx-8 mt-4 border-b border-gray-600">
+      <div className="flex gap-2 pb-4 mx-2 sm:mx-8 mt-4 border-b border-gray-600">
         <DateButton searchParams={searchParams} />
       </div>
     </div>

@@ -13,8 +13,9 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { icon_user, logo_flytix } from "../../assets/images";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { logoutAction } from "../../config/Redux/action/authAction";
 
 const ProfileMenu = ({ handleLogout, user }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -70,17 +71,14 @@ const ProfileMenu = ({ handleLogout, user }) => {
 
 const NavbarComplex = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
   const [openNav, setOpenNav] = React.useState(false);
   const [test, setTest] = React.useState();
 
   const { isLoggedIn } = useSelector((state) => state.authReducer);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("totalPassenger");
-    setTimeout(() => {
-      history("/login");
-    }, 3000);
+    dispatch(logoutAction(history));
   };
 
   const trigger = () => {

@@ -1,7 +1,7 @@
 import LoginPage from "./login/LoginPage";
 import RegisterPage from "./register/RegisterPage";
 import ResetPasswordPage from "./reset_password/ResetPasswordPage";
-import CheckoutBiodataPage from "./checkout/CheckoutBiodataPage";
+import BiodataPage from "./biodata/BiodataPage";
 import PaymentPage from "./payment/PaymentPage";
 import HomePage from "./search_home/HomePage";
 import ResultPage from "./result_home/ResultPage";
@@ -12,12 +12,14 @@ import ProtectedRouteUser from "./protected_user/ProtectedRouteUser";
 import ProtectedUserPage from "./protected_user/ProtectedUserPage";
 import AboutCompanyPage from "./about/AboutPage";
 import InsertEmailPage from "./reset_password/InsertEmailPage";
+import OtpResetPasswordPage from "./otp/OtpResetPasswordPage";
+import OtpVerifyPage from "./otp/OtpVerifyPage";
 
 export {
   LoginPage,
   RegisterPage,
   ResetPasswordPage,
-  CheckoutBiodataPage,
+  BiodataPage,
   PaymentPage,
   HomePage,
   ResultPage,
@@ -28,4 +30,6 @@ export {
   ProtectedUserPage,
   AboutCompanyPage,
   InsertEmailPage,
+  OtpResetPasswordPage,
+  OtpVerifyPage,
 };

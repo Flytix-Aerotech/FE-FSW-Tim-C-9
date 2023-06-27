@@ -1,0 +1,81 @@
+.seat-picker-container {
+  text-align: center;
+  margin-top: 20px;
+  border: 2px solid #e4e4e4;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+h2 {
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.seat-header {
+  margin-top: 10px;
+  background-color: #62bf48;
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #f1f1f1;
+}
+
+.seat-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d0d0d0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #f1f1f1;
+}
+
+.blank {
+  background-color: white;
+  font-size: 14px;
+  color: #333;
+}
+
+.seat-number {
+  display: flex;
+  justify-content: center;
+}
+
+.seat-number small {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  color: #6b6b6b;
+}
+
+.seat.pre-selected {
+  background-color: #62bf48;
+  color: #62bf48;
+  cursor: default;
+}
+
+.seat.selected {
+  background-color: #62bf48;
+  color: #62bf48;
+}
+
+p {
+  margin-top: 20px;
+}
