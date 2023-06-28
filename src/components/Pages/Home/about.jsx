@@ -52,7 +52,7 @@ const AboutCompany = () => {
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                             {/* Team Member 1 */}
                             <div className="p-4 bg-white rounded-lg shadow-lg">
-                                <div className="flex flex-col items-center mb-2">
+                                <div className="flex flex-col items-center mb-2 ">
                                     <img
                                         src="dev-1.jpg"
                                         alt="Developer 1"
@@ -244,6 +244,80 @@ const AboutCompany = () => {
                                 </div>
                                 <p className="text-gray-700 mt-3">
                                     Front-end Developer
+                                </p>
+                            </div>
+                            {/* Team Member 9 */}
+                            <div className="p-4 bg-white rounded-lg shadow-lg justify-center">
+                                <div className="flex flex-col items-center mb-2">
+                                    <img
+                                        src="dev-9.jpg"
+                                        alt="Developer 9"
+                                        className="w-24 h-24 rounded-full"
+                                    />
+                                    <h3 className="text-xl font-bold mt-2 text-center">
+                                        Rizki Nuriman
+                                    </h3>
+                                </div>
+                                <div className="flex items-center mt-2 text-sm">
+                                    <img
+                                        src="UPI.png"
+                                        alt="University Logo"
+                                        className="w-6 h-6 mr-2"
+                                    />
+                                    <span>
+                                        Universitas Pendidikan Indonesia
+                                    </span>
+                                </div>
+                                <p className="text-gray-700 mt-3">
+                                    Android Developer
+                                </p>
+                            </div>
+                            {/* Team Member 10 */}
+                            <div className="p-4 bg-white rounded-lg shadow-lg">
+                                <div className="flex flex-col items-center mb-2">
+                                    <img
+                                        src="dev-10.jpg"
+                                        alt="Developer 10"
+                                        className="w-24 h-24 rounded-full"
+                                    />
+                                    <h3 className="text-xl font-bold mt-2 text-center">
+                                        Dian Purnama Sari
+                                    </h3>
+                                </div>
+                                <div className="flex items-center mt-2 text-sm">
+                                    <img
+                                        src="Univ-Yarsi.png"
+                                        alt="University Logo"
+                                        className="w-6 h-6 mr-2"
+                                    />
+                                    <span>Universitas Yarsi</span>
+                                </div>
+                                <p className="text-gray-700 mt-3">
+                                    Android Developer
+                                </p>
+                            </div>
+                            {/* Team Member 11 */}
+                            <div className="p-4 bg-white rounded-lg shadow-lg">
+                                <div className="flex flex-col items-center mb-2">
+                                    <img
+                                        src="dev-11.jpg"
+                                        alt="Developer 10"
+                                        className="w-24 h-24 rounded-full"
+                                    />
+                                    <h3 className="text-xl font-bold mt-2 text-center">
+                                        Heru Prayogo
+                                    </h3>
+                                </div>
+                                <div className="flex items-center mt-2 text-sm">
+                                    <img
+                                        src="Univ-Yarsi.png"
+                                        alt="University Logo"
+                                        className="w-6 h-6 mr-2"
+                                    />
+                                    <span>Universitas Yarsi</span>
+                                </div>
+                                <p className="text-gray-700 mt-3">
+                                    Android Developer
                                 </p>
                             </div>
                         </div>

@@ -6,6 +6,8 @@ import SearchResultFilter from '../../components/Pages/Result/search_result_filt
 import AboutCompany from '../../components/Pages/Home/about';
 import ResultSearch from '../../components/Pages/Result/search_result';
 import DestinationFavorite from '../../components/Pages/Home/destinationvaf';
+import FlightDateSelection from '../../components/Pages/Home/setdate';
+import CariRiwayatPesanan from '../../components/Pages/Home/searchhistory';
 
 const AppRoute = () => {
     return (
@@ -18,6 +20,8 @@ const AppRoute = () => {
             <Route path="/hasil-filter" element={<SearchResultFilter/>} />
             <Route path="/about" element={<AboutCompany/>} />
             <Route path="/destinationfav" element={<DestinationFavorite/>} />
+            <Route path="/pilih-tanggal" element={<FlightDateSelection/>} />
+            <Route path="/cari-pesanan" element={<CariRiwayatPesanan/>} />
         </Routes>
         </BrowserRouter>
     );
