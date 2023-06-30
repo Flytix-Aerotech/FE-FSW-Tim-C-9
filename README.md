@@ -15,7 +15,7 @@ Tim kami terdiri dari sekelompok pengembang frontend yang antusias dan berdedika
 
 ### Deskripsi Proyek
 
-Proyek Final Flytix-Aerotech adalah aplikasi web yang bertujuan untuk menyediakan pengalaman perjalanan udara yang mudah, efisien, dan menarik bagi pengguna. Aplikasi ini memungkinkan pengguna untuk melakukan pencarian penerbangan, melihat jadwal penerbangan, memesan tiket.
+Proyek Final Flytix-Aerotech adalah aplikasi web yang bertujuan untuk menyediakan pengalaman perjalanan udara yang mudah, efisien, dan menarik bagi pengguna. Aplikasi ini memungkinkan pengguna untuk melakukan pencarian penerbangan, melihat jadwal penerbangan, dan memesan tiket.
 
 Fitur Utama Aplikasi:
 
