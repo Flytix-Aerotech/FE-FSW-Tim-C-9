@@ -1,5 +1,8 @@
 import { Typography, Accordion, AccordionHeader, AccordionBody, Button } from "@material-tailwind/react";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { makePaymentAction } from "../../config/Redux/action/paymentAction";
 
 const Icon = ({ id, open }) => {
   return (
@@ -18,63 +21,46 @@ const Icon = ({ id, open }) => {
 
 const PaymentMethod = () => {
   const [open, setOpen] = React.useState(0);
+  const params = useParams();
+  const dispatch = useDispatch();
+  const history = useNavigate();
+
+  const pay = [
+    { id: 1, name: "Gopay" },
+    { id: 2, name: "Akulaku" },
+  ];
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
+
+  const handleSubmit = (value) => {
+    dispatch(makePaymentAction(params.code, value, history));
+  };
+
   return (
     <div className="max-w-[500px] w-full">
       <Typography variant="h5" color="black" className="pt-2 pb-4">
         Isi Data Pembayaran
       </Typography>
-      <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
-        <AccordionHeader
-          className={`bg-[#3c3c3c] p-4 mt-2 text-white rounded-md hover:bg-purple-600 duration-300 hover:text-white ${
-            open === 1 ? "!bg-purple-600" : ""
-          }`}
-          onClick={() => handleOpen(1)}
-        >
-          Gopay
-        </AccordionHeader>
-        <AccordionBody>
-          <p className="my-6 uppercase text-center font-bold text-xl">please pay for your ticket in the Akulaku app</p>
-          <Button color="purple" className="w-full rounded-t-none">
-            Bayar
-          </Button>
-        </AccordionBody>
-      </Accordion>
-      <Accordion open={open === 2} icon={<Icon id={2} open={open} />}>
-        <AccordionHeader
-          className={`bg-[#3c3c3c] p-4 mt-2 text-white rounded-md hover:bg-purple-600 duration-300 hover:text-white ${
-            open === 2 ? "!bg-purple-600" : ""
-          }`}
-          onClick={() => handleOpen(2)}
-        >
-          Akulaku
-        </AccordionHeader>
-        <AccordionBody>
-          <p className="my-6 uppercase text-center font-bold text-xl">please pay for your ticket in the Akulaku app</p>
-          <Button color="purple" className="w-full rounded-t-none">
-            Bayar
-          </Button>
-        </AccordionBody>
-      </Accordion>
-      <Accordion open={open === 3} icon={<Icon id={3} open={open} />}>
-        <AccordionHeader
-          className={`bg-[#3c3c3c] p-4 mt-2 text-white rounded-md hover:bg-purple-600 duration-300 hover:text-white ${
-            open === 3 ? "!bg-purple-600" : ""
-          }`}
-          onClick={() => handleOpen(3)}
-        >
-          Dana
-        </AccordionHeader>
-        <AccordionBody>
-          <p className="my-6 uppercase text-center font-bold text-xl">please pay for your ticket in the Akulaku app</p>
-          <Button color="purple" className="w-full rounded-t-none">
-            Bayar
-          </Button>
-        </AccordionBody>
-      </Accordion>
+      {pay.map((item, index) => (
+        <Accordion key={index} open={open === item.id} icon={<Icon id={item.id} open={open} />}>
+          <AccordionHeader
+            className={`bg-[#3c3c3c] p-4 mt-2 text-white rounded-md hover:bg-purple-600 duration-300 hover:text-white ${
+              open === item.id ? "!bg-purple-600" : ""
+            }`}
+            onClick={() => handleOpen(item.id)}
+          >
+            {item.name}
+          </AccordionHeader>
+          <AccordionBody>
+            <p className="my-6 uppercase text-center font-bold text-xl">please pay your ticket in the {item.name} app</p>
+            <Button onClick={() => handleSubmit(item.name)} color="purple" className="w-full rounded-t-none">
+              Bayar
+            </Button>
+          </AccordionBody>
+        </Accordion>
+      ))}
     </div>
   );
 };

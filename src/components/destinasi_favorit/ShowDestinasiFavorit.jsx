@@ -17,16 +17,16 @@ const ShowDestinasiFavorit = ({ items }) => {
             <img src={destinasi1} alt="" className="object-cover h-32 rounded-t-xl" />
             <CardBody className="p-2">
               <Typography variant="small" color="blue-gray" className="mb-2 font-semibold h-10">
-                {item?.flight?.departure_location} &rarr; {item?.flight?.arrival_location}
+                {item?.flight?.departure_location || ""} &rarr; {item?.flight?.arrival_location || ""}
               </Typography>
               <Typography variant="small" color="purple" className="mb-2 font-semibold whitespace-nowrap">
-                {item?.flight?.flight_number}
+                {item?.flight?.flight_number || ""}
               </Typography>
               <Typography variant="small" color="black" className="mb-2 font-semibold whitespace-nowrap">
-                {getDate(item?.flight?.departure_date)} - {formatDate(item?.flight?.arrival_date)}
+                {getDate(item?.flight?.departure_date) || ""} - {formatDate(item?.flight?.arrival_date) || ""}
               </Typography>
               <Typography variant="small" color="black" className="mb-2 font-semibold whitespace-nowrap">
-                Mulai dari IDR <span className="text-red-500">{formatRupiah(item?.price)}</span>
+                Mulai dari IDR <span className="text-red-500">{formatRupiah(item?.price) || ""}</span>
               </Typography>
             </CardBody>
           </Card>

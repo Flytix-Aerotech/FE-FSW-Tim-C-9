@@ -1,12 +1,24 @@
-import { Card, CardBody, Typography, Accordion, AccordionHeader, AccordionBody, Button } from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  Typography,
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+  Button,
+  ListItem,
+  ListItemSuffix,
+  IconButton,
+} from "@material-tailwind/react";
 import React from "react";
 import { backpack, crown, not_found } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
 import { getTicketAction } from "../../config/Redux/action/ticketAction";
 import { Link, useSearchParams } from "react-router-dom";
 import { formatDate, formatDifferenceTime, formatRupiah, formatTime } from "../format_display";
-import { ProgressBar } from "react-loader-spinner";
 import FilterInput from "../custom_input/filterInput";
+import PartialLoading from "../loading/PartialLoading";
+import { ChevronDoubleDownIcon, ChevronDoubleUpIcon, ChevronRightIcon, CurrencyDollarIcon } from "@heroicons/react/24/outline";
 
 function Icon({ id, open }) {
   return (
@@ -41,7 +53,7 @@ const AccordionSection = ({ tickets }) => {
           {tickets.map((item, i) => (
             <Accordion
               key={i}
-              className="px-2 py-4 mt-6 border-2 border-gray-400 rounded-md"
+              className={`px-2 py-4 mt-3 border-2 hover:border-purple-600 border-gray-200 rounded-md ${open === item.id ? "border-purple-600" : ""}`}
               open={open === item.id}
               icon={<Icon id={item.id} open={open} />}
             >
@@ -136,6 +148,31 @@ const AccordionSection = ({ tickets }) => {
   );
 };
 
+const ListItems = () => {
+  const list = [
+    { name: "Harga", icon: CurrencyDollarIcon },
+    { name: "Keberangkatan", icon: ChevronDoubleUpIcon },
+    { name: "Kedatangan", icon: ChevronDoubleDownIcon },
+  ];
+  return (
+    <nav className="shadow-md h-max lg:flex lg:flex-col gap-1 hidden w-64 rounded-xl p-5 font-sans text-base font-normal text-blue-gray-700">
+      <h5 className="text-lg tracking-wider text-black">Filter</h5>
+      {list.map((item, index) => (
+        <ListItem key={index} ripple={false} className="py-1 px-1">
+          <div className="flex items-center gap-3">
+            <item.icon className="w-5 h-5" /> {item.name}
+          </div>
+          <ListItemSuffix>
+            <IconButton variant="text" color="purple">
+              <ChevronRightIcon className="w-4 h-4" />
+            </IconButton>
+          </ListItemSuffix>
+        </ListItem>
+      ))}
+    </nav>
+  );
+};
+
 const ResultSearch = () => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -188,19 +225,16 @@ const ResultSearch = () => {
       <div className="m-auto mt-8 w-max">
         {isLoading ? (
           <div className="flex flex-col items-center w-full h-full">
-            <span>Mencari penerbangan terbaik...</span>
-            <ProgressBar
-              height="100"
-              width="150"
-              ariaLabel="progress-bar-loading"
-              wrapperStyle={{}}
-              wrapperClass="progress-bar-wrapper"
-              borderColor="#9c27b0"
-              barColor="#4CAF50"
-            />
+            <span className="mb-4">Mencari penerbangan terbaik...</span>
+            <PartialLoading height={"100"} width={"150"} />
           </div>
         ) : (
-          <AccordionSection tickets={sortOrder === "Harga - Termahal" ? tickets : sortedProducts} />
+          <div className="flex gap-4 justify-between">
+            <ListItems />
+            <div>
+              <AccordionSection tickets={sortOrder === "Harga - Termahal" ? tickets : sortedProducts} />
+            </div>
+          </div>
         )}
       </div>
     </div>

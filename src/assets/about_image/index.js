@@ -5,11 +5,16 @@ import dev4 from "./dev-4.jpg";
 import dev5 from "./dev-5.jpg";
 import dev6 from "./dev-6.jpg";
 import dev7 from "./dev-7.jpg";
+import dev9 from "./dev-9.jpg";
+import dev10 from "./dev-10.jpg";
+import dev11 from "./dev-11.jpg";
 import unbraw from "./Logo_Universitas_Brawijaya.png";
 import unnesa from "./logo_unesa.png";
 import its from "./lambang-its.png";
 import gunadarma from "./Logo-Universitas-Gunadarma.png";
 import uniba from "./Uniba_Madura.png";
 import unsap from "./unsap.png";
+import upi from "./UPI.png";
+import unsri from "./Univ-Yarsi.png";
 
-export { dev1, dev2, dev3, dev4, dev5, dev6, dev7, unbraw, unnesa, its, gunadarma, uniba, unsap };
+export { dev1, dev2, dev3, dev4, dev5, dev6, dev7, dev9, dev10, dev11, upi, unsri, unbraw, unnesa, its, gunadarma, uniba, unsap };

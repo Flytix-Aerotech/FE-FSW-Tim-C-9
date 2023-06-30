@@ -14,8 +14,14 @@ import AboutCompanyPage from "./about/AboutPage";
 import InsertEmailPage from "./reset_password/InsertEmailPage";
 import OtpResetPasswordPage from "./otp/OtpResetPasswordPage";
 import OtpVerifyPage from "./otp/OtpVerifyPage";
+import CheckoutPage from "./checkout/CheckoutPage";
+import HistoryPage from "./history/HistoryPage";
+import PaymentSuccessPage from "./payment/PaymentSuccessPage";
+import NotificationPage from "./notification/NotificationPage";
 
 export {
+  NotificationPage,
+  PaymentSuccessPage,
   LoginPage,
   RegisterPage,
   ResetPasswordPage,
@@ -32,4 +38,6 @@ export {
   InsertEmailPage,
   OtpResetPasswordPage,
   OtpVerifyPage,
+  HistoryPage,
+  CheckoutPage,
 };

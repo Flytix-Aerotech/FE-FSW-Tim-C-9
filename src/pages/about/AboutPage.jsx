@@ -1,7 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { dev1, dev2, dev3, dev4, dev5, dev6, dev7, gunadarma, its, unbraw, uniba, unnesa, unsap } from "../../assets/about_image";
+import {
+  dev1,
+  dev10,
+  dev11,
+  dev2,
+  dev3,
+  dev4,
+  dev5,
+  dev6,
+  dev7,
+  dev9,
+  gunadarma,
+  its,
+  unbraw,
+  uniba,
+  unnesa,
+  unsap,
+  unsri,
+  upi,
+} from "../../assets/about_image";
+
+const data = [
+  { jobdesk: "Product Owner", name: "Muhammad Helmy fadlail Albab", foto: dev1, university: "Universitas Brawijaya", image: unbraw },
+  { jobdesk: "Scrum Master", name: "Dza Habbin Nofaylah", foto: dev2, university: "Universitas Bahaudin Mudhary Madura", image: uniba },
+  { jobdesk: "Back-end Developer", name: "Muhammad Huda Nugroho", foto: dev3, university: "Universitas Gunadarma", image: gunadarma },
+  { jobdesk: "Back-end Developer", name: "Theresia Nawangsih", foto: dev4, university: "Institut Teknologi Sepuluh Nopember", image: its },
+  { jobdesk: "Back-end Developer", name: "Christin Henin Oei", foto: dev5, university: "Universitas Brawijaya", image: unbraw },
+  { jobdesk: "Front-end Developer", name: "Endang Hendayatna", foto: dev6, university: "Universitas Sebelas April", image: unsap },
+  { jobdesk: "Front-end Developer", name: "Fauzi Ibnu Hakim", foto: dev7, university: "Universitas Sebelas April", image: unsap },
+  { jobdesk: "Front-end Developer", name: "Yana Wahyu Indra Pramugari", foto: dev1, university: "Universitas Negeri Surabaya", image: unnesa },
+  { jobdesk: "Android Developer", name: "Rizki Nuriman", foto: dev9, university: "Universitas Pendidikan Indonesia", image: upi },
+  { jobdesk: "Android Developer", name: "Dian Purnama Sari", foto: dev10, university: "Universitas Yarsi", image: unsri },
+  { jobdesk: "Android Developer", name: "Heru Prayogo", foto: dev11, university: "Universitas Yarsi", image: unsri },
+];
 
 const AboutCompanyPage = () => {
   return (
@@ -38,102 +71,19 @@ const AboutCompanyPage = () => {
           <div className="mt-12">
             <h2 className="mb-6 text-3xl font-bold text-center">Team Development</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-              {/* Team Member 1 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src={dev1} alt="Developer 1" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Muhammad Helmy Fadlail Albab</h3>
+              {data.map((item, index) => (
+                <div key={index} className="p-4 bg-white rounded-lg shadow-lg">
+                  <div className="flex flex-col items-center mb-2">
+                    <img src={item.foto} alt="Developer 1" className="w-24 h-24 rounded-full" />
+                    <h3 className="h-16 mt-2 text-xl font-bold text-center">{item.name}</h3>
+                  </div>
+                  <div className="flex items-center h-20 mt-2 text-sm">
+                    <img src={item.image} alt="University Logo" className="w-6 h-6 mr-2" />
+                    <span>{item.university}</span>
+                  </div>
+                  <p className="text-gray-700">{item.jobdesk}</p>
                 </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={unbraw} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Universitas Brawijaya</span>
-                </div>
-                <p className="text-gray-700">Product Owner</p>
-              </div>
-              {/* Team Member 2 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src={dev2} alt="Developer 2" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Dza Habbin Nofaylah</h3>
-                </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={uniba} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Universitas Bahaudin Mudhary Madura</span>
-                </div>
-                <p className="text-gray-700">Scrum Master</p>
-              </div>
-              {/* Team Member 3 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src={dev3} alt="Developer 3" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Muhammad Huda Nugroho</h3>
-                </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={gunadarma} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Universitas Gunadarma</span>
-                </div>
-                <p className="text-gray-700">Back-end Developer</p>
-              </div>
-              {/* Team Member 4 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src={dev4} alt="Developer 4" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Theresia Nawangsih</h3>
-                </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={its} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Institut Teknologi Sepuluh Nopember</span>
-                </div>
-                <p className="text-gray-700">Back-end Developer</p>
-              </div>
-              {/* Team Member 5 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src={dev5} alt="Developer 5" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Christin Henin Oei</h3>
-                </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={unbraw} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Universitas Brawijaya</span>
-                </div>
-                <p className="text-gray-700">Back-end Developer</p>
-              </div>
-              {/* Team Member 6 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src={dev6} alt="Developer 6" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Endang Hendayatna</h3>
-                </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={unsap} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Universitas Sebelas April</span>
-                </div>
-                <p className="text-gray-700">Front-end Developer</p>
-              </div>
-              {/* Team Member 7 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src={dev7} alt="Developer 7" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Fauzi Ibnu Hakim</h3>
-                </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={unsap} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Universitas Sebelas April</span>
-                </div>
-                <p className="text-gray-700">Front-end Developer</p>
-              </div>
-              {/* Team Member 8 */}
-              <div className="p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-2">
-                  <img src="dev-1.jpg" alt="Developer 8" className="w-24 h-24 rounded-full" />
-                  <h3 className="h-16 mt-2 text-xl font-bold text-center">Yana Wahyu Indra Pramugari</h3>
-                </div>
-                <div className="flex items-center h-20 mt-2 text-sm">
-                  <img src={unnesa} alt="University Logo" className="w-6 h-6 mr-2" />
-                  <span>Universitas Negeri Surabaya</span>
-                </div>
-                <p className="text-gray-700">Front-end Developer</p>
-              </div>
+              ))}
             </div>
           </div>
 

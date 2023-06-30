@@ -11,7 +11,8 @@ const PassengerInput = () => {
 
   const valuePassenger = adult + children + baby;
   const totalPassenger = adult + children;
-  localStorage.setItem("totalPassenger", totalPassenger);
+  localStorage.setItem("adult", totalPassenger);
+  localStorage.setItem("baby", baby);
 
   const handleOpen = () => setOpen((cur) => !cur);
   return (
@@ -41,7 +42,7 @@ const PassengerInput = () => {
           </button>
         </div>
         <nav className="flex flex-col w-full gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
-          <ListItem ripple={false} className="py-1 pl-4 pr-1">
+          <ListItem ripple={false} className="py-1 pl-4 pr-1 cursor-default hover:bg-white active:bg-white focus:bg-white">
             <div className="flex flex-col gap-2">
               <span className="font-bold text-black">Dewasa</span>
               <small>(12 tahun keatas)</small>
@@ -56,7 +57,7 @@ const PassengerInput = () => {
               </IconButton>
             </ListItemSuffix>
           </ListItem>
-          <ListItem ripple={false} className="py-1 pl-4 pr-1">
+          <ListItem ripple={false} className="py-1 pl-4 pr-1 cursor-default hover:bg-white active:bg-white focus:bg-white">
             <div className="flex flex-col gap-2">
               <span className="font-bold text-black">Anak</span>
               <small>(2 - 11 tahun)</small>
@@ -71,7 +72,7 @@ const PassengerInput = () => {
               </IconButton>
             </ListItemSuffix>
           </ListItem>
-          <ListItem ripple={false} className="py-1 pl-4 pr-1">
+          <ListItem ripple={false} className="py-1 pl-4 pr-1 cursor-default hover:bg-white active:bg-white focus:bg-white">
             <div className="flex flex-col gap-2">
               <span className="font-bold text-black">Bayi</span>
               <small>(Dibawah 2 tahun)</small>

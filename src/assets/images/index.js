@@ -11,8 +11,14 @@ import background_img from "./flytix_img.png";
 import logo_flytix from "./logo_flytix.png";
 import destinasi1 from "./destinasi1.png";
 import destinasi2 from "./destinasi2.png";
+import checklist from "./checklist.png";
+import cross from "./cross.png";
+import success_payment from "./success_payment.png";
 
 export {
+  success_payment,
+  checklist,
+  cross,
   destinasi1,
   destinasi2,
   background_img,

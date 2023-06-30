@@ -45,7 +45,10 @@ const EditCardProfile = () => {
             <Input
               size="md"
               color="purple"
-              defaultValue={users.full_name}
+              labelProps={{ className: "before:content-none after:content-none" }}
+              containerProps={{ className: "min-w-0" }}
+              className="!border-t-blue-gray-200 focus:!border-t-purple-500"
+              defaultValue={users?.full_name}
               {...register("full_name", {
                 required: "Please enter your full name",
                 pattern: { value: /^[a-zA-Z ]+$/i, message: "Please input true name." },
@@ -60,7 +63,10 @@ const EditCardProfile = () => {
             <Input
               size="md"
               color="purple"
-              defaultValue={users.username}
+              labelProps={{ className: "before:content-none after:content-none" }}
+              containerProps={{ className: "min-w-0" }}
+              className="!border-t-blue-gray-200 focus:!border-t-purple-500"
+              defaultValue={users?.username}
               {...register("username", {
                 required: "Please enter your username",
                 minLength: { value: 5, message: "Username Too Short" },
@@ -77,7 +83,10 @@ const EditCardProfile = () => {
             <Input
               size="md"
               color="purple"
-              defaultValue={users.phone_number}
+              labelProps={{ className: "before:content-none after:content-none" }}
+              containerProps={{ className: "min-w-0" }}
+              className="!border-t-blue-gray-200 focus:!border-t-purple-500"
+              defaultValue={users?.phone_number}
               {...register("phone_number", {
                 required: "Please enter your full name",
                 minLength: { value: 5, message: "Password Too Short" },

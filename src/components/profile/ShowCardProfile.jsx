@@ -30,18 +30,18 @@ const ShowCardProfile = () => {
       </CardHeader>
       <CardBody className="w-full">
         <Typography variant="h4" color="blue-gray">
-          {users.full_name}
+          {users?.full_name}
         </Typography>
         <Typography color="gray" className="mb-5 font-normal">
-          {users.email}
+          {users?.email}
         </Typography>
         <div className="flex items-center w-full max-w-xs gap-3 border border-purple-600 rounded-lg">
           <p className="py-1 pl-3 text-white bg-purple-600 w-28 rounded-l-md">Username</p>
-          <p className="py-1">{users.username}</p>
+          <p className="py-1">{users?.username}</p>
         </div>
         <div className="flex items-center w-full max-w-xs gap-3 mt-5 border border-purple-600 rounded-lg">
           <p className="py-1 pl-3 text-white bg-purple-600 w-28 rounded-l-md">No Telp</p>
-          <p className="py-1">{users.phone_number}</p>
+          <p className="py-1">{users?.phone_number}</p>
         </div>
       </CardBody>
     </Card>

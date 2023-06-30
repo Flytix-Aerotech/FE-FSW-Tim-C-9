@@ -5,9 +5,9 @@ const ProtectedUser = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-300 to-blue-200">
       <div className="flex flex-col items-center justify-center p-10 overflow-hidden bg-white shadow sm:rounded-lg">
-        <h1 class="text-9xl font-bold text-purple-400">403</h1>
-        <h1 class="text-3xl md:text-6xl font-medium text-center py-8">Oops! Unable to access user</h1>
-        <p class="text-lg md:text-2xl px-12 font-medium text-center">Sorry, an error has occured, Unable to access user!</p>
+        <h1 className="text-9xl font-bold text-purple-400">403</h1>
+        <h1 className="text-3xl md:text-6xl font-medium text-center py-8">Oops! Unable to access user</h1>
+        <p className="text-lg md:text-2xl px-12 font-medium text-center">Sorry, an error has occured, Unable to access user!</p>
         <div className="mt-4">
           <Link
             to="/login"

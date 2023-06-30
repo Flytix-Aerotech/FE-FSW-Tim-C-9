@@ -3,13 +3,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   AboutCompanyPage,
   BiodataPage,
+  CheckoutPage,
   ErrorPage,
+  HistoryPage,
   HomePage,
   InsertEmailPage,
   LoginPage,
+  NotificationPage,
   OtpResetPasswordPage,
   OtpVerifyPage,
   PaymentPage,
+  PaymentSuccessPage,
   ProtectedRouteUser,
   ProtectedUserPage,
   RegisterPage,
@@ -26,6 +30,7 @@ const index = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<ResultPage />} />
         <Route path="/about" element={<AboutCompanyPage />} />
+        <Route path="/notification" element={<NotificationPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/email-otp" element={<InsertEmailPage />} />
@@ -34,7 +39,10 @@ const index = () => {
         <Route path="/verify" element={<OtpVerifyPage />} />
         <Route element={<ProtectedRouteUser />}>
           <Route path="/wishlist/:id" element={<BiodataPage />} />
-          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/checkout/:id/:code" element={<CheckoutPage />} />
+          <Route path="/payment/:code/:id" element={<PaymentPage />} />
+          <Route path="/payment/success" element={<PaymentSuccessPage />} />
+          <Route path="/history" element={<HistoryPage />} />
           <Route path="/user/profile" element={<ShowProfilePage />} />
           <Route path="/edit/profile" element={<UpdateProfilePage />} />
         </Route>

@@ -5,10 +5,10 @@ const ErrorPage = () => {
     <>
       <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-300 to-blue-200">
         <div className="flex flex-col justify-center items-center bg-white shadow overflow-hidden sm:rounded-lg p-10">
-          <h1 class="text-9xl font-bold text-purple-400">404</h1>
-          <h1 class="text-6xl font-medium py-8">Oops! Page not found</h1>
-          <p class="text-2xl px-12 font-medium">The page you are looking for does not exist.</p>
-          <p class="text-2xl pb-8 px-12 font-medium"> It might have been moved or deleted.</p>
+          <h1 className="text-9xl font-bold text-purple-400">404</h1>
+          <h1 className="text-6xl font-medium py-8">Oops! Page not found</h1>
+          <p className="text-2xl px-12 font-medium">The page you are looking for does not exist.</p>
+          <p className="text-2xl pb-8 px-12 font-medium"> It might have been moved or deleted.</p>
           <div className="mt-4">
             <Link
               to="/"

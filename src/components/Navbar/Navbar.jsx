@@ -9,8 +9,10 @@ import {
   Bars4Icon,
   XMarkIcon,
   HomeIcon,
-  ExclamationCircleIcon,
   ArrowRightOnRectangleIcon,
+  BellIcon,
+  NewspaperIcon,
+  InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { icon_user, logo_flytix } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,6 +33,11 @@ const ProfileMenu = ({ handleLogout, user }) => {
       label: "Edit Profile",
       icon: Cog6ToothIcon,
       href: "/edit/profile",
+    },
+    {
+      label: "History",
+      icon: NewspaperIcon,
+      href: "/history",
     },
   ];
 
@@ -98,7 +105,12 @@ const NavbarComplex = () => {
       </Typography>
       <Typography as="a" href="/about" variant="small" color="blue-gray" className="font-normal">
         <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
-          <ExclamationCircleIcon className="w-6 h-6" /> About
+          <InformationCircleIcon className="w-6 h-6" /> About
+        </MenuItem>
+      </Typography>
+      <Typography as="a" href="/notification" variant="small" color="blue-gray" className="font-normal">
+        <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
+          <BellIcon className="w-6 h-6" /> Notification
         </MenuItem>
       </Typography>
       <div className="relative block w-full gap-2 sm:w-max lg:hidden">

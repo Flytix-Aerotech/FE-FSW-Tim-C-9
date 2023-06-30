@@ -1,18 +1,21 @@
 import React from "react";
-import { Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
+import { Button, Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
 import { crown } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getByIdTicketAction } from "../../config/Redux/action/ticketAction";
 import { formatDate, formatRupiah, formatTime } from "../format_display";
 
-const FlightDetail = () => {
+const FlightDetail = ({ buttonTrigger, handleClick, text, code }) => {
   const dispatch = useDispatch();
   const params = useParams();
 
   const [tickets, setTickets] = React.useState([]);
 
   const { ticket } = useSelector((state) => state.ticketReducer);
+
+  const adult = localStorage.getItem("adult") || 0;
+  const baby = localStorage.getItem("baby") || 0;
 
   React.useEffect(() => {
     dispatch(getByIdTicketAction(params.id));
@@ -27,12 +30,13 @@ const FlightDetail = () => {
   return (
     <Card className="max-w-[22rem] w-full overflow-hidden rounded-none shadow-none py-4 px-2">
       <Typography variant="h5" color="blue-gray">
-        Detail Penerbangan
+        {text} <span className="text-purple-500 font-bold tracking-wide">{code}</span>
       </Typography>
       <div className="flex flex-col mt-2">
         <span className="flex justify-between ">
           <p className="hidden">{ticket?.flight?.departure_date}</p>
-          <p className="font-bold text-black">{formatTime(tickets?.flight?.departure_time)}</p> <small className="text-blue-600">Keberangkatan</small>
+          <p className="font-bold text-black">{formatTime(tickets?.flight?.departure_time)}</p>{" "}
+          <small className="text-purple-500">Keberangkatan</small>
         </span>
         <small className="mt-1">{formatDate(tickets?.flight?.departure_date)}</small>
         <small className="mt-1 text-black">
@@ -57,7 +61,7 @@ const FlightDetail = () => {
       </CardBody>
       <div className="flex flex-col mt-2">
         <span className="flex justify-between ">
-          <p className="font-bold text-black">{formatTime(tickets?.flight?.arrival_time)}</p> <small className="text-blue-600">Kedatangan</small>
+          <p className="font-bold text-black">{formatTime(tickets?.flight?.arrival_time)}</p> <small className="text-purple-500">Kedatangan</small>
         </span>
         <small className="mt-1">{formatDate(tickets?.flight?.arrival_date)}</small>
         <small className="mt-1 text-black">
@@ -71,21 +75,26 @@ const FlightDetail = () => {
           </Typography>
           <div className="flex flex-col gap-2">
             <span className="flex justify-between">
-              <small>2 Adults</small> <small>IDR {formatRupiah(tickets?.price)}</small>
+              <small>{adult} Adults</small> <small>IDR {formatRupiah(tickets?.price * parseInt(adult))}</small>
             </span>
             <span className="flex justify-between">
-              <small>1 Baby</small> <small>IDR 0</small>
+              <small>{baby} Baby</small> <small>IDR 0</small>
             </span>
             <span className="flex justify-between">
-              <small>Tax</small> <small>IDR {formatRupiah((tickets?.price * 10) / 100)}</small>
+              <small>Tax</small> <small>IDR {formatRupiah(tickets?.price * 0.1 * adult)}</small>
             </span>
           </div>
         </div>
         <span className="flex justify-between mx-4">
           <p className="font-bold text-black">Total</p>
-          <p className="font-bold text-blue-600">IDR {formatRupiah(tickets?.price + (tickets?.price * 10) / 100)}</p>
+          <p className="font-bold text-purple-500">IDR {formatRupiah(tickets?.price * parseInt(adult) + 0.1 * tickets?.price * adult)}</p>
         </span>
       </CardFooter>
+      {buttonTrigger === false ? null : (
+        <Button color="red" className="mt-5" onClick={() => handleClick()}>
+          Lanjut Bayar
+        </Button>
+      )}
     </Card>
   );
 };

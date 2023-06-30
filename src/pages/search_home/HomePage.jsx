@@ -11,9 +11,9 @@ import { getAllTicketAction } from "../../config/Redux/action/ticketAction";
 const Home = () => {
   const dispatch = useDispatch();
   const [tickets, setTickets] = React.useState([]);
-  const [filteredDestination, setFilteredDestination] = React.useState("All");
+  const [filteredDestination, setFilteredDestination] = React.useState("Semua");
 
-  const filterDestination = tickets.filter((item) => {
+  const filterDestination = tickets?.filter((item) => {
     return item?.flight?.arrival_location === filteredDestination;
   });
 
@@ -39,7 +39,7 @@ const Home = () => {
           <Banner />
           <SearchTicket />
           <DestinasiFavorit tickets={tickets} filter={filteredDestination} setFilter={setFilteredDestination} />
-          <ShowDestinasiFavorit items={filteredDestination === "All" ? tickets : filterDestination} />
+          <ShowDestinasiFavorit items={filteredDestination === "Semua" ? tickets : filterDestination} />
         </div>
       )}
     </>

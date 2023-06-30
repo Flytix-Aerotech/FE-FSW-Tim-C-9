@@ -1,30 +1,37 @@
-import { FILTER_TICKET, GET_ALL_TICKETS, GET_TICKET_BY_QUERY } from "../action/actionTypes";
+import { ADD_BOOKING, ADD_BOOKING_ERROR, ADD_BOOKING_REQUEST, GET_BOOKING } from "../action/actionTypes";
 
 const initialState = {
-  ticket: [],
-  isLoading: true,
+  book: [],
+  isLoading: false,
+  isSuccess: false,
 };
 
 const book = (state = initialState, action) => {
   switch (action.type) {
-    // case FILTER_TICKET:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     ticket: action.payload.data,
-    //   };
-    // case GET_TICKET_BY_QUERY:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     ticket: action.payload.data,
-    //   };
-    // case GET_ALL_TICKETS:
-    //   return {
-    //     ...state,
-    //     isLoggedIn: false,
-    //     ticket: action.payload.data,
-    //   };
+    case ADD_BOOKING:
+      return {
+        ...state,
+        isLoading: false,
+        book: action.payload.data,
+        isSuccess: true,
+      };
+    case ADD_BOOKING_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case ADD_BOOKING_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
+    case GET_BOOKING:
+      return {
+        ...state,
+        isLoading: false,
+        book: action.payload.data,
+      };
     default:
       return state;
   }
