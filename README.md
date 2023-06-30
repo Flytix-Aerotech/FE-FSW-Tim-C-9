@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+## Flytix-Aerotech Final Project ✈️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="src/assets/images/logo_transparent.png" width="200" alt="Flytix-Aertech Logo">
 
-## Available Scripts
+Selamat datang di repositori Final Project tim Flytix-Aerotech!
 
-In the project directory, you can run:
+### Tim Flytix-Aerotech
 
-### `npm start`
+Tim kami terdiri dari sekelompok pengembang frontend yang antusias dan berdedikasi untuk menghadirkan solusi inovatif di bidang perjalanan udara. Berikut adalah anggota tim kami:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Anggota 1: [Muhammad Helmy Fadlail Albab](https://github.com/nama-anggota-1)
+- Anggota 2: [Endang Hendayatna](https://github.com/endanghendayatna)
+- Anggota 3: [Fauzi Ibnu Hakim](https://github.com/nama-anggota-3)
+- Anggota 4: [Yana Wahyu Indra Pramugari](https://github.com/nama-anggota-4)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Deskripsi Proyek
 
-### `npm test`
+Proyek Final Flytix-Aerotech adalah aplikasi web yang bertujuan untuk menyediakan pengalaman perjalanan udara yang mudah, efisien, dan menarik bagi pengguna. Aplikasi ini memungkinkan pengguna untuk melakukan pencarian penerbangan, melihat jadwal penerbangan, memesan tiket, dan mengelola reservasi mereka dengan cepat dan mudah.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Fitur Utama Aplikasi:
 
-### `npm run build`
+- Pencarian Penerbangan: Pengguna dapat mencari penerbangan berdasarkan rute, tanggal, dan preferensi lainnya.
+- Jadwal Penerbangan: Pengguna dapat melihat jadwal penerbangan dari berbagai maskapai dan memilih yang paling sesuai dengan kebutuhan mereka.
+- Pemesanan Tiket: Pengguna dapat memesan tiket penerbangan langsung melalui aplikasi dengan proses yang mudah dan cepat.
+- Notifikasi: Pengguna akan menerima notifikasi terkait status penerbangan, perubahan jadwal, dan informasi penting lainnya.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Teknologi yang Digunakan
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React.js: Library JavaScript untuk pengembangan antarmuka pengguna.
+- Redux: Library manajemen state untuk aplikasi React.
+- Tailwind CSS: Framework CSS yang responsif dan mudah digunakan.
+- Node.js: Framework JavaScript untuk pengembangan backend.
+- PostgreSQL: Sistem manajemen basis data relasional untuk menyimpan data pengguna, penerbangan, dan reservasi.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Cara Menjalankan Proyek
 
-### `npm run eject`
+1. Clone repositori ini ke komputer lokal Anda.
+2. Buka terminal dan masuk ke direktori proyek.
+3. Jalankan perintah `npm install` untuk menginstal semua dependensi yang diperlukan.
+4. Konfigurasi file lingkungan (`.env`) dengan pengaturan yang sesuai, seperti koneksi database, kunci API, dll.
+5. Jalankan perintah `npm start` untuk menjalankan aplikasi di lingkungan pengembangan.
+6. Buka browser dan akses `http://localhost:3000` untuk melihat aplikasi secara lokal.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Terima kasih telah mengunjungi repositori proyek kami! Jika Anda memiliki pertanyaan lebih lanjut atau ingin berdiskusi tentang proyek ini, jangan ragu untuk menghubungi kami.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Happy coding!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Tim Flytix-Aerotech**
