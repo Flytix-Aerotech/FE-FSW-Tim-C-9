@@ -8,10 +8,10 @@ Selamat datang di repositori Final Project tim Flytix-Aerotech!
 
 Tim kami terdiri dari sekelompok pengembang frontend yang antusias dan berdedikasi untuk menghadirkan solusi inovatif di bidang perjalanan udara. Berikut adalah anggota tim kami:
 
-- Anggota 1: [Muhammad Helmy Fadlail Albab](https://github.com/nama-anggota-1)
+- Anggota 1: [Muhammad Helmy Fadlail Albab](https://github.com/helmyfadlail)
 - Anggota 2: [Endang Hendayatna](https://github.com/endanghendayatna)
-- Anggota 3: [Fauzi Ibnu Hakim](https://github.com/nama-anggota-3)
-- Anggota 4: [Yana Wahyu Indra Pramugari](https://github.com/nama-anggota-4)
+- Anggota 3: [Fauzi Ibnu Hakim](https://github.com/fauziibnuhkm)
+- Anggota 4: [Yana Wahyu Indra Pramugari](https://github.com/INleanRe)
 
 ### Deskripsi Proyek
 
