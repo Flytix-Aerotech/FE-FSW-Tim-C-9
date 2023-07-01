@@ -1,7 +1,8 @@
-import { FILTER_HISTORY, GET_ALL_HISTORY, SEARCH_HISTORY } from "../action/actionTypes";
+import { FILTER_HISTORY, GET_ALL_HISTORY } from "../action/actionTypes";
 
 const initialState = {
   history: [],
+  filterDataHistory: [],
   isLoading: true,
 };
 
@@ -17,13 +18,7 @@ const ticket = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        history: action.payload.data,
-      };
-    case SEARCH_HISTORY:
-      return {
-        ...state,
-        isLoading: false,
-        history: action.payload.data,
+        filterHistory: action.payload.data,
       };
     default:
       return state;

@@ -7,13 +7,15 @@ export const makePaymentAction = (code, type, history) => {
     dispatch({ type: MAKE_PAYMENT_REQUEST });
     await API.post(`/payments?code=${code}&type=${type}`)
       .then((response) => {
-        localStorage.removeItem("timer");
         dispatch({ type: MAKE_PAYMENT, payload: response.data });
-        console.log(response.data);
-        SweatAlert(response.data.message, "success");
-        localStorage.removeItem("adult", code);
+        localStorage.removeItem("timer");
         localStorage.removeItem("baby", code);
-        history(`/payment/success`);
+        localStorage.removeItem("adult", code);
+        SweatAlert(response.data.message, "success");
+        window.open(`${response.data.chargeResponse.actions[1].url}`, "_blank");
+        setTimeout(() => {
+          history("/payment/success");
+        }, 5000);
       })
       .catch((error) => {
         const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();

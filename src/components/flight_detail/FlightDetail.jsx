@@ -53,8 +53,8 @@ const FlightDetail = ({ buttonTrigger, handleClick, text, code }) => {
             <p className="font-bold text-black">{tickets?.flight?.flight_number}</p>
             <div className="flex flex-col mt-3">
               <p className="font-bold text-black">Informasi:</p>
-              <small>Baggage {Math.floor(Math.random() * (30 - 20 + 1) + 20)} kg</small>
-              <small>Cabin baggage {Math.floor(Math.random() * (15 - 5 + 1) + 5)} kg</small>
+              <small>Baggage 26 kg</small>
+              <small>Cabin baggage 15 kg</small>
             </div>
           </div>
         </div>

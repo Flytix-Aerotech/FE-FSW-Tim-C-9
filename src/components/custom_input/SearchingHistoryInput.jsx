@@ -16,8 +16,8 @@ const SearchingHistoryInput = ({ onClose, setSearchHistory }) => {
   };
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg flex flex-col w-full max-w-md mx-4">
-        <div className="flex justify-between items-center mb-4">
+      <div className="bg-white rounded-lg flex flex-col w-full max-w-md mx-4">
+        <div className="flex justify-between items-center mb-4 pt-4 px-4">
           <form onSubmit={handleSubmit} className="flex">
             <div className="relative flex-1 mr-2">
               <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
@@ -26,7 +26,7 @@ const SearchingHistoryInput = ({ onClose, setSearchHistory }) => {
               <input
                 type="text"
                 placeholder="Masukkan code"
-                className="border border-gray-300 text-sm rounded-lg py-2 pl-10 pr-2 flex-1 w-52 sm:w-72 outline-none focus:border-purple-600"
+                className="border border-gray-300 text-sm rounded-lg py-2 pl-10 pr-2 flex-1 w-72 sm:w-96 outline-none focus:border-purple-600"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -37,7 +37,7 @@ const SearchingHistoryInput = ({ onClose, setSearchHistory }) => {
           </button>
         </div>
         <hr className="my-4 mt-2  border-gray-400" />
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center pb-4 px-4">
           <h3 className="text-lg font-medium">Pencarian Terkini</h3>
           <button className="text-red-500 font-semibold" onClick={handleClearRecentSearches}>
             Hapus

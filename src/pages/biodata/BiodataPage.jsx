@@ -34,7 +34,7 @@ const BiodataPage = () => {
       <NavbarComplex />
       <NavbarNotif text={`Selesaikan dalam 00:${minutesLeft}:${secondsLeft}`} colorAlert="red" />
       {postLoading ? (
-        <div className="mx-auto mt-10">
+        <div className="grid place-items-center mt-12">
           <PartialLoading height={"200"} width={"200"} />
         </div>
       ) : (

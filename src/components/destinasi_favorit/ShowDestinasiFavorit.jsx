@@ -1,5 +1,5 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-import { destinasi1, destinasi2 } from "../../assets/images";
+import { destinasi1 } from "../../assets/images";
 import { formatDate, formatRupiah } from "../format_display";
 
 const ShowDestinasiFavorit = ({ items }) => {

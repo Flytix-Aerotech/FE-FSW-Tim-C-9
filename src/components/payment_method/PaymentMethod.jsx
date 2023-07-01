@@ -28,6 +28,7 @@ const PaymentMethod = () => {
   const pay = [
     { id: 1, name: "Gopay" },
     { id: 2, name: "Akulaku" },
+    { id: 3, name: "Dana" },
   ];
 
   const handleOpen = (value) => {

@@ -72,7 +72,7 @@ const SeatPicker = ({ setSeat, classType, typePrice, disabled }) => {
     <div className="seat-picker-container">
       <h2>Pilih Kursi</h2>
       <div className={classType}>
-        {typePrice} {isSuccess ? <img src={checklist} alt="" width={"5"} /> : ""}
+        {typePrice} {isSuccess ? <img src={checklist} alt="" width={"20"} /> : ""}
       </div>
       <div className="seat-number">
         <small>A</small>

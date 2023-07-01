@@ -30,7 +30,7 @@ const FilterInput = ({ handleClickFilter }) => {
       />
       <Dialog
         open={open}
-        className="w-3/4 min-w-[75%] max-w-[70%] lg:!w-1/4 lg:!min-w-[25%] lg:!max-w-[25%]"
+        className="w-3/4 min-w-[75%] max-w-[70%] lg:!w-1/4 lg:!min-w-[35%] lg:!max-w-[35%]"
         handler={handleOpen}
         animate={{
           mount: { scale: 1, y: 0 },

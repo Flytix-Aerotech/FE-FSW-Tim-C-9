@@ -50,36 +50,38 @@ const AccordionSection = ({ tickets }) => {
         </div>
       ) : (
         <>
-          {tickets.map((item, i) => (
+          {tickets?.map((item, i) => (
             <Accordion
               key={i}
-              className={`px-2 py-4 mt-3 border-2 hover:border-purple-600 border-gray-200 rounded-md ${open === item.id ? "border-purple-600" : ""}`}
-              open={open === item.id}
-              icon={<Icon id={item.id} open={open} />}
+              className={`px-2 py-4 mt-3 border-2 hover:border-purple-600 border-gray-200 rounded-md duration-500 ${
+                open === item?.id ? "border-purple-600" : ""
+              }`}
+              open={open === item?.id}
+              icon={<Icon id={item?.id} open={open} />}
             >
-              <AccordionHeader className="p-0 border-none" onClick={() => handleOpen(item.id)}>
+              <AccordionHeader className="p-0 border-none" onClick={() => handleOpen(item?.id)}>
                 <Typography variant="h6" color="blue-gray" className="flex items-center gap-4 text-sm sm:text-base md:text-lg">
-                  <img src={crown} alt="" className="w-5 h-5" /> {item.flight.airline} - {item.type_of_class}
+                  <img src={crown} alt="" className="w-5 h-5" /> {item?.flight?.airline} - {item?.type_of_class}
                 </Typography>
               </AccordionHeader>
               <div className="flex mt-2 ml-0 sm:ml-8 justify-between gap-2 sm:gap-20">
                 <div className="flex gap-4">
                   <span className="flex flex-col items-center justify-center">
-                    <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item.flight.departure_time)}</p>
-                    <small className="font-semibold text-xs sm:text-base">{item.flight.from_id}</small>
+                    <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item?.flight?.departure_time)}</p>
+                    <small className="font-semibold text-xs sm:text-base">{item?.flight?.from_id}</small>
                   </span>
                   <span className="flex flex-col items-center justify-center">
-                    <small className="text-gray-500 text-xs sm:text-base">
-                      {formatDifferenceTime(item.flight.departure_time, item.flight.arrival_time)}
+                    <small className="text-gray-500 text-xs sm:text-sm">
+                      {formatDifferenceTime(item?.flight?.departure_time, item?.flight?.arrival_time)}
                     </small>
                     <small className="bg-gray-500 w-20 sm:w-28 md:w-44 h-0.5 relative">
                       <i className="absolute w-1.5 h-1.5 border-gray-500 right-0 top-1/2 -translate-y-1/2 inline-block border-r-2 border-b-2 -rotate-45"></i>
                     </small>
-                    <small className="text-gray-500 text-xs sm:text-base">Direct</small>
+                    <small className="text-gray-500 text-xs sm:text-sm">Direct</small>
                   </span>
                   <span className="flex flex-col items-center justify-center">
-                    <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item.flight.arrival_time)}</p>
-                    <small className="font-semibold text-xs sm:text-base">{item.flight.to_id}</small>
+                    <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item?.flight?.arrival_time)}</p>
+                    <small className="font-semibold text-xs sm:text-base">{item?.flight?.to_id}</small>
                   </span>
                   <span className="flex flex-col items-center justify-center">
                     <img src={backpack} alt="" className="w-5 h-5" />
@@ -87,9 +89,9 @@ const AccordionSection = ({ tickets }) => {
                 </div>
                 <div className="flex flex-col gap-1">
                   <Typography variant="h6" color="purple" className="font-bold text-sm sm:text-lg">
-                    IDR {formatRupiah(item.price)}
+                    IDR {formatRupiah(item?.price)}
                   </Typography>
-                  <Link to={`/wishlist/${item.id}`} className="w-full">
+                  <Link to={`/wishlist/${item?.id}`} className="w-full">
                     <Button color="purple" className="w-full py-2 rounded-2xl">
                       Pilih
                     </Button>
@@ -104,12 +106,12 @@ const AccordionSection = ({ tickets }) => {
                     </Typography>
                     <div className="flex flex-col mt-2">
                       <span className="flex justify-between ">
-                        <p className="font-bold text-black">{formatTime(item.flight.departure_time)}</p>{" "}
+                        <p className="font-bold text-black">{formatTime(item?.flight?.departure_time)}</p>{" "}
                         <p className="text-purple-600">Keberangkatan</p>
                       </span>
-                      <p className="mt-1">{formatDate(item.flight.departure_date)}</p>
+                      <p className="mt-1">{formatDate(item?.flight?.departure_date)}</p>
                       <p className="mt-1 text-black">
-                        {item.airport.departure_name} - {item.airport.departure_terminal}
+                        {item?.airport?.departure_name} - {item?.airport?.departure_terminal}
                       </p>
                     </div>
                     <CardBody className="px-4 py-2 mx-1 my-4 border-t-2 border-b-2 border-gray-400">
@@ -117,9 +119,9 @@ const AccordionSection = ({ tickets }) => {
                         <img src={crown} alt="" className="w-6 h-6" />
                         <div className="flex-col gap-2 flex-">
                           <p className="font-bold text-black">
-                            {item.flight.airline} - {item.type_of_class}
+                            {item?.flight?.airline} - {item?.type_of_class}
                           </p>
-                          <p className="font-bold text-black">{item.flight.flight_number}</p>
+                          <p className="font-bold text-black">{item?.flight?.flight_number}</p>
                           <div className="flex flex-col mt-3">
                             <p className="font-bold text-black">Informasi:</p>
                             <small>Baggage {Math.floor(Math.random() * (30 - 20 + 1) + 20)} kg</small>
@@ -130,11 +132,11 @@ const AccordionSection = ({ tickets }) => {
                     </CardBody>
                     <div className="flex flex-col mt-2">
                       <span className="flex justify-between ">
-                        <p className="font-bold text-black">{formatTime(item.flight.arrival_time)}</p> <p className="text-purple-600">Kedatangan</p>
+                        <p className="font-bold text-black">{formatTime(item?.flight?.arrival_time)}</p> <p className="text-purple-600">Kedatangan</p>
                       </span>
-                      <p className="mt-1">{formatDate(item.flight.arrival_date)}</p>
+                      <p className="mt-1">{formatDate(item?.flight?.arrival_date)}</p>
                       <p className="mt-1 text-black">
-                        {item.airport.arrival_name} - {item.airport.arrival_terminal}
+                        {item?.airport?.arrival_name} - {item?.airport?.arrival_terminal}
                       </p>
                     </div>
                   </Card>
@@ -173,43 +175,90 @@ const ListItems = () => {
   );
 };
 
-const ResultSearch = () => {
+const ConditionalFilter = (data, sorted) => {
+  switch (data) {
+    case "Harga - Termurah":
+      sorted.sort((a, b) => {
+        const priceA = parseFloat(a?.price);
+        const priceB = parseFloat(b?.price);
+        return priceA - priceB;
+      });
+      break;
+    case "Harga - Termahal":
+      sorted.sort((a, b) => {
+        const priceA = parseFloat(a?.price);
+        const priceB = parseFloat(b?.price);
+        return priceB - priceA;
+      });
+      break;
+    case "Keberangkatan - Paling Awal":
+      sorted.sort((a, b) => {
+        const formatA = `${a?.flight?.departure_date} ${a?.flight?.departure_time} `;
+        const dateA = new Date(formatA).getTime();
+        const formatB = `${b?.flight?.departure_date} ${b?.flight?.departure_time} `;
+        const dateB = new Date(formatB).getTime();
+        return dateA - dateB;
+      });
+      break;
+    case "Keberangkatan - Paling Akhir":
+      sorted.sort((a, b) => {
+        const formatA = `${a?.flight?.departure_date} ${a?.flight?.departure_time} `;
+        const dateA = new Date(formatA).getTime();
+        const formatB = `${b?.flight?.departure_date} ${b?.flight?.departure_time} `;
+        const dateB = new Date(formatB).getTime();
+        return dateB - dateA;
+      });
+      break;
+    case "Kedatangan - Paling Awal":
+      sorted.sort((a, b) => {
+        const formatA = `${a?.flight?.arrival_date} ${a?.flight?.arrival_time} `;
+        const dateA = new Date(formatA).getTime();
+        const formatB = `${b?.flight?.arrival_date} ${b?.flight?.arrival_time} `;
+        const dateB = new Date(formatB).getTime();
+        return dateA - dateB;
+      });
+      break;
+    case "Kedatangan - Paling Akhir":
+      sorted.sort((a, b) => {
+        const formatA = `${a?.flight?.arrival_date} ${a?.flight?.arrival_time} `;
+        const dateA = new Date(formatA).getTime();
+        const formatB = `${b?.flight?.arrival_date} ${b?.flight?.arrival_time} `;
+        const dateB = new Date(formatB).getTime();
+        return dateB - dateA;
+      });
+      break;
+
+    default:
+      break;
+  }
+};
+
+const ResultSearch = ({ filterDateTicket }) => {
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [tickets, setTickets] = React.useState([]);
 
   const [sortedProducts, setSortedProducts] = React.useState([]);
-  const [sortOrder, setSortOrder] = React.useState("Harga - Termahal");
+  const [sortOrder, setSortOrder] = React.useState("");
 
   const handleClickFilter = (data) => {
-    setSortOrder(data);
     const sorted = tickets;
-    sorted.sort((a, b) => {
-      const priceA = parseFloat(a.price);
-      const priceB = parseFloat(b.price);
-      if (sortOrder === "Harga - Termahal") {
-        return priceA - priceB;
-      } else {
-        return priceB - priceA;
-      }
-    });
+    ConditionalFilter(data, sorted);
+    setSortOrder(data);
     setSortedProducts(sorted);
-    setSortOrder(sortOrder === "Harga - Termahal" ? "Harga - Termurah" : "Harga - Termahal");
   };
 
-  const data = {
-    departure_date: searchParams.get("dd"),
-    departure_location: searchParams.get("dl"),
-    arrival_location: searchParams.get("al"),
-    type_of_class: searchParams.get("toc"),
-  };
+  const departure_date = searchParams.get("dd");
+  const departure_location = searchParams.get("dl");
+  const arrival_location = searchParams.get("al");
+  const type_of_class = searchParams.get("toc");
 
   const { ticket } = useSelector((state) => state.ticketReducer);
   const { isLoading } = useSelector((state) => state.ticketReducer);
 
   React.useEffect(() => {
-    dispatch(getTicketAction(data));
-  }, [dispatch]);
+    dispatch(getTicketAction({ departure_date, departure_location, arrival_location, type_of_class }));
+  }, [dispatch, departure_date, departure_location, arrival_location, type_of_class]);
 
   React.useEffect(() => {
     if (ticket) {
@@ -232,7 +281,7 @@ const ResultSearch = () => {
           <div className="flex gap-4 justify-between">
             <ListItems />
             <div>
-              <AccordionSection tickets={sortOrder === "Harga - Termahal" ? tickets : sortedProducts} />
+              <AccordionSection tickets={sortOrder === "" ? tickets : sortedProducts} />
             </div>
           </div>
         )}

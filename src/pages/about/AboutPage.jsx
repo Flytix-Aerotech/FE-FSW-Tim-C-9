@@ -11,6 +11,7 @@ import {
   dev5,
   dev6,
   dev7,
+  dev8,
   dev9,
   gunadarma,
   its,
@@ -30,7 +31,7 @@ const data = [
   { jobdesk: "Back-end Developer", name: "Christin Henin Oei", foto: dev5, university: "Universitas Brawijaya", image: unbraw },
   { jobdesk: "Front-end Developer", name: "Endang Hendayatna", foto: dev6, university: "Universitas Sebelas April", image: unsap },
   { jobdesk: "Front-end Developer", name: "Fauzi Ibnu Hakim", foto: dev7, university: "Universitas Sebelas April", image: unsap },
-  { jobdesk: "Front-end Developer", name: "Yana Wahyu Indra Pramugari", foto: dev1, university: "Universitas Negeri Surabaya", image: unnesa },
+  { jobdesk: "Front-end Developer", name: "Yana Wahyu Indra Pramugari", foto: dev8, university: "Universitas Negeri Surabaya", image: unnesa },
   { jobdesk: "Android Developer", name: "Rizki Nuriman", foto: dev9, university: "Universitas Pendidikan Indonesia", image: upi },
   { jobdesk: "Android Developer", name: "Dian Purnama Sari", foto: dev10, university: "Universitas Yarsi", image: unsri },
   { jobdesk: "Android Developer", name: "Heru Prayogo", foto: dev11, university: "Universitas Yarsi", image: unsri },
@@ -74,7 +75,7 @@ const AboutCompanyPage = () => {
               {data.map((item, index) => (
                 <div key={index} className="p-4 bg-white rounded-lg shadow-lg">
                   <div className="flex flex-col items-center mb-2">
-                    <img src={item.foto} alt="Developer 1" className="w-24 h-24 rounded-full" />
+                    <img src={item.foto} alt="Developer 1" className="w-24 h-24 rounded-full object-cover" />
                     <h3 className="h-16 mt-2 text-xl font-bold text-center">{item.name}</h3>
                   </div>
                   <div className="flex items-center h-20 mt-2 text-sm">

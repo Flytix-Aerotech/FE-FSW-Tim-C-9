@@ -1,26 +1,31 @@
 import React from "react";
 import { Breadcrumbs, Alert } from "@material-tailwind/react";
-import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const HeaderCheckout = ({ text, colorAlert }) => {
   const params = useParams();
   const location = useLocation();
+  const pathnames = location.pathname.split("/").filter((x) => x);
   const paths = [
-    { name: "Isi Data Diri", url: `/wishlist/${params.id}` },
-    { name: "Bayar", url: `/checkout/${params.id}/${params.code}` },
-    { name: "Selesai", url: `/payment/${params.code}/${params.id}` },
+    { id: 1, name: "Isi Data Diri", url: `/wishlist/${params.id}` },
+    { id: 2, name: "Bayar", url: `/checkout/${params.id}/${params.code}` },
+    { id: 3, name: "Selesai", url: `/payment/${params.code}/${params.id}` },
   ];
-
   return (
     <div className="inset-0 z-10 max-w-full px-4 py-2 border-b-2 rounded-none shadow-sm h-max lg:px-8 lg:pt-8">
       <div className="flex justify-center w-full max-w-screen-lg m-auto sm:justify-start ">
-        <Breadcrumbs className="bg-transparent" separator={<ChevronRightIcon className="h-5 w-5" />}>
+        <Breadcrumbs
+          className="bg-transparent"
+          separator={
+            <i className="w-1.5 h-1.5 mt-2 border-gray-500 right-0 top-1/2 -translate-y-1/2 inline-block border-r-2 border-b-2 -rotate-45"></i>
+          }
+        >
           {paths.map((path, index) => {
+            const isLast = index === pathnames.length - 1;
             return (
-              <Link key={index} className={`text-gray-600 ${location.pathname.toString() === path.url ? "text-black" : ""}`}>
+              <span key={index} className={`font-bold ${isLast ? "text-gray-500" : "text-black"}`}>
                 {path.name}
-              </Link>
+              </span>
             );
           })}
         </Breadcrumbs>

@@ -7,6 +7,7 @@ import Loading from "../../components/loading/Loading";
 
 const ResultPage = () => {
   const { isLoading } = useSelector((state) => state.authReducer);
+  const [filterDateTicket, setFilterDateTicket] = React.useState();
   return (
     <>
       {isLoading ? (
@@ -14,8 +15,8 @@ const ResultPage = () => {
       ) : (
         <>
           <NavbarComplex />
-          <HeaderHome />
-          <ResultSearch />
+          <HeaderHome setFilterDateTicket={setFilterDateTicket} />
+          <ResultSearch filterDateTicket={filterDateTicket} />
         </>
       )}
     </>

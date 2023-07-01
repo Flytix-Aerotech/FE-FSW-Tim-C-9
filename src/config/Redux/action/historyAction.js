@@ -17,7 +17,7 @@ export const getAllHistoryAction = () => {
 
 export const filterHistoryAction = (start, end) => {
   return async (dispatch) => {
-    await API.get(`/filter?start=${start}&end=${end}`)
+    await API.get(`/histories/filter?start=${start}&end=${end}`)
       .then((response) => {
         dispatch({ type: FILTER_HISTORY, payload: response.data });
       })
@@ -30,7 +30,7 @@ export const filterHistoryAction = (start, end) => {
 
 export const searchHistoryAction = (code) => {
   return async (dispatch) => {
-    await API.get(`/search?code=${code}`)
+    await API.get(`/histories/search?code=${code}`)
       .then((response) => {
         dispatch({ type: SEARCH_HISTORY, payload: response.data });
       })

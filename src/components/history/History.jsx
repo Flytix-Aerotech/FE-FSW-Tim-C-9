@@ -1,15 +1,15 @@
 import React from "react";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { formatDate, formatDifferenceTime, formatRupiah, formatTime } from "../format_display";
-const History = ({ history, setFiltered, filtered, handleOpen }) => {
+const History = ({ history, setDetail, detail, handleOpen }) => {
   return (
     <div className="max-w-[400px] w-full flex flex-col gap-4 mt-5">
       {history?.map((item, index) => (
         <Card
-          onClick={() => setFiltered(item?.booking_code)}
+          onClick={() => setDetail(item?.booking_code)}
           key={index}
           className={`${
-            item?.booking_code === filtered
+            item?.booking_code === detail
               ? "border-2 border-purple-600 bg-gray-100 transition-colors duration-300 shadow-none"
               : "border border-black/70 bg-white transition-colors duration-300 shadow-none"
           }  hover:cursor-pointer hover:bg-gray-100 hover:border-2 hover:border-purple-600 hover:shadow-md `}

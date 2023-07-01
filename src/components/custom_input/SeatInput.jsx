@@ -23,7 +23,7 @@ const SeatInput = ({ form }) => {
       />
       <Dialog
         open={open}
-        className="w-3/4 min-w-[75%] max-w-[70%] lg:!w-1/4 lg:!min-w-[25%] lg:!max-w-[25%]"
+        className="w-full min-w-[85%] max-w-[80%] sm:!w-2/4 sm:!min-w-[60%] sm:!max-w-[60%] md:!w-2/4 md:!min-w-[45%] md:!max-w-[45%] lg:!w-1/4 lg:!min-w-[30%] lg:!max-w-[30%]"
         handler={handleOpen}
         animate={{
           mount: { scale: 1, y: 0 },

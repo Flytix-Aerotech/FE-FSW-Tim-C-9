@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const HistoryFlightDetail = ({ history }) => {
   return (
     <div className="hidden lg:block">
-      <Card className="max-w-[22rem] w-full overflow-hidden rounded-none shadow-none py-4 px-2">
+      <Card className="min-w-[20rem] w-full overflow-hidden rounded-none shadow-none py-4 px-2">
         <Typography variant="h5" color="blue-gray" className="flex justify-between mb-2 items-center">
           <p>Detail Pesanan</p>
           <p
@@ -88,7 +88,7 @@ const HistoryFlightDetail = ({ history }) => {
           </span>
         </CardFooter>
         {history?.payment_status === "Issued" ? (
-          <Button color="red" className="mt-5">
+          <Button color="purple" className="mt-5">
             Cetak tiket
           </Button>
         ) : (
@@ -105,13 +105,13 @@ const HistoryFlightDetail = ({ history }) => {
 
 export default HistoryFlightDetail;
 
-export const ModalFlightDetail = ({ history, open, handleOpen }) => {
+export const ModalFlightDetail = ({ history, modalTrigger, handleOpen }) => {
   return (
     <React.Fragment>
       <Dialog
-        open={open}
+        open={modalTrigger}
         handler={handleOpen}
-        className="w-3/4 min-w-[75%] max-w-[70%] md:!w-1/4 md:!min-w-[35%] md:!max-w-[35%]"
+        className="w-full min-w-[85%] max-w-[80%] sm:!w-2/4 sm:!min-w-[60%] sm:!max-w-[60%] md:!w-2/4 md:!min-w-[45%] md:!max-w-[45%] lg:!w-1/4 lg:!min-w-[35%] lg:!max-w-[35%]"
         animate={{
           mount: { scale: 1, y: 0 },
           unmount: { scale: 0.9, y: -100 },
@@ -129,7 +129,7 @@ export const ModalFlightDetail = ({ history, open, handleOpen }) => {
                 {history?.payment_status}
               </p>
               <span onClick={handleOpen} className="cursor-pointer">
-                <img src={cross} alt="" width={"30"} className="rounded-xl" />
+                <img src={cross} alt="" width={"30"} className="rounded-xl w-7 hover:scale-110 duration-300" />
               </span>
             </div>
           </Typography>

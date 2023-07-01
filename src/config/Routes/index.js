@@ -42,9 +42,9 @@ const index = () => {
           <Route path="/checkout/:id/:code" element={<CheckoutPage />} />
           <Route path="/payment/:code/:id" element={<PaymentPage />} />
           <Route path="/payment/success" element={<PaymentSuccessPage />} />
-          <Route path="/history" element={<HistoryPage />} />
           <Route path="/user/profile" element={<ShowProfilePage />} />
           <Route path="/edit/profile" element={<UpdateProfilePage />} />
+          <Route path="/history" element={<HistoryPage />} />
         </Route>
         <Route path="/no-access-user" element={<ProtectedUserPage />} />
         <Route path="*" element={<ErrorPage />} />

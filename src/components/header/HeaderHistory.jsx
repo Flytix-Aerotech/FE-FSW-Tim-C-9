@@ -1,19 +1,25 @@
 import { ArrowLeftIcon, FunnelIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Button, Typography, Chip } from "@material-tailwind/react";
+import { Button, Typography, Chip, Popover, PopoverHandler, PopoverContent } from "@material-tailwind/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchingHistoryInput from "../custom_input/SearchingHistoryInput";
+import { DatePicker } from "antd";
+const { RangePicker } = DatePicker;
 
-const HeaderHistory = ({ setSearchHistory, text }) => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [isDateOpen, setIsDateOpen] = React.useState(false);
-
-  const handleFilterModal = () => {
-    setIsModalOpen(!isModalOpen);
+const HeaderHistory = ({ setSearchHistory, text, setDateFilter }) => {
+  const [searchModalOpen, setIsModalOpen] = React.useState(false);
+  const handleSearchModal = () => {
+    setIsModalOpen(!searchModalOpen);
   };
 
-  const handleDateModal = () => {
-    setIsDateOpen(!isDateOpen);
+  const [showDatePicker, setShowDatePicker] = React.useState(false);
+  const handleButtonClick = () => {
+    setShowDatePicker(!showDatePicker);
+  };
+
+  const handleDateChange = (date, dateString) => {
+    setDateFilter(dateString);
+    setShowDatePicker(false);
   };
 
   return (
@@ -35,14 +41,26 @@ const HeaderHistory = ({ setSearchHistory, text }) => {
           variant="outlined"
           value="Filter"
           color="purple"
-          onClick={handleFilterModal}
+          onClick={handleSearchModal}
           className="rounded-3xl hover:text-white hover:bg-purple-600 duration-300 cursor-pointer"
           icon={<FunnelIcon className="text-gray-500" />}
         />
-        {isModalOpen && <SearchingHistoryInput onClose={handleFilterModal} setSearchHistory={setSearchHistory} />}
-        <Button onClick={handleDateModal} className="shadow-none hover:shadow-none bg-transparent pl-1" size="sm">
-          <MagnifyingGlassIcon strokeWidth={2} color="purple" className="h-6 w-6 hover:scale-150 duration-300" />
-        </Button>
+        {searchModalOpen && <SearchingHistoryInput onClose={handleSearchModal} setSearchHistory={setSearchHistory} />}
+
+        <Popover placement="left">
+          <PopoverHandler>
+            <Button onClick={handleButtonClick} className="shadow-none hover:shadow-none bg-transparent pl-1 relative" size="sm">
+              <MagnifyingGlassIcon strokeWidth={2} color="purple" className="h-6 w-6 hover:scale-150 duration-300" />
+            </Button>
+          </PopoverHandler>
+          <PopoverContent>
+            <RangePicker
+              className="border-purple-600 hover:border-purple-600 shadow-none"
+              onChange={handleDateChange}
+              onBlur={() => setShowDatePicker(false)}
+            />
+          </PopoverContent>
+        </Popover>
       </div>
     </div>
   );
