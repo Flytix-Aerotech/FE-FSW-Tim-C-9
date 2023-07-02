@@ -17,7 +17,7 @@ const UpdateProfilePage = () => {
         <div className="h-[130vh]">
           <NavbarComplex />
           <ProfileHeader />
-          <div className="max-w-4xl m-auto w-full px-10 flex justify-center lg:justify-between">
+          <div className="max-w-4xl m-auto w-full gap-4 px-10 flex justify-center lg:justify-between">
             <SidebarProfile />
             <EditCardProfile />
           </div>

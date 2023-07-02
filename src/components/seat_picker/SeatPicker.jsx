@@ -9,6 +9,7 @@ const SeatPicker = ({ setSeat, classType, typePrice, disabled }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const dispatch = useDispatch();
   const params = useParams();
+  const adult = localStorage.getItem("adult");
 
   const [tickets, setTickets] = React.useState([]);
 
@@ -18,7 +19,9 @@ const SeatPicker = ({ setSeat, classType, typePrice, disabled }) => {
     if (selectedSeats.includes(seat)) {
       setSelectedSeats(selectedSeats.filter((selectedSeat) => selectedSeat !== seat));
     } else {
-      setSelectedSeats([...selectedSeats, seat]);
+      if (selectedSeats.length <= adult - 1) {
+        setSelectedSeats([...selectedSeats, seat]);
+      }
     }
   };
 

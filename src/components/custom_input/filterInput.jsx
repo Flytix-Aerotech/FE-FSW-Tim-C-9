@@ -2,12 +2,8 @@ import React from "react";
 import { Button, Dialog, Input, ListItem } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-const FilterInput = ({ handleClickFilter }) => {
-  const [open, setOpen] = React.useState(false);
-
+const FilterInput = ({ handleClickFilter, open, handleOpen }) => {
   const [filter, setFilter] = React.useState("Filter");
-
-  const handleOpen = () => setOpen((cur) => !cur);
 
   const handleClick = () => {
     handleOpen();

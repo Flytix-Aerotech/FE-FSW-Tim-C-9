@@ -1,7 +1,8 @@
 import React from "react";
 import { XMarkIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { Dialog } from "@material-tailwind/react";
 
-const SearchingHistoryInput = ({ onClose, setSearchHistory }) => {
+const SearchingHistoryInput = ({ handleOpen, setSearchHistory, open }) => {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const handleSubmit = (e) => {
@@ -15,29 +16,35 @@ const SearchingHistoryInput = ({ onClose, setSearchHistory }) => {
     setRecentSearches([]);
   };
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg flex flex-col w-full max-w-md mx-4">
-        <div className="flex justify-between items-center mb-4 pt-4 px-4">
-          <form onSubmit={handleSubmit} className="flex">
-            <div className="relative flex-1 mr-2">
-              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                <MagnifyingGlassIcon className="h-5 w-5" />
-              </span>
-              <input
-                type="text"
-                placeholder="Masukkan code"
-                className="border border-gray-300 text-sm rounded-lg py-2 pl-10 pr-2 flex-1 w-72 sm:w-96 outline-none focus:border-purple-600"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-          </form>
-          <button type="button" onClick={onClose} className="text-black hover:text-gray-700 ml-1">
+    <Dialog
+      open={open}
+      className="w-full min-w-[85%] max-w-[80%] sm:!w-2/4 sm:!min-w-[60%] sm:!max-w-[60%] md:!w-2/4 md:!min-w-[45%] md:!max-w-[45%] lg:!w-1/4 lg:!min-w-[30%] lg:!max-w-[30%]"
+      handler={handleOpen}
+      animate={{
+        mount: { scale: 1, y: 0 },
+        unmount: { scale: 0.5, y: -100 },
+      }}
+    >
+      <form onSubmit={handleSubmit} className="p-5">
+        <div className="flex justify-between items-center mb-4">
+          <div className="relative flex-1 mr-2 w-full">
+            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <MagnifyingGlassIcon className="h-5 w-5" />
+            </span>
+            <input
+              type="text"
+              placeholder="Masukkan code"
+              className="border text-black font-medium border-gray-300 w-full text-sm rounded-lg py-2 pl-10 pr-2 flex-1 outline-none focus:border-purple-600"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <button type="button" onClick={handleOpen} className="text-black hover:text-gray-700 ml-1">
             <XMarkIcon className="h-6 w-6" strokeWidth={2} />
           </button>
         </div>
         <hr className="my-4 mt-2  border-gray-400" />
-        <div className="flex justify-between items-center pb-4 px-4">
+        <div className="flex justify-between items-center">
           <h3 className="text-lg font-medium">Pencarian Terkini</h3>
           <button className="text-red-500 font-semibold" onClick={handleClearRecentSearches}>
             Hapus
@@ -59,8 +66,8 @@ const SearchingHistoryInput = ({ onClose, setSearchHistory }) => {
             )}
           </div>
         </div>
-      </div>
-    </div>
+      </form>
+    </Dialog>
   );
 };
 

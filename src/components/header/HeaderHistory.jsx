@@ -45,7 +45,7 @@ const HeaderHistory = ({ setSearchHistory, text, setDateFilter }) => {
           className="rounded-3xl hover:text-white hover:bg-purple-600 duration-300 cursor-pointer"
           icon={<FunnelIcon className="text-gray-500" />}
         />
-        {searchModalOpen && <SearchingHistoryInput onClose={handleSearchModal} setSearchHistory={setSearchHistory} />}
+        {searchModalOpen && <SearchingHistoryInput handleOpen={handleSearchModal} open={searchModalOpen} setSearchHistory={setSearchHistory} />}
 
         <Popover placement="left">
           <PopoverHandler>

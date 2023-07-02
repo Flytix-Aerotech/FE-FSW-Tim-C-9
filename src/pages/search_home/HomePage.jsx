@@ -13,10 +13,6 @@ const Home = () => {
   const [tickets, setTickets] = React.useState([]);
   const [filteredDestination, setFilteredDestination] = React.useState("Semua");
 
-  const filterDestination = tickets?.filter((item) => {
-    return item?.flight?.arrival_location === filteredDestination;
-  });
-
   const { ticket } = useSelector((state) => state.ticketReducer);
   const { isLoading } = useSelector((state) => state.authReducer);
 
@@ -29,6 +25,11 @@ const Home = () => {
       setTickets(ticket);
     }
   }, [ticket]);
+
+  const filterDestination = tickets?.filter((item) => {
+    return item?.flight?.arrival_location === filteredDestination;
+  });
+
   return (
     <>
       {isLoading ? (

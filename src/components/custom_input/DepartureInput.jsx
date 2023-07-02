@@ -36,7 +36,7 @@ const DepartureInput = ({ form }) => {
       />
       <Dialog
         open={open}
-        className="w-3/4 min-w-[75%] max-w-[70%] md:!w-1/4 md:!min-w-[35%] md:!max-w-[35%]"
+        className="w-full min-w-[85%] max-w-[80%] sm:!w-2/4 sm:!min-w-[60%] sm:!max-w-[60%] md:!w-2/4 md:!min-w-[45%] md:!max-w-[45%] lg:!w-1/4 lg:!min-w-[30%] lg:!max-w-[30%]"
         handler={handleOpen}
         animate={{
           mount: { scale: 1, y: 0 },
@@ -52,12 +52,11 @@ const DepartureInput = ({ form }) => {
               <input
                 type="text"
                 placeholder="Masukkan code"
-                className="border text-black font-medium border-gray-300 text-sm rounded-lg py-2 pl-10 pr-2 flex-1 outline-none focus:border-purple-600"
+                className="border text-black font-medium border-gray-300 w-full text-sm rounded-lg py-2 pl-10 pr-2 flex-1 outline-none focus:border-purple-600"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-
             <button type="button" onClick={handleOpen} className="text-black hover:text-gray-700 ml-1">
               <XMarkIcon className="h-6 w-6" strokeWidth={2} />
             </button>

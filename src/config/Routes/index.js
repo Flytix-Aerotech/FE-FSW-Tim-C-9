@@ -14,6 +14,7 @@ import {
   OtpVerifyPage,
   PaymentPage,
   PaymentSuccessPage,
+  ProtectedRoutePassenger,
   ProtectedRouteUser,
   ProtectedUserPage,
   RegisterPage,
@@ -38,9 +39,11 @@ const index = () => {
         <Route path="/otp" element={<OtpResetPasswordPage />} />
         <Route path="/verify" element={<OtpVerifyPage />} />
         <Route element={<ProtectedRouteUser />}>
-          <Route path="/wishlist/:id" element={<BiodataPage />} />
-          <Route path="/checkout/:id/:code" element={<CheckoutPage />} />
-          <Route path="/payment/:code/:id" element={<PaymentPage />} />
+          <Route element={<ProtectedRoutePassenger />}>
+            <Route path="/wishlist/:id" element={<BiodataPage />} />
+            <Route path="/checkout/:id/:code" element={<CheckoutPage />} />
+            <Route path="/payment/:code/:id" element={<PaymentPage />} />
+          </Route>
           <Route path="/payment/success" element={<PaymentSuccessPage />} />
           <Route path="/user/profile" element={<ShowProfilePage />} />
           <Route path="/edit/profile" element={<UpdateProfilePage />} />

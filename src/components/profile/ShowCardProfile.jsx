@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfileAction } from "../../config/Redux/action/authAction";
+import { icon_user } from "../../assets/images";
 
 const ShowCardProfile = () => {
   const dispatch = useDispatch();
@@ -18,30 +19,31 @@ const ShowCardProfile = () => {
       setUsers(user);
     }
   }, [user]);
-
   return (
-    <Card className="flex-row w-full max-w-[500px] mt-10 mx-4">
-      <CardHeader shadow={false} floated={false} className="w-1/3 m-0 rounded-r-none shrink-0">
-        <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-          alt=""
-          className="object-cover w-full h-full"
-        />
+    <Card className="flex-col sm:flex-row w-full min-w-[18rem] sm:min-w-[32rem] mt-6 mb-10 mx-4 shadow-lg">
+      <CardHeader
+        shadow={false}
+        floated={false}
+        className="w-full sm:w-2/5 shrink-0 rounded-t-xl rounded-l-none rounded-r-none sm:rounded-l-xl sm:rounded-r-none m-0 bg-[#8E24AA]"
+      >
+        <img src={users?.photo !== null ? users?.photo : icon_user} alt="" className="object-cover w-full h-full" />
       </CardHeader>
-      <CardBody className="w-full">
+      <CardBody>
         <Typography variant="h4" color="blue-gray">
-          {users?.full_name}
+          {users?.full_name === undefined ? "" : users.full_name}
         </Typography>
         <Typography color="gray" className="mb-5 font-normal">
-          {users?.email}
+          {users?.email === undefined ? "" : users.email}
         </Typography>
-        <div className="flex items-center w-full max-w-xs gap-3 border border-purple-600 rounded-lg">
-          <p className="py-1 pl-3 text-white bg-purple-600 w-28 rounded-l-md">Username</p>
-          <p className="py-1">{users?.username}</p>
+        <div className="relative flex items-center w-full max-w-[270px] gap-3 border border-purple-600 rounded-lg overflow-hidden">
+          <p className="py-1 px-3 text-white bg-purple-600 rounded-l-md">Username</p>
+          <p className="py-1 whitespace-nowrap">{users?.username}</p>
+          <i className="absolute bg-white h-8 w-3 top-0 right-0"></i>
         </div>
-        <div className="flex items-center w-full max-w-xs gap-3 mt-5 border border-purple-600 rounded-lg">
-          <p className="py-1 pl-3 text-white bg-purple-600 w-28 rounded-l-md">No Telp</p>
-          <p className="py-1">{users?.phone_number}</p>
+        <div className="relative flex items-center w-full max-w-[270px] gap-3 mt-5 border border-purple-600 rounded-lg overflow-hidden">
+          <p className="py-1 pl-3 pr-9 text-white bg-purple-600 rounded-l-md">No Telp</p>
+          <p className="py-1 whitespace-nowrap">{users?.phone_number}</p>
+          <i className="absolute bg-white h-8 w-3 top-0 right-0"></i>
         </div>
       </CardBody>
     </Card>

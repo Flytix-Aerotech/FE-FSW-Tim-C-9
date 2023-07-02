@@ -35,33 +35,33 @@ const DateButton = ({ searchParams, setFilterDateTicket }) => {
 
   return (
     <Swiper
-      slidesPerView={7}
-      spaceBetween={10}
+      slidesPerView={1}
+      spaceBetween={1}
       pagination={{ clickable: true }}
       breakpoints={{
-        240: {
-          slidesPerView: 1,
-          spaceBetween: 10,
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 2,
+        },
+        350: {
+          slidesPerView: 2,
+          spaceBetween: 2,
         },
         380: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        400: {
           slidesPerView: 3,
-          spaceBetween: 20,
+          spaceBetween: 1,
         },
-        600: {
+        500: {
           slidesPerView: 4,
-          spaceBetween: 30,
+          spaceBetween: 1,
         },
         668: {
           slidesPerView: 5,
-          spaceBetween: 40,
+          spaceBetween: 1,
         },
         768: {
           slidesPerView: 6,
-          spaceBetween: 40,
+          spaceBetween: 1,
         },
       }}
       className="w-full mySwiper"

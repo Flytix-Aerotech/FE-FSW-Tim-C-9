@@ -14,14 +14,14 @@ const ShowProfile = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="h-[130vh]">
+        <>
           <NavbarComplex />
           <ProfileHeader />
-          <div className="max-w-4xl m-auto w-full flex px-10 justify-center lg:justify-between">
+          <div className="max-w-4xl m-auto w-full gap-4 flex px-10 justify-center lg:justify-between">
             <SidebarProfile />
             <ShowCardProfile />
           </div>
-        </div>
+        </>
       )}
     </>
   );

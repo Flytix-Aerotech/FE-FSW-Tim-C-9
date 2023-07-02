@@ -7,7 +7,7 @@ const SidebarProfile = () => {
   const active = "bg-blue-gray-100 bg-opacity-80 text-blue-gray-900";
 
   return (
-    <Card className="top-4 left-4 w-full max-w-[20rem] p-4 shadow-none hidden lg:block h-max">
+    <Card className="mt-6 left-4 w-full p-4 shadow-none hidden md:block h-max">
       <List>
         <Link to="/user/profile">
           <ListItem className={pathname === "/user/profile" ? active : ""}>

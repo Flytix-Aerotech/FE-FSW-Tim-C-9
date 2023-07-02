@@ -26,28 +26,29 @@ const DestinasiFavorit = ({ setFilter, filter }) => {
       <div className="mb-4 text-xl font-semibold">Destinasi Favorit</div>
       <Swiper
         slidesPerView={5}
-        spaceBetween={5}
+        spaceBetween={1}
+        loop={true}
         pagination={{ clickable: true }}
         breakpoints={{
           240: {
             slidesPerView: 1,
-            spaceBetween: 5,
+            spaceBetween: 1,
           },
           440: {
             slidesPerView: 2,
-            spaceBetween: 5,
+            spaceBetween: 1,
           },
           640: {
             slidesPerView: 3,
-            spaceBetween: 5,
+            spaceBetween: 1,
           },
           768: {
             slidesPerView: 4,
-            spaceBetween: 5,
+            spaceBetween: 1,
           },
           950: {
             slidesPerView: 5,
-            spaceBetween: 5,
+            spaceBetween: 1,
           },
         }}
         className="w-full mySwiper"

@@ -27,17 +27,19 @@ const HistoryPage = () => {
     return item?.booking_code === detailHistory;
   });
 
-  const [dateFilter, setDateFilter] = React.useState([new Date(), new Date()]);
-  const filteredHistory = histories?.filter((item) => {
-    const newDate = new Date(item?.createdAt);
-    const start = new Date(dateFilter[0]);
-    const end = new Date(dateFilter[1]);
-    return start.getTime() <= newDate.getTime() && newDate.getTime() <= end.getTime();
-  });
-
+  const [dateFilter, setDateFilter] = React.useState([]);
   const [searchHistory, setSearchHistory] = React.useState("");
-  const searchedHistory = histories?.filter((item) => {
-    return item?.booking_code === searchHistory;
+  const historiesFilter = histories?.filter((item) => {
+    if (dateFilter[0]) {
+      const newDate = new Date(item?.createdAt);
+      const start = new Date(dateFilter[0]);
+      const end = new Date(dateFilter[1]);
+      return start.getTime() <= newDate.getTime() && newDate.getTime() <= end.getTime();
+    } else if (searchHistory) {
+      return item?.booking_code === searchHistory;
+    } else {
+      return histories;
+    }
   });
 
   const [modalTrigger, setModalTrigger] = React.useState(false);
@@ -51,12 +53,7 @@ const HistoryPage = () => {
       <HeaderHistory setSearchHistory={setSearchHistory} text="Riwayat Pemesanan" setDateFilter={setDateFilter} />
       <div className="mb-16">
         <div className="flex justify-center w-full max-w-screen-lg gap-6 px-4 py-2 m-auto lg:px-8 lg:pt-4">
-          <History
-            history={searchHistory === "" ? histories : searchedHistory || filteredHistory}
-            setDetail={setDetailHistory}
-            detail={detailHistory}
-            handleOpen={width <= 1024 ? handleOpen : null}
-          />
+          <History history={historiesFilter} setDetail={setDetailHistory} detail={detailHistory} handleOpen={width <= 1024 ? handleOpen : null} />
           <HistoryFlightDetail history={detailHistory === "" ? histories[0] : detailedHistory[0]} />
           {modalTrigger && (
             <ModalFlightDetail

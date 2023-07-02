@@ -25,8 +25,10 @@ const Verify = () => {
 
   const SendEmailOtp = (e) => {
     e.preventDefault();
-    const { data } = email;
+    const data = { email };
     dispatch(sendOtpAction(data, history));
+    setTimer(60);
+    localStorage.setItem("timer", 60);
   };
 
   const countTimer = React.useCallback(() => {
@@ -74,13 +76,9 @@ const Verify = () => {
             />
             <div className="mt-4">
               {timer <= 0 ? (
-                <p>
-                  Silahakan{" "}
-                  <button onClick={() => SendEmailOtp} className="text-purple-500 underline">
-                    click disini
-                  </button>{" "}
-                  untuk mengirimkan kembali OTP
-                </p>
+                <button onClick={SendEmailOtp} className="text-purple-500 underline">
+                  Kirim ulang otp
+                </button>
               ) : (
                 <p className="mt-3 text-center">Kirim Ulang OTP dalam {timer} detik</p>
               )}

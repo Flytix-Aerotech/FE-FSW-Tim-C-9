@@ -3,7 +3,7 @@ import { Button, Typography } from "@material-tailwind/react";
 import OtpInput from "react-otp-input";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { verifyOtpAction } from "../../config/Redux/action/authAction";
+import { sendOtpAction, verifyOtpAction } from "../../config/Redux/action/authAction";
 import { formatCensorEmail } from "../format_display";
 
 const OTP = () => {
@@ -23,15 +23,22 @@ const OTP = () => {
     dispatch(verifyOtpAction(data, history, email));
   };
 
+  const SendEmailOtp = (e) => {
+    e.preventDefault();
+    const data = { email };
+    dispatch(sendOtpAction(data, history));
+    setTimer(60);
+    localStorage.setItem("timer", 60);
+  };
+
   const countTimer = React.useCallback(() => {
     if (timer <= 0) {
-      history("/email-otp");
       localStorage.removeItem("timer");
     } else {
       setTimer(timer - 1);
       localStorage.setItem("timer", timer);
     }
-  }, [timer, history]);
+  }, [timer]);
 
   React.useEffect(() => {
     timeoutId.current = window.setTimeout(countTimer, 1000);
@@ -46,7 +53,9 @@ const OTP = () => {
           <Typography variant="h4" className="font-bold">
             Masukkan OTP
           </Typography>
-          <p className="text-center">Ketik 6 digit kode yang dikirimkan ke {formatCensorEmail(email)}</p>
+          <p className="text-center">
+            Ketik 6 digit kode yang dikirimkan ke <span className="font-bold">{formatCensorEmail(email)}</span>
+          </p>
           <div className="grid place-items-center">
             <OtpInput
               inputStyle={{
@@ -68,7 +77,13 @@ const OTP = () => {
               renderInput={(props) => <input {...props} />}
             />
             <div className="mt-4">
-              <p className="mt-3 text-center">Kirim Ulang OTP dalam {timer} detik</p>
+              {timer <= 0 ? (
+                <button onClick={SendEmailOtp} className="text-purple-500 underline hover:text-purple-700 duration-300">
+                  Kirim ulang otp
+                </button>
+              ) : (
+                <p className="mt-3 text-center">Kirim Ulang OTP dalam {timer} detik</p>
+              )}
             </div>
           </div>
           <Button type="submit" className="w-full" color="purple">

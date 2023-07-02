@@ -6,7 +6,7 @@ import flight_takeoff from "./flight_takeoff.png";
 import switch_return from "./return.png";
 import backpack from "./backpack.png";
 import not_found from "./not_found_data.png";
-import icon_user from "./icons-user.png";
+import icon_user from "./icon_user.png";
 import background_img from "./flytix_img.png";
 import logo_flytix from "./logo_flytix.png";
 import destinasi1 from "./destinasi1.png";

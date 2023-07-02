@@ -3,13 +3,14 @@ import HeaderCheckout from "../../components/header/HeaderCheckout";
 import NavbarComplex from "../../components/navbar/Navbar";
 import FlightDetail from "../../components/flight_detail/FlightDetail";
 import Checkout from "../../components/checkout/Checkout";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CheckoutPage = () => {
   const params = useParams();
+  const history = useNavigate();
 
   const handleClick = () => {
-    window.location.href = `/payment/${params.code}/${params.id}`;
+    history(`/payment/${params.code}/${params.id}`);
   };
 
   return (

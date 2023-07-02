@@ -31,7 +31,7 @@ const EditCardProfile = () => {
     }
   }, [user]);
   return (
-    <Card className="w-full max-w-[500px] mt-10 mx-4">
+    <Card className="w-full min-w-[18rem] sm:min-w-[32rem] mt-6 mb-10 mx-4">
       <CardBody>
         <Typography variant="h5" color="blue-gray" className="mb-2">
           Ubah Data Profil

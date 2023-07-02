@@ -18,8 +18,10 @@ import CheckoutPage from "./checkout/CheckoutPage";
 import HistoryPage from "./history/HistoryPage";
 import PaymentSuccessPage from "./payment/PaymentSuccessPage";
 import NotificationPage from "./notification/NotificationPage";
+import ProtectedRoutePassenger from "./protected_checkout/ProtectedRoutePassenger";
 
 export {
+  ProtectedRoutePassenger,
   NotificationPage,
   PaymentSuccessPage,
   LoginPage,

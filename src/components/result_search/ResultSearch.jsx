@@ -53,7 +53,7 @@ const AccordionSection = ({ tickets }) => {
           {tickets?.map((item, i) => (
             <Accordion
               key={i}
-              className={`px-2 py-4 mt-3 border-2 hover:border-purple-600 border-gray-200 rounded-md duration-500 ${
+              className={`px-2 py-4 mt-2 border-2 hover:border-purple-600 border-gray-200 rounded-md duration-500 ${
                 open === item?.id ? "border-purple-600" : ""
               }`}
               open={open === item?.id}
@@ -64,7 +64,7 @@ const AccordionSection = ({ tickets }) => {
                   <img src={crown} alt="" className="w-5 h-5" /> {item?.flight?.airline} - {item?.type_of_class}
                 </Typography>
               </AccordionHeader>
-              <div className="flex mt-2 ml-0 sm:ml-8 justify-between gap-2 sm:gap-20">
+              <div className="flex mt-2 ml-0 sm:ml-8 justify-between gap-1 sm:gap-10">
                 <div className="flex gap-4">
                   <span className="flex flex-col items-center justify-center">
                     <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item?.flight?.departure_time)}</p>
@@ -74,7 +74,7 @@ const AccordionSection = ({ tickets }) => {
                     <small className="text-gray-500 text-xs sm:text-sm">
                       {formatDifferenceTime(item?.flight?.departure_time, item?.flight?.arrival_time)}
                     </small>
-                    <small className="bg-gray-500 w-20 sm:w-28 md:w-44 h-0.5 relative">
+                    <small className="bg-gray-500 w-20 sm:w-28 md:w-32 h-0.5 relative">
                       <i className="absolute w-1.5 h-1.5 border-gray-500 right-0 top-1/2 -translate-y-1/2 inline-block border-r-2 border-b-2 -rotate-45"></i>
                     </small>
                     <small className="text-gray-500 text-xs sm:text-sm">Direct</small>
@@ -88,7 +88,7 @@ const AccordionSection = ({ tickets }) => {
                   </span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <Typography variant="h6" color="purple" className="font-bold text-sm sm:text-lg">
+                  <Typography variant="h6" color="purple" className="font-bold text-sm sm:text-lg whitespace-nowrap">
                     IDR {formatRupiah(item?.price)}
                   </Typography>
                   <Link to={`/wishlist/${item?.id}`} className="w-full">
@@ -150,18 +150,18 @@ const AccordionSection = ({ tickets }) => {
   );
 };
 
-const ListItems = () => {
+const ListItems = ({ handleOpen }) => {
   const list = [
     { name: "Harga", icon: CurrencyDollarIcon },
     { name: "Keberangkatan", icon: ChevronDoubleUpIcon },
     { name: "Kedatangan", icon: ChevronDoubleDownIcon },
   ];
   return (
-    <nav className="shadow-md h-max lg:flex lg:flex-col gap-1 hidden w-64 rounded-xl p-5 font-sans text-base font-normal text-blue-gray-700">
+    <nav className="shadow-md h-max lg:flex lg:flex-col gap-1 hidden w-60 rounded-xl p-5 font-sans text-base font-normal text-blue-gray-700">
       <h5 className="text-lg tracking-wider text-black">Filter</h5>
       {list.map((item, index) => (
-        <ListItem key={index} ripple={false} className="py-1 px-1">
-          <div className="flex items-center gap-3">
+        <ListItem onClick={handleOpen} key={index} ripple={false} className="py-1 px-1">
+          <div className="flex items-center gap-3 text-sm">
             <item.icon className="w-5 h-5" /> {item.name}
           </div>
           <ListItemSuffix>
@@ -235,11 +235,18 @@ const ConditionalFilter = (data, sorted) => {
 
 const ResultSearch = ({ filterDateTicket }) => {
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [tickets, setTickets] = React.useState([]);
-
   const [sortedProducts, setSortedProducts] = React.useState([]);
   const [sortOrder, setSortOrder] = React.useState("");
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen((cur) => !cur);
+
+  const departure_date = searchParams.get("dd");
+  const departure_location = searchParams.get("dl");
+  const arrival_location = searchParams.get("al");
+  const type_of_class = searchParams.get("toc");
 
   const handleClickFilter = (data) => {
     const sorted = tickets;
@@ -248,10 +255,12 @@ const ResultSearch = ({ filterDateTicket }) => {
     setSortedProducts(sorted);
   };
 
-  const departure_date = searchParams.get("dd");
-  const departure_location = searchParams.get("dl");
-  const arrival_location = searchParams.get("al");
-  const type_of_class = searchParams.get("toc");
+  React.useEffect(() => {
+    setSearchParams((params) => {
+      params.set("dd", filterDateTicket === undefined ? departure_date : filterDateTicket);
+      return params;
+    });
+  }, [filterDateTicket, setSearchParams, departure_date]);
 
   const { ticket } = useSelector((state) => state.ticketReducer);
   const { isLoading } = useSelector((state) => state.ticketReducer);
@@ -268,18 +277,20 @@ const ResultSearch = ({ filterDateTicket }) => {
 
   return (
     <div className="w-full max-w-4xl m-auto my-8">
-      <div className="max-w-[220px] w-full ml-auto mx-10">
-        <FilterInput handleClickFilter={handleClickFilter} />
+      <div className="grid place-items-center sm:place-items-end">
+        <div className="w-max px-10">
+          <FilterInput handleClickFilter={handleClickFilter} open={open} handleOpen={handleOpen} />
+        </div>
       </div>
-      <div className="m-auto mt-8 w-max">
+      <div className="m-auto mt-8 w-full max-w-3xl px-2">
         {isLoading ? (
           <div className="flex flex-col items-center w-full h-full">
             <span className="mb-4">Mencari penerbangan terbaik...</span>
             <PartialLoading height={"100"} width={"150"} />
           </div>
         ) : (
-          <div className="flex gap-4 justify-between">
-            <ListItems />
+          <div className="flex gap-4 justify-center lg:justify-between">
+            <ListItems handleOpen={handleOpen} />
             <div>
               <AccordionSection tickets={sortOrder === "" ? tickets : sortedProducts} />
             </div>

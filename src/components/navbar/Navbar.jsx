@@ -80,16 +80,11 @@ const NavbarComplex = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
   const [openNav, setOpenNav] = React.useState(false);
-  const [test, setTest] = React.useState();
 
   const { isLoggedIn } = useSelector((state) => state.authReducer);
 
   const handleLogout = () => {
     dispatch(logoutAction(history));
-  };
-
-  const trigger = () => {
-    console.log(test);
   };
 
   React.useEffect(() => {
@@ -98,24 +93,30 @@ const NavbarComplex = () => {
 
   const navList = (
     <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      <Typography as="a" href="/" variant="small" color="blue-gray" className="font-normal">
-        <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
-          <HomeIcon className="w-6 h-6" /> Home
-        </MenuItem>
-      </Typography>
-      <Typography as="a" href="/about" variant="small" color="blue-gray" className="font-normal">
-        <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
-          <InformationCircleIcon className="w-6 h-6" /> About
-        </MenuItem>
-      </Typography>
-      <Typography as="a" href="/notification" variant="small" color="blue-gray" className="font-normal">
-        <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
-          <BellIcon className="w-6 h-6" /> Notification
-        </MenuItem>
-      </Typography>
+      <Link to="/">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
+            <HomeIcon className="w-6 h-6" /> Home
+          </MenuItem>
+        </Typography>
+      </Link>
+      <Link to="/about">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
+            <InformationCircleIcon className="w-6 h-6" /> About
+          </MenuItem>
+        </Typography>
+      </Link>
+      <Link to="/notification">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
+            <BellIcon className="w-6 h-6" /> Notification
+          </MenuItem>
+        </Typography>
+      </Link>
       <div className="relative block w-full gap-2 sm:w-max lg:hidden">
-        <Input color="purple" onKeyDown={trigger} type="search" label="Type here..." className="pr-10" onChange={(e) => setTest(e.target.value)} />
-        <button onClick={trigger} className="!absolute right-2 top-2 rounded">
+        <Input color="purple" type="search" label="Type here..." className="pr-10" />
+        <button className="!absolute right-2 top-2 rounded">
           <MagnifyingGlassIcon className="w-6 h-6" />
         </button>
       </div>
@@ -127,20 +128,15 @@ const NavbarComplex = () => {
       <Navbar className="sticky inset-0 z-10 max-w-full px-4 py-4 rounded-none h-max lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900">
           <div className="flex items-center gap-4">
-            <Typography as="a" href="/" className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
-              <img src={logo_flytix} alt="" width={"40"} className="rounded-full" />{" "}
-              <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
-            </Typography>
+            <Link to="/">
+              <Typography className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
+                <img src={logo_flytix} alt="" width={"40"} className="rounded-full" />{" "}
+                <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
+              </Typography>
+            </Link>
             <div className="relative hidden w-full gap-2 md:w-max lg:block">
-              <Input
-                color="purple"
-                onKeyDown={trigger}
-                type="search"
-                label="Type here..."
-                className="pr-10"
-                onChange={(e) => setTest(e.target.value)}
-              />
-              <button onClick={trigger} className="!absolute right-2 top-2 rounded">
+              <Input color="purple" type="search" label="Type here..." className="pr-10" />
+              <button className="!absolute right-2 top-2 rounded">
                 <MagnifyingGlassIcon className="w-6 h-6" />
               </button>
             </div>
