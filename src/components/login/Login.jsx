@@ -52,7 +52,7 @@ const Login = () => {
             <Input
               type={showPassword ? "text" : "password"}
               size="lg"
-              label="Buat Password"
+              label="Password"
               color="purple"
               {...register("password", {
                 required: "Please enter your password",
