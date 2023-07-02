@@ -51,7 +51,7 @@ const ArrivalInput = ({ form }) => {
               </span>
               <input
                 type="text"
-                placeholder="Masukkan code"
+                placeholder="Masukkan Kota"
                 className="border text-black font-medium border-gray-300 text-sm rounded-lg py-2 pl-10 pr-2 flex-1 outline-none focus:border-purple-600"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
