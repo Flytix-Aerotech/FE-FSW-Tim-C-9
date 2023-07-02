@@ -21,7 +21,7 @@ const InputEmail = () => {
   return (
     <Card color="transparent" shadow={false} className="flex flex-col items-center justify-center w-full">
       <Typography variant="h4" color="blue-gray">
-        Masuk
+        Masukan Email Anda
       </Typography>
       <form className="max-w-screen-lg mt-8 mb-2 w-80 sm:w-96" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-1 mb-4">

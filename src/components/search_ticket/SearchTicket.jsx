@@ -30,7 +30,7 @@ const SearchTicket = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <CardBody>
             <Typography variant="h5" color="blue-gray" className="mb-2">
-              Pilih Jadwal Penerbangan spesial di <span className="font-bold text-purple-600">Tiketku!</span>
+              Pilih Jadwal Penerbangan spesial di <span className="font-bold text-purple-600">Flytix!</span>
             </Typography>
             <div className="flex flex-col gap-2 p-4 mt-4 border border-gray-500 rounded-lg md:flex-row md:gap-12 md:p-0 md:border-none">
               <div className="flex items-center w-full gap-10">
