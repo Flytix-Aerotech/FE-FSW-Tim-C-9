@@ -9,44 +9,45 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 const DestinasiFavorit = ({ setFilter, filter }) => {
   const city = [
     { name: "Semua" },
-    { name: "jakarta" },
+    { name: "Jakarta" },
     { name: "Bandung" },
     { name: "Yogyakarta" },
     { name: "Surabaya" },
     { name: "Denpasar" },
-    { name: "Bandar Lampung" },
-    { name: "Medan" },
-    { name: "Pontianak" },
-    { name: "Semarang" },
+    { name: "Palembang" },
+    { name: "Banda Aceh" },
+    { name: "Banjarmasin" },
+    { name: "Kupang" },
     { name: "Makassar" },
-    { name: "Labuan bajo" },
+    { name: "Manado" },
+    { name: "Batam" },
   ];
   return (
     <div className="w-full max-w-4xl px-4 m-auto mt-8">
       <div className="mb-4 text-xl font-semibold">Destinasi Favorit</div>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={1}
         spaceBetween={1}
         loop={true}
         pagination={{ clickable: true }}
         breakpoints={{
-          240: {
-            slidesPerView: 1,
-            spaceBetween: 1,
-          },
-          440: {
+          320: {
             slidesPerView: 2,
-            spaceBetween: 1,
+            spaceBetween: 2,
           },
-          640: {
+          350: {
+            slidesPerView: 2,
+            spaceBetween: 2,
+          },
+          500: {
             slidesPerView: 3,
             spaceBetween: 1,
           },
-          768: {
+          668: {
             slidesPerView: 4,
             spaceBetween: 1,
           },
-          950: {
+          820: {
             slidesPerView: 5,
             spaceBetween: 1,
           },

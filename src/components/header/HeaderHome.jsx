@@ -11,13 +11,6 @@ import "swiper/css/pagination";
 import { Link, useSearchParams } from "react-router-dom";
 
 const date = [
-  { date: "2023-06-24", day: "Sabtu" },
-  { date: "2023-06-25", day: "Minggu" },
-  { date: "2023-06-26", day: "Senin" },
-  { date: "2023-06-27", day: "Selasa" },
-  { date: "2023-06-28", day: "Rabu" },
-  { date: "2023-06-29", day: "Kamis" },
-  { date: "2023-06-30", day: "Jumat" },
   { date: "2023-07-01", day: "Sabtu" },
   { date: "2023-07-02", day: "Minggu" },
   { date: "2023-07-03", day: "Senin" },
@@ -28,6 +21,9 @@ const date = [
   { date: "2023-07-08", day: "Sabtu" },
   { date: "2023-07-09", day: "Minggu" },
   { date: "2023-07-10", day: "Senin" },
+  { date: "2023-07-11", day: "Selasa" },
+  { date: "2023-07-12", day: "Rabu" },
+  { date: "2023-07-13", day: "Kamis" },
 ];
 
 const DateButton = ({ searchParams, setFilterDateTicket }) => {
@@ -36,6 +32,7 @@ const DateButton = ({ searchParams, setFilterDateTicket }) => {
   return (
     <Swiper
       slidesPerView={1}
+      loop={true}
       spaceBetween={1}
       pagination={{ clickable: true }}
       breakpoints={{

@@ -81,6 +81,22 @@ export const sendOtpAction = (data, history) => {
   };
 };
 
+export const sendOtpForAccountAction = (data) => {
+  return async (dispatch) => {
+    dispatch({ type: SEND_OTP_REQUEST });
+    await API.post(`/auth/send/email-otp`, data)
+      .then((response) => {
+        dispatch({ type: SEND_OTP, payload: response.data });
+        SweatAlert(response.data.msg, "success");
+      })
+      .catch((error) => {
+        const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
+        dispatch({ type: SEND_OTP_ERROR });
+        SweatAlert(message, "warning");
+      });
+  };
+};
+
 export const verifyOtpAction = (data, history, email) => {
   return async (dispatch) => {
     dispatch({ type: VERIFY_OTP_REQUEST });
@@ -170,7 +186,9 @@ export const logoutAction = (history) => {
     dispatch({ type: LOGOUT_REQUEST });
     setTimeout(() => {
       localStorage.removeItem("token");
-      localStorage.removeItem("totalPassenger");
+      localStorage.removeItem("adult");
+      localStorage.removeItem("baby");
+      localStorage.removeItem("email");
       dispatch({ type: LOGOUT });
       history("/login");
     }, 3000);

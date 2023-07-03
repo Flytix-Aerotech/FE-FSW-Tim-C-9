@@ -17,11 +17,26 @@ import {
 import { icon_user, logo_flytix } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logoutAction } from "../../config/Redux/action/authAction";
+import { getProfileAction, logoutAction } from "../../config/Redux/action/authAction";
 
-const ProfileMenu = ({ handleLogout, user }) => {
+const ProfileMenu = ({ handleLogout }) => {
+  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
+
+  const [users, setUsers] = React.useState([]);
+
+  const { user } = useSelector((state) => state.authReducer);
+
+  React.useEffect(() => {
+    dispatch(getProfileAction());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    if (user) {
+      setUsers(user);
+    }
+  }, [user]);
 
   const profileMenuItems = [
     {
@@ -45,7 +60,13 @@ const ProfileMenu = ({ handleLogout, user }) => {
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
         <Button variant="text" color="blue-gray" className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto">
-          <Avatar variant="circular" size="sm" alt="candice wu" className="border border-purple-500 p-0.5" src={icon_user} />
+          <Avatar
+            variant="circular"
+            size="sm"
+            alt="candice wu"
+            className="border border-purple-500 p-0.5"
+            src={users?.photo !== null ? users?.photo : icon_user}
+          />
           <ChevronDownIcon strokeWidth={2.5} className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""}`} />
         </Button>
       </MenuHandler>

@@ -29,7 +29,9 @@ const index = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/home" element={<ResultPage />} />
+        <Route element={<ProtectedRoutePassenger />}>
+          <Route path="/home" element={<ResultPage />} />
+        </Route>
         <Route path="/about" element={<AboutCompanyPage />} />
         <Route path="/notification" element={<NotificationPage />} />
         <Route path="/login" element={<LoginPage />} />

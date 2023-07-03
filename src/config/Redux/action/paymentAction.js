@@ -12,13 +12,13 @@ export const makePaymentAction = (code, type, history) => {
         localStorage.removeItem("baby", code);
         localStorage.removeItem("adult", code);
         SweatAlert(response.data.message, "success");
-        window.open(`${response.data.chargeResponse.actions[1].url}`, "_blank");
+        window.open(`${response.data.chargeResponse.redirect_url}`, "_blank");
         setTimeout(() => {
           history("/payment/success");
         }, 5000);
       })
       .catch((error) => {
-        const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         dispatch({ type: MAKE_PAYMENT_ERROR });
         SweatAlert(message, "warning");
       });

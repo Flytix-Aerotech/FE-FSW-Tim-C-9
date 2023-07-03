@@ -81,13 +81,13 @@ const FlightDetail = ({ buttonTrigger, handleClick, text, code }) => {
               <small>{baby} Baby</small> <small>IDR 0</small>
             </span>
             <span className="flex justify-between">
-              <small>Tax</small> <small>IDR {formatRupiah(tickets?.price * 0.1 * adult)}</small>
+              <small>Tax</small> <small>IDR {formatRupiah(parseInt(tickets?.price * 0.1 * adult))}</small>
             </span>
           </div>
         </div>
         <span className="flex justify-between mx-4">
           <p className="font-bold text-black">Total</p>
-          <p className="font-bold text-purple-500">IDR {formatRupiah(tickets?.price * parseInt(adult) + 0.1 * tickets?.price * adult)}</p>
+          <p className="font-bold text-purple-500">IDR {formatRupiah(parseInt(tickets?.price * parseInt(adult) + 0.1 * tickets?.price * adult))}</p>
         </span>
       </CardFooter>
       {buttonTrigger === false ? null : (

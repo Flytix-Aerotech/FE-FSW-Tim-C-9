@@ -42,8 +42,8 @@ const SeatInput = ({ form }) => {
             className="rounded-lg text-base py-1.5 px-3 font-normal hover:bg-purple-600 focus:bg-purple-600 focus:text-white hover:text-white"
           >
             <div className="flex flex-col gap-2">
-              <span className="font-bold">First Class</span>
-              <small>Mulai dari IDR 7.620.000</small>
+              <span className="font-bold">First</span>
+              <small>Mulai dari IDR 1.489.980</small>
             </div>
           </ListItem>
           <ListItem
@@ -53,7 +53,7 @@ const SeatInput = ({ form }) => {
           >
             <div className="flex flex-col gap-2">
               <span className="font-bold">Business</span>
-              <small>Mulai dari IDR 4.220.000</small>
+              <small>Mulai dari IDR 1.019.980</small>
             </div>
           </ListItem>
           <ListItem
@@ -62,8 +62,8 @@ const SeatInput = ({ form }) => {
             className="rounded-lg text-base py-1.5 px-3 font-normal hover:bg-purple-600 focus:bg-purple-600 focus:text-white hover:text-white"
           >
             <div className="flex flex-col gap-2">
-              <span className="font-bold">Premium Economy</span>
-              <small>Mulai dari IDR 2.550.000</small>
+              <span className="font-bold">Premium</span>
+              <small>Mulai dari IDR 889.980</small>
             </div>
           </ListItem>
           <ListItem
@@ -73,7 +73,7 @@ const SeatInput = ({ form }) => {
           >
             <div className="flex flex-col gap-2">
               <span className="font-bold">Economy</span>
-              <small>Mulai dari IDR 1.950.000</small>
+              <small>Mulai dari IDR 729.980</small>
             </div>
           </ListItem>
         </nav>

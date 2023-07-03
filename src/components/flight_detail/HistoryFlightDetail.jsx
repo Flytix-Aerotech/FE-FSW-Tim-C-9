@@ -3,6 +3,7 @@ import { Button, Card, CardBody, CardFooter, Dialog, Typography } from "@materia
 import { cross, crown } from "../../assets/images";
 import { formatDate, formatRupiah, formatTime } from "../format_display";
 import { Link } from "react-router-dom";
+import SweatAlert from "../../config/SweetAlert";
 
 const HistoryFlightDetail = ({ history }) => {
   return (
@@ -78,7 +79,7 @@ const HistoryFlightDetail = ({ history }) => {
                 <small>0 Baby</small> <small>IDR 0</small>
               </span>
               <span className="flex justify-between">
-                <small>Tax</small> <small>IDR {formatRupiah(history?.ticket?.price * 0.1 * history?.total_booking)}</small>
+                <small>Tax</small> <small>IDR {formatRupiah(parseInt(history?.ticket?.price * 0.1 * history?.total_booking))}</small>
               </span>
             </div>
           </div>
@@ -88,11 +89,15 @@ const HistoryFlightDetail = ({ history }) => {
           </span>
         </CardFooter>
         {history?.payment_status === "Issued" ? (
-          <Button color="purple" className="mt-5">
+          <Button onClick={SweatAlert("Selamat ticket anda sudah dicetak", "success")} color="purple" className="mt-5">
             Cetak tiket
           </Button>
         ) : (
-          <Link to="/payment/success" className="w-full">
+          <Link
+            to={`/payment/${history?.booking_code}/${history?.ticket?.id}`}
+            onClick={localStorage.setItem("adult", history?.total_booking)}
+            className="w-full"
+          >
             <Button color="red" className="mt-5 w-full">
               Lanjut Bayar
             </Button>

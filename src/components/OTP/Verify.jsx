@@ -3,7 +3,7 @@ import { Button, Typography } from "@material-tailwind/react";
 import OtpInput from "react-otp-input";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { sendOtpAction, verifyAccountAction } from "../../config/Redux/action/authAction";
+import { sendOtpForAccountAction, verifyAccountAction } from "../../config/Redux/action/authAction";
 import { formatCensorEmail } from "../format_display";
 
 const Verify = () => {
@@ -26,9 +26,9 @@ const Verify = () => {
   const SendEmailOtp = (e) => {
     e.preventDefault();
     const data = { email };
-    dispatch(sendOtpAction(data, history));
-    setTimer(60);
-    localStorage.setItem("timer", 60);
+    dispatch(sendOtpForAccountAction(data));
+    setTimer(90);
+    localStorage.setItem("timer", 90);
   };
 
   const countTimer = React.useCallback(() => {
