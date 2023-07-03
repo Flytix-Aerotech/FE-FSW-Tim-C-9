@@ -169,7 +169,7 @@ const NavbarComplex = () => {
               <ProfileMenu handleLogout={handleLogout} />
             ) : (
               <Link to="/login">
-                <Button color="purple" className="flex items-center gap-2">
+                <Button color="purple" className="flex items-center gap-2" size="sm">
                   <ArrowRightOnRectangleIcon className="w-6 h-6" /> Masuk
                 </Button>
               </Link>

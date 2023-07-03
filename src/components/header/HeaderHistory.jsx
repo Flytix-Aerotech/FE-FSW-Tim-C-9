@@ -24,7 +24,7 @@ const HeaderHistory = ({ setSearchHistory, text, setDateFilter }) => {
 
   return (
     <div className="w-full p-2 shadow-md">
-      <div className="max-w-4xl w-full m-auto mt-6">
+      <div className="max-w-4xl w-full m-auto mt-6 text-center sm:text-left">
         <Typography className="p-5" variant="h5">
           {text}
         </Typography>
