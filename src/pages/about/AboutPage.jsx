@@ -24,8 +24,8 @@ import {
 } from "../../assets/about_image";
 
 const data = [
-  { jobdesk: "Product Owner", name: "Muhammad Helmy fadlail Albab", foto: dev1, university: "Universitas Brawijaya", image: unbraw },
-  { jobdesk: "Scrum Master", name: "Dza Habbin Nofaylah", foto: dev2, university: "Universitas Bahaudin Mudhary Madura", image: uniba },
+  { jobdesk: "Product Owner & Fullstack", name: "Muhammad Helmy fadlail Albab", foto: dev1, university: "Universitas Brawijaya", image: unbraw },
+  { jobdesk: "Scrum Master & Back-end Developer", name: "Dza Habbin Nofaylah", foto: dev2, university: "Universitas Bahaudin Mudhary Madura", image: uniba },
   { jobdesk: "Back-end Developer", name: "Muhammad Huda Nugroho", foto: dev3, university: "Universitas Gunadarma", image: gunadarma },
   { jobdesk: "Back-end Developer", name: "Theresia Nawangsih", foto: dev4, university: "Institut Teknologi Sepuluh Nopember", image: its },
   { jobdesk: "Back-end Developer", name: "Christin Henin Oei", foto: dev5, university: "Universitas Brawijaya", image: unbraw },
