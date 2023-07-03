@@ -7,7 +7,14 @@ const HeaderCheckout = ({ text, colorAlert }) => {
   const location = useLocation();
   const paths = [
     { id: 1, name: "Isi Data Diri", url: `/wishlist/${params.id}` },
-    { id: 2, name: "Bayar", url: `/checkout/${params.id}/${params.code}` && `/payment/${params.code}/${params.id}` },
+    {
+      id: 2,
+      name: "Bayar",
+      url:
+        location.pathname === `/checkout/${params.id}/${params.code}`
+          ? `/checkout/${params.id}/${params.code}`
+          : `/payment/${params.code}/${params.id}`,
+    },
     { id: 3, name: "Selesai", url: `/payment/success` },
   ];
   return (

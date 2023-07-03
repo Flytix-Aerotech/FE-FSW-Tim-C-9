@@ -12,7 +12,9 @@ export const makePaymentAction = (code, type, history) => {
         localStorage.removeItem("baby", code);
         localStorage.removeItem("adult", code);
         SweatAlert(response.data.message, "success");
-        window.open(`${response.data.chargeResponse.redirect_url}`, "_blank");
+        type === "Gopay"
+          ? window.open(`${response.data.chargeResponse.actions[1].url}`, "_blank")
+          : window.open(`${response.data.chargeResponse.redirect_url}`, "_blank");
         setTimeout(() => {
           history("/payment/success");
         }, 5000);

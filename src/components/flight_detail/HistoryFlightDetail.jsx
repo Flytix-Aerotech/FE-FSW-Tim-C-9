@@ -3,7 +3,6 @@ import { Button, Card, CardBody, CardFooter, Dialog, Typography } from "@materia
 import { cross, crown } from "../../assets/images";
 import { formatDate, formatRupiah, formatTime } from "../format_display";
 import { Link } from "react-router-dom";
-import SweatAlert from "../../config/SweetAlert";
 
 const HistoryFlightDetail = ({ history }) => {
   return (
@@ -89,7 +88,7 @@ const HistoryFlightDetail = ({ history }) => {
           </span>
         </CardFooter>
         {history?.payment_status === "Issued" ? (
-          <Button onClick={SweatAlert("Selamat ticket anda sudah dicetak", "success")} color="purple" className="mt-5">
+          <Button color="purple" className="mt-5">
             Cetak tiket
           </Button>
         ) : (

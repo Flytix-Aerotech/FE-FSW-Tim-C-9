@@ -2,7 +2,7 @@ import { MAKE_PAYMENT, MAKE_PAYMENT_ERROR, MAKE_PAYMENT_REQUEST } from "../actio
 
 const initialState = {
   payment: [],
-  isLoading: true,
+  isLoading: false,
 };
 
 const ticket = (state = initialState, action) => {

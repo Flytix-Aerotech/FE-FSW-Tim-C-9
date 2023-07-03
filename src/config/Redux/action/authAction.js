@@ -185,10 +185,7 @@ export const logoutAction = (history) => {
   return async (dispatch) => {
     dispatch({ type: LOGOUT_REQUEST });
     setTimeout(() => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("adult");
-      localStorage.removeItem("baby");
-      localStorage.removeItem("email");
+      localStorage.clear();
       dispatch({ type: LOGOUT });
       history("/login");
     }, 3000);
