@@ -20,8 +20,10 @@ const Biodata = () => {
 
   const [user, setUser] = React.useState(false);
   const [seat, setSeat] = React.useState([]);
+
   const adult = localStorage.getItem("adult");
-  const baby = localStorage.getItem("baby") || 0;
+  const baby = localStorage.getItem("baby");
+  const totalPassenger = parseInt(adult) + parseInt(baby);
 
   const seatpicker = seat.map((item) => {
     return { seat_number: item };
@@ -95,7 +97,7 @@ const Biodata = () => {
             </CardBody>
           </div>
         ))}
-        <Button type="button" color="purple" onClick={fields.length <= adult - 1 ? () => append({}) : null}>
+        <Button type="button" color="purple" onClick={fields.length > totalPassenger - 1 ? null : () => append({})}>
           Tambah Penumpang
         </Button>
       </Card>
