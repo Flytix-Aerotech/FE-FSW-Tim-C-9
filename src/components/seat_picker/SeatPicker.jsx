@@ -61,7 +61,7 @@ const SeatPicker = ({ setSeat, classType, typePrice, disabled }) => {
               className={`seat ${isPreSelected ? "pre-selected" : ""} ${selectedSeats.includes(seat) ? "selected" : ""} ${
                 row === " " ? "blank" : ""
               }`}
-              onClick={isPreSelected || disabled === true ? null : () => handleSeatSelection(seat)}
+              onClick={isPreSelected || disabled === true || row === " " ? null : () => handleSeatSelection(seat)}
             >
               {seat}
             </div>

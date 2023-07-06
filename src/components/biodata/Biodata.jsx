@@ -95,7 +95,7 @@ const Biodata = () => {
             </CardBody>
           </div>
         ))}
-        <Button type="button" color="purple" onClick={() => append({})}>
+        <Button type="button" color="purple" onClick={fields.length <= adult - 1 ? () => append({}) : null}>
           Tambah Penumpang
         </Button>
       </Card>

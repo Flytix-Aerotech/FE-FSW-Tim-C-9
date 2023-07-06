@@ -35,7 +35,9 @@ export const loginAction = (data, history) => {
         dispatch({ type: LOGIN, payload: response.data });
         localStorage.setItem("token", response.data.token);
         SweatAlert(response.data.msg, "success");
-        history("/");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
       })
       .catch((error) => {
         const message = (error.response && error.response.data && error.response.data.msg) || error.msg || error.toString();
@@ -181,13 +183,13 @@ export const updateProfileAction = (data, history) => {
   };
 };
 
-export const logoutAction = (history) => {
+export const logoutAction = () => {
   return async (dispatch) => {
     dispatch({ type: LOGOUT_REQUEST });
     localStorage.clear();
     setTimeout(() => {
       dispatch({ type: LOGOUT });
-      history("/login");
+      window.location.href = "/login";
       localStorage.removeItem("timer");
     }, 3000);
   };

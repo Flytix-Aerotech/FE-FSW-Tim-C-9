@@ -16,7 +16,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { icon_user, logo_flytix } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getProfileAction, logoutAction } from "../../config/Redux/action/authAction";
 
 const ProfileMenu = ({ handleLogout }) => {
@@ -98,14 +98,13 @@ const ProfileMenu = ({ handleLogout }) => {
 };
 
 const NavbarComplex = () => {
-  const history = useNavigate();
   const dispatch = useDispatch();
   const [openNav, setOpenNav] = React.useState(false);
 
   const { isLoggedIn } = useSelector((state) => state.authReducer);
 
   const handleLogout = () => {
-    dispatch(logoutAction(history));
+    dispatch(logoutAction());
   };
 
   React.useEffect(() => {
