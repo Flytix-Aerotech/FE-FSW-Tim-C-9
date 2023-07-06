@@ -14,7 +14,7 @@ import React from "react";
 import { backpack, crown, not_found } from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
 import { getTicketAction } from "../../config/Redux/action/ticketAction";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { formatDate, formatDifferenceTime, formatRupiah, formatTime } from "../format_display";
 import FilterInput from "../custom_input/filterInput";
 import PartialLoading from "../loading/PartialLoading";
@@ -45,7 +45,7 @@ const AccordionSection = ({ tickets }) => {
   return (
     <>
       {tickets.length === 0 ? (
-        <div>
+        <div className="mt-6">
           <img src={not_found} className="w-full max-w-xs" alt="" />
         </div>
       ) : (
@@ -64,7 +64,7 @@ const AccordionSection = ({ tickets }) => {
                   <img src={crown} alt="" className="w-5 h-5" /> {item?.flight?.airline} - {item?.type_of_class}
                 </Typography>
               </AccordionHeader>
-              <div className="flex mt-2 ml-0 sm:ml-8 justify-between gap-1 sm:gap-10">
+              <div className="flex mt-2 ml-0 sm:ml-8 justify-between gap-1 sm:gap-16">
                 <div className="flex gap-4">
                   <span className="flex flex-col items-center justify-center">
                     <p className="font-bold text-xs sm:text-base mt-0">{formatTime(item?.flight?.departure_time)}</p>
@@ -74,7 +74,7 @@ const AccordionSection = ({ tickets }) => {
                     <small className="text-gray-500 text-xs sm:text-sm">
                       {formatDifferenceTime(item?.flight?.departure_time, item?.flight?.arrival_time)}
                     </small>
-                    <small className="bg-gray-500 w-20 sm:w-28 md:w-32 h-0.5 relative">
+                    <small className="bg-gray-500 w-20 sm:w-28 md:w-40 h-0.5 relative">
                       <i className="absolute w-1.5 h-1.5 border-gray-500 right-0 top-1/2 -translate-y-1/2 inline-block border-r-2 border-b-2 -rotate-45"></i>
                     </small>
                     <small className="text-gray-500 text-xs sm:text-sm">Direct</small>
@@ -91,11 +91,11 @@ const AccordionSection = ({ tickets }) => {
                   <Typography variant="h6" color="purple" className="font-bold text-sm sm:text-lg whitespace-nowrap">
                     IDR {formatRupiah(item?.price)}
                   </Typography>
-                  <Link to={`/wishlist/${item?.id}`} className="w-full">
+                  <a href={`/wishlist/${item?.id}`} className="w-full">
                     <Button color="purple" className="w-full py-2 rounded-2xl">
                       Pilih
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
               <AccordionBody className="mt-4 border-t border-gray-800">
@@ -282,14 +282,14 @@ const ResultSearch = ({ filterDateTicket }) => {
           <FilterInput handleClickFilter={handleClickFilter} open={open} handleOpen={handleOpen} />
         </div>
       </div>
-      <div className="m-auto mt-8 w-full max-w-3xl px-2">
+      <div className="m-auto mt-8 w-full max-w-[830px] px-2">
         {isLoading ? (
           <div className="flex flex-col items-center w-full h-full">
             <span className="mb-4">Mencari penerbangan terbaik...</span>
             <PartialLoading height={"100"} width={"150"} />
           </div>
         ) : (
-          <div className="flex gap-4 justify-center lg:justify-between">
+          <div className="flex gap-4 justify-center lg:justify-between relative">
             <ListItems handleOpen={handleOpen} />
             <div>
               <AccordionSection tickets={sortOrder === "" ? tickets : sortedProducts} />

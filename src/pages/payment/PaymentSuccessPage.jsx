@@ -30,11 +30,11 @@ const PaymentSuccessPage = () => {
                     Terbitkan Tiket
                   </Button>
                 </Link>
-                <Link to="/">
+                <a href="/">
                   <Button color="purple" className="w-full opacity-40 hover:shadow-none">
                     Cari Penerbangan Lain
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
           </div>

@@ -1,7 +1,6 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { Button, Typography } from "@material-tailwind/react";
 import React from "react";
-import { Link } from "react-router-dom";
 
 const ProfileHeader = () => {
   return (
@@ -13,11 +12,11 @@ const ProfileHeader = () => {
       </div>
       <div className="max-w-3xl w-full m-auto mb-6">
         <div className="flex flex-row w-full bg-purple-600 py-1 rounded-lg">
-          <Link to="/">
+          <a href="/">
             <Button className="flex items-center gap-3 bg-purple-600 w-full shadow-none hover:shadow-none" size="sm">
               <ArrowLeftIcon strokeWidth={2} className="h-5 w-5" /> Beranda
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

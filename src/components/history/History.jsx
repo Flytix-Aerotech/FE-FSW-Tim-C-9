@@ -52,7 +52,7 @@ const History = ({ history, setDetail, detail, handleOpen }) => {
               <p className="flex-1 text-xs sm:text-sm text-center">
                 <strong className="text-black">Class:</strong> {item?.ticket?.type_of_class}
               </p>
-              <p className="flex-1 text-xs sm:text-sm text-right text-purple-600 font-bold">IDR {formatRupiah(item?.total_price)}</p>
+              <p className="flex-1 text-xs sm:text-sm text-right text-purple-600 font-bold">IDR {formatRupiah(parseInt(item?.total_price))}</p>
             </div>
           </CardBody>
         </Card>

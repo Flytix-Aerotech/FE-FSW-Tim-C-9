@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import {
   dev1,
@@ -44,10 +43,10 @@ const AboutCompanyPage = () => {
         {/* Header */}
         <header className="py-4 text-center text-white bg-purple-500 rounded-xl">
           <div className="flex items-center justify-between px-4">
-            <Link to="/" className="flex items-center">
+            <a href="/" className="flex items-center">
               <ArrowLeftIcon className="w-6 h-6 mr-2" />
               Back
-            </Link>
+            </a>
             <h1 className="text-2xl font-bold">About</h1>
             <div className="w-6"></div>
           </div>

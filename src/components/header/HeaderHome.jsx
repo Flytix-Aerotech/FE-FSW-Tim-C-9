@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const date = [
   { date: "2023-07-01", day: "Sabtu" },
@@ -96,18 +96,18 @@ const HeaderHome = ({ setFilterDateTicket }) => {
       </Typography>
       <div className="flex flex-col items-center gap-3 mx-2 sm:mx-8 mt-4 md:flex-row">
         <div className="flex items-center gap-2 w-full px-4 py-2 text-white bg-purple-500 rounded-md">
-          <Link to="/">
+          <a href="/">
             <ChevronLeftIcon className="w-6 h-6 font-bold" />
-          </Link>
+          </a>
           <p className="flex items-center text-[11px] sm:text-base mt-0">
             {Departure} <ChevronRightIcon className="w-4 h-4" /> {Arrival} - {passengers} Penumpang - {type_of_class}
           </p>
         </div>
-        <Link to="/">
+        <a href="/">
           <Button color="green" className="whitespace-nowrap">
             Ubah Pencarian
           </Button>
-        </Link>
+        </a>
       </div>
       <div className="flex gap-2 pb-4 mx-2 sm:mx-8 mt-4 border-b border-gray-600">
         <DateButton setFilterDateTicket={setFilterDateTicket} searchParams={searchParams} />

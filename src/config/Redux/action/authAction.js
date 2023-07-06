@@ -184,10 +184,11 @@ export const updateProfileAction = (data, history) => {
 export const logoutAction = (history) => {
   return async (dispatch) => {
     dispatch({ type: LOGOUT_REQUEST });
+    localStorage.clear();
     setTimeout(() => {
-      localStorage.clear();
       dispatch({ type: LOGOUT });
       history("/login");
+      localStorage.removeItem("timer");
     }, 3000);
   };
 };

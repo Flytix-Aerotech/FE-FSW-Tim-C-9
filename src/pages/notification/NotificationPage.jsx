@@ -55,6 +55,12 @@ const notif = [
   },
 ];
 
+const filter = notif.sort((a, b) => {
+  const dateA = new Date(a.date).getTime();
+  const dateB = new Date(b.date).getTime();
+  return dateB - dateA;
+});
+
 const NotificationPage = () => {
   return (
     <>
@@ -62,7 +68,7 @@ const NotificationPage = () => {
       <HeaderHistory text="Notifikasi" />
       <div className="mb-16 mt-5 max-w-3xl w-full mx-auto">
         <div className="flex justify-center flex-col w-full max-w-screen-lg gap-10 px-4 py-2 m-auto lg:px-8 lg:pt-4">
-          {notif.map((item, index) => (
+          {filter.map((item, index) => (
             <div key={index} className="w-full flex flex-row gap-2 border-b border-black/20 pb-4">
               <div className="w-5 h-5 flex justify-center items-center">
                 <BellIcon className="bg-purple-200 rounded-full p-1" color="white" />

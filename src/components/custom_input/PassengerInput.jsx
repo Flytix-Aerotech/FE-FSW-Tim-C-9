@@ -5,7 +5,7 @@ import { PlusIcon, MinusIcon, XMarkIcon } from "@heroicons/react/24/solid";
 const PassengerInput = () => {
   const [open, setOpen] = React.useState(false);
 
-  const [adult, setAdult] = React.useState(0);
+  const [adult, setAdult] = React.useState(1);
   const [children, setChildren] = React.useState(0);
   const [baby, setBaby] = React.useState(0);
 

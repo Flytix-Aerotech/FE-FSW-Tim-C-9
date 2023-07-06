@@ -114,13 +114,13 @@ const NavbarComplex = () => {
 
   const navList = (
     <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
-      <Link to="/">
+      <a href="/">
         <Typography variant="small" color="blue-gray" className="font-normal">
           <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
             <HomeIcon className="w-6 h-6" /> Home
           </MenuItem>
         </Typography>
-      </Link>
+      </a>
       <Link to="/about">
         <Typography variant="small" color="blue-gray" className="font-normal">
           <MenuItem className="flex items-center gap-2 px-0 lg:rounded-full lg:px-3">
@@ -149,12 +149,10 @@ const NavbarComplex = () => {
       <Navbar className="sticky inset-0 z-10 max-w-full px-4 py-4 rounded-none h-max lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900">
           <div className="flex items-center gap-4">
-            <Link to="/">
-              <Typography className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
-                <img src={logo_flytix} alt="" width={"40"} className="rounded-full" />{" "}
-                <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
-              </Typography>
-            </Link>
+            <Typography as="a" href="/" className="mr-4 cursor-pointer py-1.5 font-medium flex gap-2 items-center">
+              <img src={logo_flytix} alt="" width={"40"} className="rounded-full" />{" "}
+              <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
+            </Typography>
             <div className="relative hidden w-full gap-2 md:w-max lg:block">
               <Input color="purple" type="search" label="Type here..." className="pr-10" />
               <button className="!absolute right-2 top-2 rounded">
