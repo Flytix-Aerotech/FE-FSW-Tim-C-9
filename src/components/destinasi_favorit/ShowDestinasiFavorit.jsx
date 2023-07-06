@@ -3,12 +3,6 @@ import { destinasi1 } from "../../assets/images";
 import { formatDate, formatRupiah } from "../format_display";
 
 const ShowDestinasiFavorit = ({ items }) => {
-  const getDate = (value) => {
-    const date = new Date(value);
-    const format = date.getDate();
-    return format;
-  };
-
   return (
     <div className="w-full max-w-4xl px-4 m-auto mb-16">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
@@ -23,7 +17,7 @@ const ShowDestinasiFavorit = ({ items }) => {
                 {item?.flight?.flight_number || ""}
               </Typography>
               <Typography variant="small" color="black" className="mb-2 font-semibold whitespace-nowrap">
-                {getDate(item?.flight?.departure_date) || ""} - {formatDate(item?.flight?.arrival_date) || ""}
+                {formatDate(item?.flight?.arrival_date) || ""}
               </Typography>
               <Typography variant="small" color="black" className="mb-2 font-semibold whitespace-nowrap">
                 Mulai dari IDR <span className="text-red-500">{formatRupiah(item?.price) || ""}</span>
