@@ -135,7 +135,7 @@ const NavbarComplex = () => {
         </Typography>
       </Link>
       <div className="relative block w-full gap-2 sm:w-max lg:hidden">
-        <Input color="purple" type="search" label="Type here..." className="pr-10" />
+        <Input color="purple" type="search" label="Type here..." className="pr-10 w-full" containerProps={{ className: "!min-w-[300px]" }} />
         <button className="!absolute right-2 top-2 rounded">
           <MagnifyingGlassIcon className="w-6 h-6" />
         </button>
@@ -153,7 +153,7 @@ const NavbarComplex = () => {
               <span className="text-2xl font-bold tracking-wider text-purple-600 uppercase">Flytix</span>
             </Typography>
             <div className="relative hidden w-full gap-2 md:w-max lg:block">
-              <Input color="purple" type="search" label="Type here..." className="pr-10" />
+              <Input color="purple" type="search" label="Type here..." className="pr-10" containerProps={{ className: "!min-w-[300px]" }} />
               <button className="!absolute right-2 top-2 rounded">
                 <MagnifyingGlassIcon className="w-6 h-6" />
               </button>

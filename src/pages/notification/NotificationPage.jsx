@@ -3,6 +3,8 @@ import NavbarComplex from "../../components/navbar/Navbar";
 import HeaderHistory from "../../components/header/HeaderHistory";
 import { BellIcon } from "@heroicons/react/24/outline";
 import { formatDate } from "../../components/format_display";
+import { useSelector } from "react-redux";
+import Loading from "../../components/loading/Loading";
 
 function getRandomDate(minDate, maxDate) {
   // Convert minimum and maximum dates to timestamps
@@ -62,32 +64,39 @@ const filter = notif.sort((a, b) => {
 });
 
 const NotificationPage = () => {
+  const { isLoading } = useSelector((state) => state.authReducer);
   return (
     <>
-      <NavbarComplex />
-      <HeaderHistory text="Notifikasi" />
-      <div className="mb-16 mt-5 max-w-3xl w-full mx-auto">
-        <div className="flex justify-center flex-col w-full max-w-screen-lg gap-10 px-4 py-2 m-auto lg:px-8 lg:pt-4">
-          {filter.map((item, index) => (
-            <div key={index} className="w-full flex flex-row gap-2 border-b border-black/20 pb-4">
-              <div className="w-5 h-5 flex justify-center items-center">
-                <BellIcon className="bg-purple-200 rounded-full p-1" color="white" />
-              </div>
-              <div className="w-full">
-                <div className="flex flex-row justify-between w-full">
-                  <p className="text-xs text-gray-500">{item.type}</p>
-                  <div className="flex flex-row gap-2 items-center">
-                    <p className="text-xs text-gray-500">{formatDate(item.date.toDateString())}</p>
-                    <div className={`w-2 h-2 rounded-full ${item.type === "Notifikasi" ? "bg-red-500" : "bg-green-500"}`}></div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <NavbarComplex />
+          <HeaderHistory text="Notifikasi" />
+          <div className="mb-16 mt-5 max-w-3xl w-full mx-auto">
+            <div className="flex justify-center flex-col w-full max-w-screen-lg gap-10 px-4 py-2 m-auto lg:px-8 lg:pt-4">
+              {filter.map((item, index) => (
+                <div key={index} className="w-full flex flex-row gap-2 border-b border-black/20 pb-4">
+                  <div className="w-5 h-5 flex justify-center items-center">
+                    <BellIcon className="bg-purple-200 rounded-full p-1" color="white" />
+                  </div>
+                  <div className="w-full">
+                    <div className="flex flex-row justify-between w-full">
+                      <p className="text-xs text-gray-500">{item.type}</p>
+                      <div className="flex flex-row gap-2 items-center">
+                        <p className="text-xs text-gray-500">{formatDate(item.date.toDateString())}</p>
+                        <div className={`w-2 h-2 rounded-full ${item.type === "Notifikasi" ? "bg-red-500" : "bg-green-500"}`}></div>
+                      </div>
+                    </div>
+                    <p className="mt-1">{item.field}</p>
+                    {item.type === "Promosi" && <p className="text-xs text-gray-500">Syarat dan Ketentuan berlaku!</p>}
                   </div>
                 </div>
-                <p className="mt-1">{item.field}</p>
-                {item.type === "Promosi" && <p className="text-xs text-gray-500">Syarat dan Ketentuan berlaku!</p>}
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
