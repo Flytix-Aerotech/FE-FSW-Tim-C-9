@@ -4,6 +4,8 @@
 
 Selamat datang di repositori Final Project tim Flytix-Aerotech!
 
+Link Deploy: [flytix-c9.netlify.app](https://flytix-c9.netlify.app/)
+
 ### Tim Flytix-Aerotech
 
 Tim kami terdiri dari sekelompok pengembang frontend yang antusias dan berdedikasi untuk menghadirkan solusi inovatif di bidang perjalanan udara. Berikut adalah anggota tim kami:
